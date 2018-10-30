@@ -1,0 +1,1474 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>一、基础知识 &mdash; KaliArch SHELL BLOG 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to MING’s BLOG’s documentation!" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> KaliArch SHELL BLOG
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">一、基础知识</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#shell">一、Shell简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">三、第一个Shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.2 ./执行</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#source">4.3 source执行</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">五、Shell变量</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">5.1 变量命名规则：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">5.2 系统内置变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">5.3 用户自定义变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">5.4 变量引用</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">六、引号</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">KaliArch SHELL BLOG</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>一、基础知识</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/myshell-note.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>一、基础知识<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="shell">
+<h2>一、Shell简介<a class="headerlink" href="#shell" title="Permalink to this headline">¶</a></h2>
+<p>Shell 是一个 C 语言编写的脚本语言，它是用户与 Linux
+的桥梁，用户输入命令交给 Shell 处理， Shell
+将相应的操作传递给内核（Kernel），内核把处理的结果输出给用户。</p>
+<p>程序=指令+数据 ## 二、Shell分类 #### 2.1 图形界面 Shell（GUI Shell） GUI
+为 Unix 或者类 Unix
+操作系统构造一个功能完善、操作简单以及界面友好的桌面环境。主流桌面环境有
+KDE，Gnome 等。 #### 2.2 命令行界面 Shell（CLI Shell） CLI
+是在用户提示符下键入可执行指令的界面，用户通过键盘输入指令，完成一系列操作。</p>
+<p>在 Linux 系统上主流的 CLI 实现是 Bash，是许多 Linux 发行版默认的
+Shell。还有许多 Unix 上Shell。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@10</span><span class="o">-</span><span class="mi">234</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">128</span> <span class="n">pyworkspace</span><span class="p">]</span><span class="c1"># cat /etc/shells</span>
+<span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sh</span>
+<span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sh</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+</pre></div>
+</div>
+<p><strong>Shell的分类:</strong> * Bourne Shell（/usr/bin/sh或/bin/sh） * Bourne Again
+Shell（/bin/bash） * C Shell（/usr/bin/csh） * K Shell（/usr/bin/ksh）
+* Shell for Root（/sbin/sh）</p>
+<p><strong>脚本命名:</strong></p>
+<p>注意：见名知意，后缀规范为<code class="docutils literal notranslate"><span class="pre">.sh</span></code></p>
+</div>
+<div class="section" id="id2">
+<h2>三、第一个Shell<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="n">echo</span> <span class="s2">&quot;this is my first shell script&quot;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">#!</span></code> 告诉系统其后路径所指定的程序即是解释此脚本文件的 Shell 程序
+<code class="docutils literal notranslate"><span class="pre">/bin/bash</span></code> 指定使用的是那种shell <code class="docutils literal notranslate"><span class="pre">echo</span></code>在终端打印出内容 ##
+四、执行Shell的三种方法 #### 4.1 直接bash执行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># ll</span>
+<span class="n">total</span> <span class="mi">4</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">44</span> <span class="n">Sep</span>  <span class="mi">3</span> <span class="mi">14</span><span class="p">:</span><span class="mi">16</span> <span class="mi">01</span><span class="o">-</span><span class="n">scripts</span><span class="o">.</span><span class="n">sh</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># cat 01-scripts.sh</span>
+<span class="c1">#!/bin/bash</span>
+
+<span class="n">echo</span> <span class="s2">&quot;this is my first script&quot;</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># bash 01-scripts.sh</span>
+<span class="n">this</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">first</span> <span class="n">script</span>
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h3>4.2 ./执行<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># ./01-scripts.sh</span>
+<span class="o">-</span><span class="n">bash</span><span class="p">:</span> <span class="o">./</span><span class="mi">01</span><span class="o">-</span><span class="n">scripts</span><span class="o">.</span><span class="n">sh</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># chmod +x 01-scripts.sh</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># ll</span>
+<span class="n">total</span> <span class="mi">4</span>
+<span class="o">-</span><span class="n">rwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">44</span> <span class="n">Sep</span>  <span class="mi">3</span> <span class="mi">14</span><span class="p">:</span><span class="mi">16</span> <span class="mi">01</span><span class="o">-</span><span class="n">scripts</span><span class="o">.</span><span class="n">sh</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># ./01-scripts.sh</span>
+<span class="n">this</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">first</span> <span class="n">script</span>
+</pre></div>
+</div>
+<p>这种方式默认根据脚本第一行指定的解释器处理，如果没写以当前默认 Shell
+解释器执行。</p>
+<div class="section" id="source">
+<h4>4.3 source执行<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># source 01-scripts.sh</span>
+<span class="n">this</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">first</span> <span class="n">script</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>五、Shell变量<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>变量名+内存空间</p>
+<p>变量赋值：<code class="docutils literal notranslate"><span class="pre">name=value</span></code></p>
+<p>弱类型变量，所有变量类型视为字符串类型，对于数值相加自动转换为数组类型，无需实现声明</p>
+<div class="section" id="id5">
+<h3>5.1 变量命名规则：<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>命名只能使用英文字母，数字和下划线，首个字符不能以数字开头。</li>
+<li>中间不能有空格，可以使用下划线（_）。</li>
+<li>不能使用标点符号。</li>
+<li>不能使用bash里的关键字（可用help命令查看保留关键字）</li>
+<li>做到见名知意</li>
+<li>。</li>
+</ul>
+<p>环境变量作用范围：当前shell进程及其子进程</p>
+<p>本地变量作用范围：当前shell</p>
+<p>局部变量作用范围：代码片段</p>
+<p>利用export将本地变量导入到环境，扩大作用范围</p>
+</div>
+<div class="section" id="id6">
+<h3>5.2 系统内置变量<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>在命令行提示符直接执行<code class="docutils literal notranslate"><span class="pre">env、set</span></code>查看系统或环境变量。<code class="docutils literal notranslate"><span class="pre">env</span></code>
+显示用户环境变量，<code class="docutils literal notranslate"><span class="pre">set</span></code> 显示 Shell
+预先定义好的变量以及用户变量。可以通过 <code class="docutils literal notranslate"><span class="pre">export</span></code> 导出成用户变量。</p>
+<p>还可通过<code class="docutils literal notranslate"><span class="pre">printevn/declare</span> <span class="pre">-x</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$SHELL      默认 Shell
+
+$HOME       当前用户家目录
+
+$IFS        内部字段分隔符
+
+$LANG       默认语言
+
+$PATH       默认可执行程序路径
+
+$PWD        当前目录
+
+$UID        当前用户 ID
+
+$USER       当前用户
+
+$HISTSIZE   历史命令大小，可通过 HISTTIMEFORMAT 变量设置命令执行时间
+
+$RANDOM     随机生成一个 0 至 32767 的整数
+
+$HOSTNAME   主机名
+</pre></div>
+</div>
+<p><strong>特殊变量</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${1..n} 指定第n个输入的变量名称
+$0      脚本自身名字
+
+$?      返回上一条命令是否执行成功，0 为执行成功，非 0 则为执行失败
+
+$#      位置参数总数
+
+$*      所有的位置参数被看做一个字符串
+
+$@      每个位置参数被看做独立的字符串
+
+$$      当前进程 PID
+
+$!      上一条运行后台进程的 PID
+</pre></div>
+</div>
+<p><strong>相同点</strong>：都是引用所有参数。</p>
+<p><strong>不同点</strong>：只有在双引号中体现出来。假设在脚本运行时写了三个参数
+1、2、3，，则 ” * ” 等价于 “1 2 3”（传递了一个参数），而 “&#64;” 等价于 “1”
+“2” “3”（传递了三个参数）。</p>
+<p>profile 类型： * 定义全局变量 * 运行命令或脚本</p>
+<p>bashrc 类型： * 定义本地变量 * 定义命令别名</p>
+<p>交互式登录shell： 加载顺序：/etc/profile -&gt; /etc/profile.d/* -&gt;
+~/.bash_profile -&gt; ~/.bashrc -&gt; /etc/bashrc</p>
+<p>非交互式登录shell： 加载顺序：~/.bashrc -&gt; /etc/bashrc -&gt;
+/etc/profile.d/*</p>
+</div>
+<div class="section" id="id7">
+<h3>5.3 用户自定义变量<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>普通变量</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># var=normal</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># echo $var</span>
+<span class="n">normal</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>临时环境变量</li>
+</ul>
+<p>在当前shell下定义的变量，只对当前shell有效，新的bash已经其子bash无法使用当前定义的shell，如果在本shell存在的情况下，使用<code class="docutils literal notranslate"><span class="pre">export</span></code>来导入到系统变量中，如果当前shell终端终端，那么导入的变量将全部失效，永久生效需要写入linux配置文件中。</p>
+<ul class="simple">
+<li>只读变量</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="o">~</span><span class="p">]</span><span class="c1"># var=&#39;test&#39;</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="o">~</span><span class="p">]</span><span class="c1"># echo $var</span>
+<span class="n">test</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="o">~</span><span class="p">]</span><span class="c1"># readonly var</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="o">~</span><span class="p">]</span><span class="c1"># var=&#39;bbb&#39;</span>
+<span class="o">-</span><span class="n">bash</span><span class="p">:</span> <span class="n">var</span><span class="p">:</span> <span class="n">readonly</span> <span class="n">variable</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>删除变量</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">unset</span> <span class="pre">variable_name</span></code></p>
+<p>变量被删除后不能再次使用。unset 命令不能删除只读变量。</p>
+</div>
+<div class="section" id="id8">
+<h3>5.4 变量引用<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>= 变量赋值</li>
+<li>+= 变量相加</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">data</span><span class="p">]</span><span class="c1"># var=123</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">data</span><span class="p">]</span><span class="c1"># var+=234</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">data</span><span class="p">]</span><span class="c1"># echo $var</span>
+<span class="mi">123234</span>
+</pre></div>
+</div>
+<p>为避免特殊字符及变量与字符连接使用，建议引用变量添加大括号</p>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>六、引号<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>单引号是告诉 Shell
+忽略特殊字符，而双引号则解释特殊符号原有的意义，比如<span class="math notranslate nohighlight">\(、！。 \)</span> [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> www]# var1=”aaa” [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> www]# echo ‘<cite>var1’
+:math:`var1 [root&#64;xuel-tmp-shell www]# echo “</cite>var1” aaa</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@xuel</span><span class="o">-</span><span class="n">tmp</span><span class="o">-</span><span class="n">shell</span> <span class="n">www</span><span class="p">]</span><span class="c1"># var2=“aa” [root@xuel-tmp-shell www]# var3=‘bb</span>
+</pre></div>
+</div>
+<p>$var2’ [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> www]# echo $var3 bb $var2
+[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> www]# var4=“bb $var2” [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> www]#
+echo $var4 bb aa</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## 七、注释
+* 单行注释使用`#`
+* 多行注释固定函数格式
+</pre></div>
+</div>
+<p>:&lt;&lt;EOF 内容… 内容… EOF</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 二、字符串与数组
+## 一、字符串常用操作
+#### 1.1 获取字符串长度
+利用`${#var}`来获取字符串长度
+</pre></div>
+</div>
+<p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# var=‘abcstring’ [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo
+${#var} 9</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.2 字符串切片
+格式：
+
+${parameter:offset}
+${parameter:offset:length}
+
+截取从 offset 个字符开始，向后 length 个字符。
+</pre></div>
+</div>
+<p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# var=“hello shell” [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo
+${var:0} hello shell [root&#64;xuel-tmp-shell ~]# echo ${var:0:5} hello
+[root&#64;xuel-tmp-shell ~]# echo ${var:6:5} shell [root&#64;xuel-tmp-shell ~]#
+echo ${var:(-1)} l [root&#64;xuel-tmp-shell ~]# echo ${var:(-2)} ll
+[root&#64;xuel-tmp-shell ~]# echo ${var:(-5):2} sh</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.3 字符串替换
+格式：${parameter/pattern/string}
+</pre></div>
+</div>
+<p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# var=“hello shell” [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo
+${var/shell/world} hello world</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.4 字符串截取
+格式：
+
+
+${parameter#word}
+\# 删除匹配前缀
+
+${parameter##word}
+
+
+${parameter%word}
+\# 删除匹配后缀
+
+${parameter%%word}
+
+\# 去掉左边，最短匹配模式，##最长匹配模式。
+
+% 去掉右边，最短匹配模式，%%最长匹配模式。
+</pre></div>
+</div>
+<p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# url=“<a class="reference external" href="https://www.baidu.com/index.html">https://www.baidu.com/index.html</a>”
+[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo ${url#<em>/} /www.baidu.com/index.html
+[root&#64;xuel-tmp-shell ~]# echo ${url##</em>/} index.html</p>
+<p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo ${url%/<em>} https://www.baidu.com
+[root&#64;xuel-tmp-shell ~]# echo ${url%%/</em>} https:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.5 变量状态赋值
+${VAR:-string}  如果 VAR 变量为空则返回 string
+
+${VAR:+string}  如果 VAR 变量不为空则返回 string
+
+${VAR:=string} 如果 VAR 变量为空则重新赋值 VAR 变量值为 string
+
+${VAR:?string} 如果 VAR 变量为空则将 string 输出到 stderr
+</pre></div>
+</div>
+<p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# url=“<a class="reference external" href="https://www.baidu.com/index.html">https://www.baidu.com/index.html</a>”
+[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo ${url:-“string”}
+<a class="reference external" href="https://www.baidu.com/index.html">https://www.baidu.com/index.html</a> [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo
+${url:+“string”} string [root&#64;xuel-tmp-shell ~]# unset url
+[root&#64;xuel-tmp-shell ~]# echo $url</p>
+<p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo ${url:-“string”} string
+[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo ${url:+“string”}</p>
+<p>找出/etc/group下的所有组名称 for i in <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/group</span></code>;do echo
+${i%%:<a href="#id10"><span class="problematic" id="id11">*</span></a>};done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## 二、数组
+bash支持一维数组（不支持多维数组），并且没有限定数组的大小。数组是相同类型的元素按一定顺序排列的集合。
+类似与 C 语言，数组元素的下标由 0 开始编号。获取数组中的元素要利用下标，下标可以是整数或算术表达式，其值应大于或等于 0。
+#### 2.1 数组定义
+在 Shell 中，用括号来表示数组，数组元素用&quot;空格&quot;符号分割开
+</pre></div>
+</div>
+<p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# args1=(aa bb cc 1123) [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]#
+echo $args1 aa</p>
+<p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo ${args1[&#64;]} aa bb cc 1123</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#### 2.2 数组元素读取</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# args1=(aa bb cc 1123) [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a>
+~]# echo ${#args1[&#64;]} #获取数组元素个数</div>
+<div class="line">4 [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo ${args1[0]} aa [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a>
+~]# echo ${args1[1]} bb</div>
+</div>
+<p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> workspace]# filelist=($(ls)) [<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> workspace]#
+echo ${filelist[*]} check_url_for.sh check_url_while01.sh
+check_url_while02.sh func01.sh func02.sh func03.sh urllist.txt</p>
+<p>获取数组元素的下标 [<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> workspace]# echo
+<span class="math notranslate nohighlight">\({!filelist[&#64;]} 0 1 2 3 4 5 6 \)</span> 遍历文件 <a href="#id12"><span class="problematic" id="id13">``</span></a>` filelist=(<cite>(ls));for
+i in ${!filelist[&#64;]};do echo :math:`{filelist[</cite>i]};done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## 三、字符显示颜色
+
+字体颜色 | 字体背景颜色 | 显示方式
+--------|---|---
+30：黑    |    40：黑   |
+31：红    |   41：深红|  0：终端默认设置
+32：绿    |   42：绿    |   1：高亮显示
+33：黄    |   43：黄色|  4：下划线
+34：蓝色|  44：蓝色|  5：闪烁
+35：紫色|  45：紫色|  7：反白显示
+36：深绿|  46：深绿|  8：隐藏
+37：白色|  47：白色|
+格式： |
+\033[1;31;40m|  # 1 是显示方式，可选。31 是字体颜色。40m 是字体背景颜色。
+\033[0m | # 恢复终端默认颜色，即取消颜色设置。
+
+
+* 显示方式
+</pre></div>
+</div>
+<p>for i in {1..8};do echo -e “\033[$i;31;40m hello world \033[0m”;done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">字体颜色</span>
+</pre></div>
+</div>
+<p>for i in {30..37};do echo -e “\033[$i;40m hello world \033[0m”;done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">背景颜色</span>
+</pre></div>
+</div>
+<p>for i in {40..47};do echo -e “\033[47;${i}m hello world! \033[0m”;done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 三、运算符
+## 一、Shell表达式
+#### 1.1 整数比较符
+
+比较符                  |       描述      |                     示例
+---|---|---
+-eq，equal              |       等于      |      [ 1 -eq        1       ]为 true
+-ne，not equal          |       不等于    |      [ 1 -ne        1       ]为 false            |
+-gt，greater than       |       大于      |      [ 2    -gt     1       ]为 true            |
+-lt，lesser than        |       小于      |      [ 2    -lt     1       ]为 false          |
+-ge，greater or equal   |       大于或等于|     [ 2     -ge             1 ]为 true         |
+-le，lesser or equal    |       小于或等于|     [ 2     -le     1       ]为 false
+</pre></div>
+</div>
+<p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> ~]# [ 1 -gt 1 ] &amp;&amp; echo true || echo false false
+[<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> ~]# [ 1 -ne 1 ] &amp;&amp; echo true || echo false false
+[<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> ~]# [ 1 -eq 1 ] &amp;&amp; echo true || echo false true
+[<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> ~]# [ 1 -ne 1 ] &amp;&amp; echo true || echo false false
+[<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> ~]# [ 1 -gt 1 ] &amp;&amp; echo true || echo false false
+[<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> ~]# [ 2 -gt 1 ] &amp;&amp; echo true || echo false true
+[<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> ~]# [ 2 -lt 1 ] &amp;&amp; echo true || echo false false
+[<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> ~]# [ 2 -le 1 ] &amp;&amp; echo true || echo false false</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.2 算术运算符
+假定变量 a 为 10，变量 b 为 20：
+注意：运算符两边有空格
+
+运算符 | 说明 | 举例
+---|---|---
++ | 加法 |    `expr $a + $b` 结果为 30。
+- | 减法 |    `expr $a - $b` 结果为 -10。
+* | 乘法 |    `expr $a \* $b` 结果为  200。
+/ | 除法 |    `expr $b / $a` 结果为 2。
+% | 取余 |    `expr $b % $a` 结果为 0。
+= | 赋值 |    a=$b 将把变量 b 的值赋给 a。
+== |    相等| 用于比较两个数字，相同则返回 true。    [ $a == $b ] 返回 false。
+!=  | 不相等|用于比较两个数字，不相同则返回 true。 [ $a != $b ] 返回 true。
+</pre></div>
+</div>
+<p>A=3 B=6 1、let 算术运算表达式 let C=<span class="math notranslate nohighlight">\(A+\)</span>B
+2、<span class="math notranslate nohighlight">\([算术运算表达式] C=\)</span>[<span class="math notranslate nohighlight">\(A+\)</span>B]
+3、<span class="math notranslate nohighlight">\(((算术运算表达式)) C=\)</span>((<span class="math notranslate nohighlight">\(A+\)</span>B)) 4、expr
+算术运算表达式，表达式中各操作数及运算符之间要有空格，而且要使用命令引用
+C=<code class="docutils literal notranslate"><span class="pre">expr</span> <span class="pre">$A</span> <span class="pre">+</span> <span class="pre">$B</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.3 布尔运算符
+
+
+运算符 |   说明 |    举例
+---|---|---
+!   | 非运算，表达式为 true 则返回 false，否则返回 true。|   [ ! false ] 返回 true。
+-o |    或运算，有一个表达式为 true 则返回 true。 |    [ $a -lt 20 -o $b -gt 100 ] 返回 true。
+-a  | 与运算，两个表达式都为 true 才返回 true。|   [ $a -lt 20 -a $b -gt 100 ] 返回 false。
+
+#### 1.4 逻辑运算符
+
+
+运算符 | 说明 |  举例
+---|---|---
+&amp;&amp;  | 逻辑的 AND | [[ $a -lt 100 &amp;&amp; $b -gt 100 ]] 返回 false
+\|\|  | 逻辑的 OR   |  [[ $a -lt 100 \|\| $b -gt 100 ]] 返回 true
+#### 1.5 文件测试运算符
+
+操作符 | 说明 |  举例
+---|---|---
+-b| file        检测文件是否是块设备文件，如果是，则返回 true。    |     [ -b $file ] 返回 false。
+-c| file        检测文件是否是字符设备文件，如果是，则返回 true。   |    [ -c $file ] 返回 false。
+-d| file        检测文件是否是目录，如果是，则返回 true。     | [ -d $file ] 返回 false。
+-f| file        检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。   |  [ -f $file ] 返回 true。
+-g| file        检测文件是否设置了 SGID 位，如果是，则返回 true。     |  [ -g $file ] 返回 false。
+-k| file        检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。  |   [ -k $file ] 返回 false。
+-p| file        检测文件是否是有名管道，如果是，则返回 true。  | [ -p $file ] 返回 false。
+-u| file        检测文件是否设置了 SUID 位，如果是，则返回 true。   |    [ -u $file ] 返回 false。
+-r| file        检测文件是否可读，如果是，则返回 true。| [ -r $file ] 返回 true。
+-w| file        检测文件是否可写，如果是，则返回 true。 | [ -w $file ] 返回 true。
+-x| file        检测文件是否可执行，如果是，则返回 true。    |   [ -x $file ] 返回 true。
+-s| file        检测文件是否为空（文件大小是否大于0），不为空返回 true。     |   [ -s $file ] 返回 true。
+-e| file        检测文件（包括目录）是否存在，如果是，则返回 true。   |  [ -e $file ] 返回 true。
+
+
+
+#### 1.6 字符串测试
+假定变量 a 为 &quot;abc&quot;，变量 b 为 &quot;efg&quot;：
+
+运算符 |   说明 |    举例
+---|---|---
+=   | 检测两个字符串是否相等，相等返回 true。 |  [ $a = $b ] 返回 false。
+!= |    检测两个字符串是否相等，不相等返回 true。 |   [ $a != $b ] 返回 true。
+-z  | 检测字符串长度是否为0，为0返回 true。    | [ -z $a ] 返回 false。
+-n  | 检测字符串长度是否为0，不为0返回 true。|  [ -n &quot;$a&quot; ] 返回 true。
+str | 检测字符串是否为空，不为空返回 true。|    [ $a ] 返回 true。
+
+
+
+# 四、流程控制
+## 一、if语句
+#### 1.1 单分支
+</pre></div>
+</div>
+<p>if condition then command1 command2 … commandN fi</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>if [ <code class="docutils literal notranslate"><span class="pre">ps</span> <span class="pre">-ef</span> <span class="pre">|grep</span> <span class="pre">/usr/sbin/sshd|grep</span> <span class="pre">-v</span> <span class="pre">grep|wc</span> <span class="pre">-l</span></code> -eq 1 ];then
+echo “sshd server exist”;fi</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#### 1.2 双分支</span>
+</pre></div>
+</div>
+<p>if condition then command1 command2 … commandN else command fi</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>if [ <code class="docutils literal notranslate"><span class="pre">ps</span> <span class="pre">-ef</span> <span class="pre">|grep</span> <span class="pre">/usr/sbin/sshd|grep</span> <span class="pre">-v</span> <span class="pre">grep|wc</span> <span class="pre">-l</span></code> -eq 0 ];then
+echo “sshd server exist”;else echo “sshd server not exist”;fi</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#### 1.3 多分支</span>
+</pre></div>
+</div>
+<p>if condition1 then command1 elif condition2 then command2 else commandN
+fi</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>#! /bin/bash</p>
+<p>cmd=<code class="docutils literal notranslate"><span class="pre">rpm</span> <span class="pre">-q</span> <span class="pre">centos-release|cut</span> <span class="pre">-d-</span> <span class="pre">-f3</span></code></p>
+<p>if [ $cmd -eq 6 ];then echo “sysversion is $cmd” elif [ $cmd -eq 7
+];then echo “sysversion is $cmd” else echo “sysversion is
+<code class="docutils literal notranslate"><span class="pre">rpm</span> <span class="pre">-q</span> <span class="pre">centos-release</span></code>” fi</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## 二、for循环</span>
+</pre></div>
+</div>
+<p>for var in item1 item2 … itemN do command1 command2 … commandN done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg1</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>for i in /<a href="#id14"><span class="problematic" id="id15">*</span></a>; do echo -e ” <a href="#id16"><span class="problematic" id="id17">:raw-latex:`\c&quot;`</span></a>; find $i |wc -l|sort -nr;
+done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg2</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>#!/bin/bash for i in {1..3}; do echo
+<span class="math notranslate nohighlight">\(i done \)</span> eg3: <a href="#id18"><span class="problematic" id="id19">``</span></a>` #!/bin/bash for i in “<a href="#id20"><span class="problematic" id="id21">`</span></a>&#64;”; { #
+$&#64;是将位置参数作为单个来处理 echo $i }</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>默认 for 循环的取值列表是以空白符分隔，也就是第一章讲系统变量里的$IFS:
+</pre></div>
+</div>
+<p>#!/bin/bash OLD_IFS=$IFS IFS=“:” for i in $(head -1 /etc/passwd); do
+echo $i done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+</pre></div>
+</div>
+<p>for ip in 192.168.1.{1..254}; do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if ping -c 1 $ip &gt;/dev/null; then
+
+    echo &quot;$ip OK.&quot;
+
+else
+
+    echo &quot;$ip NO!&quot;
+
+fi
+</pre></div>
+</div>
+<p>done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">读取文件</span><span class="p">,</span><span class="n">判断url可用性</span>
+</pre></div>
+</div>
+<p>#!/bin/bash #function:check url filename=urllist.txt for url in $(cat
+$filename) do status=<code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-I</span> <span class="pre">$url</span> <span class="pre">-s|awk</span> <span class="pre">'/HTTP/{print</span> <span class="pre">$2}'</span></code> if [
+$status == “200” ];then echo “Url:$url is ok!status is
+<span class="math notranslate nohighlight">\(status&quot; else  echo &quot;Url:\)</span>url is error!status is $status” fi
+done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## 三、while语句
+格式：
+</pre></div>
+</div>
+<p>while 条件表达式:do command done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg1</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>#!/bin/bash N=0 while [ $N -lt 5 ]; do let N++ echo $N done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>条件表达式为 true，将会产生死循环,利用此可以将脚本一直放在后台进行执行
+eg2:
+</pre></div>
+</div>
+<p>#!/bin/bash IP=10.75.128.8 dir=“/DATA/oracle/netdir/” if [ ! -d ${dir}
+];then mkdir -p ${dir} fi echo 1 &gt;
+<span class="math notranslate nohighlight">\({dir}ping.lock while true do  Time=\)</span>  TIME=”<cite>{Time}
+23:59” if [ “:math:`{data}” == “</cite>{TIME}” ];then mkdir
+<span class="math notranslate nohighlight">\({dir}\)</span>{Time} &amp;&amp; mv ${dir}ping2.log
+<span class="math notranslate nohighlight">\({dir}\)</span>{Time}-ping2.log mv <span class="math notranslate nohighlight">\({dir}\)</span>{Time}-ping2.log
+<span class="math notranslate nohighlight">\({dir}\)</span>{Time} fi find ${dir} -mtime +7 -name “<a href="#id22"><span class="problematic" id="id23">*</span></a>-ping2.log” -exec
+rm -rf {} ; find ${dir} -mtime +7 -type d -exec rm -rf {} ;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>data=`date +%F&#39; &#39;%H:%M`
+data1=`date +%F&#39; &#39;%H:%M:%S`
+echo &quot;------------${data1}---------------&quot;&gt;&gt;${dir}ping2.log
+ping -c 10 ${IP} &gt;&gt;${dir}ping2.log
+if [ $? -eq 1 ];then
+    STAT=`cat ${dir}ping.lock`
+    if [ ${STAT} -eq 1 ];then
+        /usr/bin/python /DATA/oracle/netdir/GFweixin.py xuel GLP-VPN &quot;GLP from PDC(172.16.6.1
+</pre></div>
+</div>
+<ol class="arabic simple" start="50">
+<li>ping 金融云(10.75.128.8)中断，请检查深信服VPN！
+<a href="#id24"><span class="problematic" id="id25">:raw-latex:`\n `TIME:${data1}&quot; echo 0 &gt; ${dir}ping.lock else
+continue fi else STAT=\ ``cat ${dir}ping.lock``</span></a> if [ ${STAT} -eq 0
+];then /usr/bin/python /DATA/oracle/netdir/GFweixin.py xuel GLP-VPN
+“GLP from PDC(172.16.6.1</li>
+<li>ping 金融云(10.75.128.8)恢复！ :raw-latex:<a href="#id26"><span class="problematic" id="id27">`</span></a>n <a href="#id28"><span class="problematic" id="id29">`</span></a>TIME:${data1}” echo 1
+&gt; ${dir}ping.lock else continue fi fi</li>
+</ol>
+<p>done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">文件处理</span>
+<span class="n">eg3</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>#!/bin/bash #function:check url filename=urllist.txt cat $filename |
+while read url;do status=<code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-I</span> <span class="pre">$url</span> <span class="pre">-s|awk</span> <span class="pre">'/HTTP/{print</span> <span class="pre">$2}'</span></code> if
+[ $status == “200” ];then echo “Url:$url is ok!status is
+<span class="math notranslate nohighlight">\(status&quot; else  echo &quot;Url:\)</span>url is error!status is $status” fi
+done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">或</span>
+</pre></div>
+</div>
+<p>#!/bin/bash #function:check url filename=urllist.txt while read url; do
+status=<code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-I</span> <span class="pre">$url</span> <span class="pre">-s|awk</span> <span class="pre">'/HTTP/{print</span> <span class="pre">$2}'</span></code> if [ $status ==
+“200” ];then echo “Url:$url is ok!status is
+<span class="math notranslate nohighlight">\({status}&quot; else  echo &quot;Url:\)</span>url is error!status is
+<span class="math notranslate nohighlight">\({status}&quot; fi done &lt;\)</span>filename</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## 四、break 和 continue 语句</span>
+<span class="n">break跳出循环</span>
+</pre></div>
+</div>
+<p>#!/bin/bash</p>
+<p>N=0 while true; do let N++ if [ $N -eq 5 ]; then break fi echo $N done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">continue</span>
+</pre></div>
+</div>
+<p>#!/bin/bash N=0 while [ $N -lt 5 ]; do let N++ if [ $N -eq 3 ]; then
+continue fi echo $N done</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## 五、case语句</span>
+<span class="n">语句</span>
+</pre></div>
+</div>
+<p>case 模式名 in 模式 1) 命令 ;; 模式 2) 命令 ;; *)
+不符合以上模式执行的命令 esac</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">#!/bin/bash case $1 in start) echo “start.”</div>
+<div class="line">;; stop) echo “stop.” ;; restart) echo “restart.” ;; *) echo “Usage:
+$0 {start|stop|restart}” esac</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 五、函数
+## 一、概念
+linux shell 可以用户定义函数，然后在shell脚本中可以随便调用,以此来重复调用公共函数，减少代码量。
+
+## 二、格式
+</pre></div>
+</div>
+<p>[ function ] funname() { action; [return int;] }</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>说明：
+
+* function 关键字可写，也可不写。
+* 参数返回，可以显示加：return返回，如果不加，将以最后一条命令运行结果，作为返回值。 return后跟数值n(0-255）,hell 函数返回值只能是整形数值，一般是用来表示函数执行成功与否的，0表示成功，其他值表示失败。因而用函数返回值来返回函数执行结果是不合适的。如果要硬生生地return某个计算结果，比如一个字符串，往往会得到错误提示：“numeric
+ argument required”。
+如果一定要让函数返回一个或多个值，可以定义全局变量，函数将计算结果赋给全局变量，然后脚本中其他地方通过访问全局变量，就可以获得那个函数“返回”的一个或多个执行结果了。
+</pre></div>
+</div>
+<p>#!/bin/bash function output_data() { DATA=$((1+1)) return $DATA }
+output_data echo $?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash # function:add number function add_num() { echo</span>
+</pre></div>
+</div>
+<p>“请输入第一个数：” read number01 echo “请输入第二个数字” read number02
+if [[ “<span class="math notranslate nohighlight">\(number01&quot; =~ ^[0-9]+\)</span> ]] &amp;&amp; [[
+“<span class="math notranslate nohighlight">\(number02&quot; =~ ^[0-9]+\)</span> ]];then
+sum=<span class="math notranslate nohighlight">\(((\)</span>number01+<span class="math notranslate nohighlight">\(number02))  echo &quot;\)</span>number01 +
+$number02 = $sum” else echo “input must be number” fi } add_num</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## 三、函数参数
+将函数写成无状态的，将数据当做参数进行传入
+</pre></div>
+</div>
+<p>#!/bin/bash funWithParam(){ echo “第一个参数为 $1 !” echo “第二个参数为
+$2 !” echo “第十个参数为 $10 !” echo “第十个参数为 ${10} !” echo
+“第十一个参数为 ${11} !” echo “参数总数有 $# 个!” echo
+“作为一个字符串输出所有参数 $* !” echo “作为一个字符串输出所有参数 $&#64;
+!”</p>
+<p>} funWithParam <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">1</span> <span class="pre">20</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${1..n} 指定第n个输入的变量名称 $0 脚本自身名字
+</pre></div>
+</div>
+<p>$? 返回上一条命令是否执行成功，0 为执行成功，非 0 则为执行失败</p>
+<p>$# 位置参数总数</p>
+<p>$* 所有的位置参数被看做一个字符串</p>
+<p>$&#64; 每个位置参数被看做独立的字符串</p>
+<p>$$ 当前进程 PID</p>
+<p>$! 上一条运行后台进程的 PID</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg</span><span class="p">:</span><span class="n">函数炸弹</span>
+</pre></div>
+</div>
+<p>:(){ :<a href="#id30"><span class="problematic" id="id31">|</span></a>:&amp; };:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:|: 表示每次调用函数&quot;:&quot;的时候就会生成两份拷贝。
+
+&amp; 放到后台
+
+递归调用自身，直至系统崩溃
+
+
+# 六、正则表达式
+## 一、基本正则表达式
+#### 1.1 字符匹配
+* .:匹配任意单个字符
+* []:匹配指定范围内的任意单个字符
+* \[^]:匹配指定范围外的任意单个字符
+* [:digit:]匹配元字符
+</pre></div>
+</div>
+<p>posix字符 [:alnum:] 字母数字[a-z A-Z 0-9] [:alpha:]字母[a-z A-Z]
+[:blank:]空格或制表键 [:cntrl:] 任何控制字符 [:digit:] 数字 [0-9]
+[:graph:] 任何可视字符（无空格） [:lower:] 小写 [a-z] [:print:]
+非控制字符 [:punct:] 标点字符 [:space:] 空格 [:upper:] 大写 [A-Z]
+[:xdigit:] 十六进制数字 [0-9 a-f A-F]</p>
+<p>特殊字符 <a href="#id32"><span class="problematic" id="id33">:raw-latex:`\w `匹配任意数字和字母，等效[a-zA-Z0-9_]
+:raw-latex:`</span></a>W <cite>和:raw-latex:</cite>w相反`，等效[^a-<a href="#id46"><span class="problematic" id="id47">zA-Z0-9_</span></a>]
+<a href="#id34"><span class="problematic" id="id35">:raw-latex:`\b `匹配字符串开始或结束，等效&lt;和&gt;
+:raw-latex:`</span></a>s <cite>匹配任意的空白字符 :raw-latex:</cite>S <a href="#id36"><span class="problematic" id="id37">`</span></a>匹配非空白字符</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.2 次数匹配
+用在制定的字符后面，表示制定前面的字符出现多少次
+* \*:匹配前面的字符任意次（0次获无数次）
+* \?:匹配前面的字符0次或1次
+* \+:匹配前面的字符至少1次
+* {m\,}:匹配前面的字符至少m次（默认工作在贪婪模式下，?取消贪婪模式）
+* {m,n}:匹配前面的字符至少m次，至多n次
+eg:
+</pre></div>
+</div>
+<p>.*:匹配任意字符任意次数</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.3 位置锚定
+* ^:行首锚定，用于模式最左边
+* $:行尾锚定,用于模式最右边
+* \\&lt;或\b:锚定词首，用于单词模式左侧
+* \\&gt;或\b:锚定词尾，用于单词模式右侧
+
+
+
+eg:
+</pre></div>
+</div>
+<p>^$:锚定空行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.4 分组引用
+分组
+* \(\):将一个或多个字符当成一个整体来进行后续处理
+
+引用
+* 1：从左侧起，引用第一个左括号以及与之匹配右括号之间的模式所匹配到的字符，后向引用
+
+
+exercises:
+</pre></div>
+</div>
+<p>1.显示/etc/init.d/functions文件中以大小s开头的行(使用两种方式) grep
+‘ <a class="footnote-reference" href="#id43" id="id38">[1]</a>’ /etc/init.d/functions grep -i “^p” /etc/init.d/functions</p>
+<p>2.显示/etc/passwd文件中不以/bin/bash结尾的行 grep -v “/bin/bash$”
+/etc/passwd</p>
+<p>3.显示/etc/passwd文件中ID号最大用户的用户名 sort -t: -k3 -n /etc/passwd
+|tail -1 |cut -d: -f1</p>
+<p>4.如果root用户存在,显示其默认的shell程序 id root &amp;&amp; grep ‘^&lt;root&gt;’
+/etc/passwd |awk -F: ‘{print $NF}’</p>
+<p>5.找出/etc/passwd中的两位或三位数 grep -o -E “[0-9]{2,3}” /etc/passwd
+grep -o “[0-9]{2,3}” /etc/passwd</p>
+<p>6.显示/etc/rc.d/rc.sysinit文件中,至少以一个空白字符开头的且后面存非空白字符的行:
+grep ‘ [2]_+[^[:space:]]’ /etc/rc.d/rc.sysinit</p>
+<p>7.找出“netstat -tan”命令的结果以“LISTEN”后跟0,1或多个空白字符结尾的行
+netstat -tan|grep ’LISTEN[[:space:]]*$’</p>
+<p>8.如果root用户登录了系统,就显示root用户在线,否则说明未登录 w |grep
+‘^&lt;root&gt;’&gt;/dev/null &amp;&amp; echo “root在线”|| echo “root未登录”</p>
+<p>9.找出/etc/rc.d/init.d/functions文件中某单词后面跟一对小括号的行 grep
+’[[:alpha:]]*()’ /etc/rc.d/init.d/functions</p>
+<p>10.使用echo输出一个路径,使用egrep取出基名 echo /tmp/tmp1/vmstat.8.gz
+|grep -E -o ‘[^/]+/?$’|cut -d/ -f1 echo /tmp/tmp1/vmstat.8.gz |awk
+-F’/’ ‘{print $NF}’</p>
+<p>11.匹配PPID开头，行中又再次出现PPID的内容。/etc/init.d/functions grep -E
+“(PPID).*1” /etc/init.d/functions</p>
+<p>12.利用awk找出/etc/ssh/sshd_config内出过空行与以#开头的行 awk ‘!/^#/ &amp;&amp;
+!/^<span class="math notranslate nohighlight">\(/{print}' /etc/ssh/sshd_config grep -v -E '^#|^\)</span>’
+/etc/ssh/sshd_config</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 七、三剑客之grep
+## 一、概念
+#### 1.1
+grep (global search regular expression(RE) and print out the line,全面搜索正则表达式并把行打印出来)是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。egrep是grep的扩展，支持更多的re元字符， fgrep就是fixed grep或fast grep，它们把所有的字母都看作单词，也就是说，正则表达式中的元字符表示回其自身的字面意义，不再特殊。linux使用GNU版本的grep。它功能更强，可以通过-G、-E、-F命令行选项来使用egrep和fgrep的功能。
+## 二、语法格式
+grep [OPTION]... PATTERN [FILE]
+
+#### 2.1 选项
+* -i：忽略大小写
+* -c:统计匹配到字符串的次数
+* -n:顺便输出行号
+* -v:反向选择，显示没有匹配到的内容
+* -o：只显示匹配到的串
+* -A:显示匹配到的字符后面的n行
+* -B:显示匹配到的字符前面的n行
+* -C:显示前后各n行
+#### 2.2 模式
+* 基本正则表达式元字符：
+</pre></div>
+</div>
+<p>. :匹配任意单个字符 [] :匹配指定范围内的字符
+[^]:匹配指定范围外的任意字符</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* 次数匹配（贪婪模式）
+</pre></div>
+</div>
+<p>*：匹配其前的字符0，1或者多次 ？：匹配其前的字符0或1次 {m,n}:
+(m,):至少m次 {0,n}:至多n次 {m}:m次</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* 锚定符：
+</pre></div>
+</div>
+<p>r..t ：root chroot * 单词锚定： &lt;:锚定词首：&lt;r..t, <a href="#id39"><span class="problematic" id="id40">:raw-latex:`\b`</span></a>
+&gt;:锚定词尾：root&gt; * 行首行末锚定： ^: ^root, 行首 <span class="math notranslate nohighlight">\(: root\)</span> 行尾
+.*: 任意长度的任意字符</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* 分组：
+\(\)
+\(abc\)
+* 引用：
+</pre></div>
+</div>
+<p>\1
+:后向引用，引用前面的第一个左括号与与之对应的右括号中的模式所匹配到的内容</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>dmesg |grep -n eth0 grep -E ‘/.{2,3}’ /etc/passwd</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">取掉空行</span>
+</pre></div>
+</div>
+<p>grep -E -v “<sup>$|</sup>#” /etc/httpd/conf/httpd.conf</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">查看mysql中的库</span>
+</pre></div>
+</div>
+<p>$(mysql -uroot -p’passwd’ -e “show databases;”|egrep -v
+‘Database|^test|mysql|performance_schema|information_schema’)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 八、三剑客之sed
+## 一、概念：
+sed是一种流编辑的文本处理工具，
+* 工作模式：将当前处理的行存储在临时缓冲区（模式空间），对缓冲区中的内容利用制定的动作进行处理，完成后输出到屏幕，接着反复重复执行此操作完成整改文件的处理。
+## 二、适用场景
+* 大文件
+* 有规律的文本
+## 三、语法
+sed [option] &#39;Addresscommand&#39; [file ...]
+
+* 选项
+    * -n:安静模式，仅显示script处理后的结果，不再默认显示模式空间中的内容
+    * -e:&lt;script&gt;或--expression=&lt;script&gt; 以选项中指定的script来处理输入的文本文件，可以同时执行多个脚本
+    * -f:对制定的文件直接进行sed的command操作
+    * -i:直接修改原文件
+    * -r:支持扩展正则表达式
+* 地址定界
+    * startline，endline
+    * /regexp/
+    * /pattern1/,/pattern2/:第一次被pattern1匹配到的行开始，直到被pattern2匹配到的行结束
+    * linenuber：制定行号
+    * startline，+n，从startline开始，向后n行结束
+    * startline~step:步长，每隔step步
+* 命令操作
+    * d: 删除符合条件的行；
+    * p: 显示符合条件的行；
+    * a \string: 在制定或匹配到的行后面追加新行，内容为string
+    * \n：可以用于换行
+    * i \string: 在制定或匹配到的行前面添加新行，内容为string
+    * s:s/pattern/string/修饰符: 查找并替换，默认只替换每行中第一次被模式匹配到的字符串
+加修饰符
+    * g: 全局替换
+    * i: 忽略字符大小写
+
+* 匹配元字符：
+    ```
+    ^ 匹配行开始，如：/^sed/匹配所有以sed开头的行。
+    $ 匹配行结束，如：/sed$/匹配所有以sed结尾的行。
+    . 匹配一个非换行符的任意字符，如：/s.d/匹配s后接一个任意字符，最后是d。
+    * 匹配0个或多个字符，如：/*sed/匹配所有模板是一个或多个空格后紧跟sed的行。
+    [] 匹配一个指定范围内的字符，如/[ss]ed/匹配sed和Sed。
+    [^] 匹配一个不在指定范围内的字符，如：/[^A-RT-Z]ed/匹配不包含A-R和T-Z的一个字母开头，紧跟ed的行。
+    \(..\) 匹配子串，保存匹配的字符，如s/\(love\)able/\1rs，loveable被替换成lovers。
+    &amp; 保存搜索字符用来替换其他字符，如s/love/**&amp;**/，love这成**love**。
+    \&lt; 匹配单词的开始，如:/\&lt;love/匹配包含以love开头的单词的行。
+    \&gt; 匹配单词的结束，如/love\&gt;/匹配包含以love结尾的单词的行。
+    x\{m\} 重复字符x，m次，如：/0\{5\}/匹配包含5个0的行。
+    x\{m,\} 重复字符x，至少m次，如：/0\{5,\}/匹配至少有5个0的行。
+    x\{m,n\} 重复字符x，至少m次，不多于n次，如：/0\{5,10\}/匹配5~10个0的行。
+    ```
+
+eg:
+</pre></div>
+</div>
+<p>1、删除/etc/grub.conf文件中行首的空白符；&nbsp; sed -r ‘s/ [3]_+//g’
+/etc/grub.conf
+2、替换/etc/inittab文件中“id:3:initdefault:”一行中的数字为5；
+‘s/id:[0-9]/id:5/g’ /etc/inittab 3、删除/etc/inittab文件中注释行： sed
+‘/^#/d’ /etc/inittab 4、取消/etc/inittab文件中开头的#号;&nbsp; sed ‘s/^#//g’
+/etc/inittab 5、打印文件/etc/services匹配blp5开头的行 sed -n ‘/^blp5/p’
+/etc/services 6、打印2-5行 sed -n ‘2,5p’ /etc/services 7、打印奇数行 seq
+10 |sed -n ‘1~2p’ 8、打印最后一行 sed ‘$p’ /etc/services</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 九、三剑客之awk
+## 一、概念
+AWK：报告生成器，格式化文本输出工具
+</pre></div>
+</div>
+<p>awk [options] ‘script’ file1,file2… awk [options] ‘PATTERN {action}’
+file1,file2</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* 处理机制：一次从文件中读取出来一行，按照特定分隔符对其进行切片（默认空格）
+
+* 步骤：
+    * 读( Read )：AWK 从输入流（文件、管道或者标准输入）中读入一行然后将其存入内存中。
+    * 执行(Execute)：对于每一行输入，所有的 AWK 命令按顺执行。 默认情况下，AWK 命令是针对于每一行输入，但是我们可以将其限制在指定的模式中。
+    * 重复（Repeate）：一直重复上述两个过程直到文件结束。
+* 程序结构：
+    * 开始块（BEGIN BLOCK）：
+    ```
+    语法：
+    BEGIN{awk-commands}
+    开始块就是awk程序启动时执行的代码部分（在处理输入流之前执行），并且在整个过程中只执行一次；一般情况下，我们在开始块中初始化一些变量。BEGIN是awk的关键字，因此必须要大写。【注：开始块部分是可选，即你的awk程序可以没有开始块部分】
+    ```
+
+    * 主体块（Body Block）：
+    ```
+    语法：
+    /pattern/{awk-commands}
+    针对每一个输入的行都会执行一次主体部分的命令，默认情况下，对于输入的每一行，awk都会执行主体部分的命令，但是我可以使用/pattern/限制其在指定模式下。
+    ```
+    * 结束块（END BLOCK）：
+    ```
+    语法：
+    END{awk-commands}
+    结束块是awk程序结束时执行的代码（在处理完输入流之后执行），END也是awk的关键字，必须大写，与开始块类似，结束块也是可选的。
+    ```
+
+#### 1.1 awk输出
+&gt;1. print 使用格式
+</pre></div>
+</div>
+<p>print item1,item2…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>**要点:**
+* 1.各字段之间逗号隔开，输出时以空白字符分割；
+
+* 2.输出的字段可以为字符串或数值，当前记录的字段（如$1）、变量或awk的表达式；数值先回转换成字符串然后输出
+
+* 3.print命令后面的item可以省略，此时其功能相当于print $0,如果想输出空白，可以使用`print &quot;&quot;`
+
+eg:
+</pre></div>
+</div>
+<p>awk -F: ‘{print <span class="math notranslate nohighlight">\(1,\)</span>NF}’ /etc/passwd|column -t</p>
+<p>tail -1 /etc/passwd|awk -F: ‘BEGIN{OFS=“#”}{print “hello”$1,$2}’</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="mf">2.</span><span class="n">printf</span>
+
+<span class="n">printf命令的使用格式</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>printf item1,item2…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>**要点：**
+* 1.其与print命令最大区别,printf 需要指定format,format必须给出
+
+* 2.format用于指定后面的每个item输出格式
+
+* 3.printf 语句不会自动打印换行字符:\n
+
+
+format格式的指示符都以%开头，后跟一个字符:
+</pre></div>
+</div>
+<p>%c:显示ascall码 %d:%i:十进制整数 %e，%E：科学计数法 %f:浮点数 %s：字符串
+%u：无符号整数 %%：显示%自身</p>
+<p>修饰符： #[.#]:第一个#控制显示的宽度：第二个#表示小数点后的精度：</p>
+<p>%3.1f</p>
+<p>-:左对齐 +：显示数组符号</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>eg：
+</pre></div>
+</div>
+<p>awk -F: ‘{printf “Username:%-15s ,Uid:%d:raw-latex:<cite>n</cite>”,$1,$3}’
+/etc/passwd</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.2 awk变量
+* awk内置变量之记录变量：
+    + FS:field separator，输入字段分隔符（默认空白）
+    + OFS:output field separator，输出字段分隔符
+    + RS:Record separator:输入文本换行符（默认回车）
+
+    + ORS:输出文本换行符
+
+* awk内置变量之数据变量
+    + NR:the number of input records,awk命令所处理的文件的行数，如果有多个文件，这个数目会将处理的多个文件计数
+    + NF:number of field,当前记录的field个数
+    ```
+    {print NF},{print $NF}
+    ```
+
+    * ARGV:数组，保存命令行本身这个字符串，
+
+    * ARGC：awk命令的参数个数
+
+    * FILENAME:awk命令处理的文件名称
+
+    * ENVIRON：当前shell环境变量及其值的关联数组
+    ```
+    awk &#39;BEGIN{print ENVIRON[&quot;PATH&quot;]}&#39;
+    ```
+
+* 自定义变量
+    -v var=value
+
+    变量名区分大小写
+    ```
+     awk -v test=&quot;abc&quot; &#39;BEGIN{print test}&#39;
+    ```
+    ```
+    awk &#39;BEGIN{var=&quot;name&quot;;print var}&#39;
+    ```
+
+#### 1.3 操作符
+* 算术运算
+
+    * +,-,*,/,^,%
+
+    `awk &#39;BEGIN{a=5;b=3;print &quot;a + b =&quot;,a+b}&#39;`
+* 字符串操作
+    * 无符号操作符，表示字符串连接
+    ```
+    awk &#39;BEGIN { str1=&quot;Hello,&quot;; str2=&quot;World&quot;; str3 = str1 str2; print str3 }&#39;
+    ```
+* 赋值操作符：
+    * =，+=，-=，*=，/=，%=，^=
+    ```
+    awk &#39;BEGIN{a=5;b=6;if(a == b) print &quot;a == b&quot;;else print &quot;$a!=b&quot;}&#39;
+
+    awk -F: &#39;{sum+=$3}END{print sum}&#39; /etc/passwd
+    ```
+* 比较操作符：
+    * \&gt;,&gt;=,&lt;,&lt;=,!=,==
+* 模式匹配符：
+    * ~:是否匹配
+    * !~:是否不匹配
+    ```
+    awk -F: &#39;$1~&quot;root&quot;{print $0}&#39; /etc/passwd
+    ```
+* 逻辑操作符：
+    * &amp;&amp; 、 || 、 ！
+    ```
+    awk &#39;BEGIN{a=6;if(a &gt; 0 &amp;&amp; a &lt;= 6) print &quot;true&quot;;else print &quot;false&quot;}&#39;
+    ```
+* 函数调用：
+    * function_name(argu1,augu2)
+* 条件表达式(三元运算):
+    * selection？if-true-expresssion：if-false-expression
+    ```
+    awk -F: &#39;{$3&gt;=100?usertype=&quot;common user&quot;:usertype=&quot;sysadmin&quot;;printf &quot;%15s:%s\n&quot;,$1,usertype}&#39; /etc/passwd
+    ```
+#### 1.4 Pattern
+* empty:空模式，匹配每一行
+* /regular expression/:仅处理能被此处模式匹配到的行
+* relational expression：关系表达式，结果为“真”有“假”，结果为“真”才会被处理,注意：使用模式需要使用双斜线括起来
+    * 真：结果为非0值，非空字符串
+    ```
+    awk -F: &#39;$3&gt;100{print $1,$3}&#39; /etc/passwd
+    ```
+    ```
+    awk -F: &#39;$NF==&quot;/bin/bash&quot;{printf &quot;%15s,%s\n&quot;,$NF,$1}&#39; /etc/passwd
+    ```
+    ```
+    awk -F: &#39;$NF~/bash$/{printf &quot;%15s,%s\n&quot;,$NF,$1}&#39; /etc/passwd
+    ```
+    ```
+    df -Th|awk &#39;/^\/dev/{print}&#39;
+    ```
+* line ranges：行范围，制定startline，endline
+    ```
+    awk -F: &#39;/10/,/20/{print $1}&#39; /etc/passwd
+    awk -F: &#39;(NR&gt;2&amp;&amp;NR&lt;=10){print $1}&#39; /etc/passwd
+    ```
+* BEGIN/END模式
+    * BEGIN{}：仅在开始处理喂奶姐中的文本之前执行一次
+    * END{}:仅在文本处理完成之后执行一次
+    ```
+    awk -F: &#39;BEGIN{print &quot;username     uid\n--------------------&quot;}{printf &quot;%-15s:%d\n&quot;,$1,$3}END{print &quot;-----------------\ne
+nd&quot;}&#39; /etc/passwd
+    ```
+
+
+#### 1.5 常用action
+* Expression
+* Control statements
+    * if/while
+* Compound statements
+* input statements
+* output statements
+
+#### 1.6 控制语句
+* if(condition) {statements}
+* if(condition) {statments} [else {statments}]
+    ```
+    awk -F: &#39;{if($3&gt;100) print $1,$3}&#39; /etc/passwd
+    ```
+    ```
+    awk -F: &#39;{if($3&gt;100) {printf &quot;Common user:%-15s\n&quot;,$1} else {printf &quot;sysadmin user:%-15s\n&quot;,$1}}&#39; /etc/passwd
+    ```
+    ```
+    awk -F: &#39;{if($NF==&quot;/bin/bash&quot;) print $1,$NF}&#39; /etc/passwd
+    ```
+    ```
+    awk -F: &#39;{if($NF&gt;7) print}&#39; /etc/fstab
+    ```
+
+
+
+* while(conditon) {statments}
+    * 条件为“真”，进入循环，条件为“假”，退出循环
+    * 使用场景：对一行内的多个字段逐一类似处理时使用，对数组内的各元素逐一进行处理时使用
+    ```
+    awk &#39;/^[[:space:]]*if/{i=1;while(i&lt;=NF) {print $i,length($i);i++}}&#39; /etc/init.d/functions
+    ```
+    ```
+    awk &#39;/^[[:space:]]*if/{i=1;while(i&lt;NF) {if(length($i)&gt;7) {print $i,length($i)};i++}}&#39; /etc/init.d/functions
+    ```
+
+* do {statements} while(condition)
+    * 意义：至少执行一次循环体
+* for(expr1;expr2;expr3) {statements}
+    * 语法：for(variable assignment;condition;iteration process) {for-body}
+    * 特殊用法：能够遍历数组中的元素，`for (var in array) {for-body}`
+    ```
+    awk &#39;/^[[:space:]]*if/{for(i=1;i&lt;NF;i++) {print $i,length($i)}}&#39; /etc/init.d/functions
+    ```
+    ```
+    awk &#39;/^[[:space:]]*if/{for(i=1;i&lt;NF;i++) {if(length($i)&gt;7) print $i,length($i)}}&#39; /etc/init.d/functions
+    ```
+* break
+* continue
+* delete array[index]
+* switch语句
+    * 语法：switch(expression) {case VALUE1 or /REGEXP/: statement; case VALUE2 VALUE2 or /EXGEXP2/: statement;...;default: statement}
+
+
+
+##### 1.6 array
+* 关联数组：
+    * array[index-expression]
+        * index-pression:
+            * 任意字符串
+            * 如果某数组元素事先不存在，引用时候，awk自动创建此元素，并将其值初始化为空串，若要判断数组中是否存在某元素，需要使用`index in array`格式进行
+            *
+            ```
+            awk &#39;BEGIN{weekdays[&quot;mon&quot;]=&quot;Monday&quot;;weekdays[&quot;tue&quot;]=&quot;Tuesday&quot;;print weekdays[&quot;tue&quot;]}&#39;
+            ```
+        * 遍历数组使用for循环
+            * `for(var in array) {do-body}`
+            ```
+            awk &#39;BEGIN{weekdays[&quot;mon&quot;]=&quot;Monday&quot;;weekdays[&quot;tue&quot;]=&quot;Tuesday&quot;;for(i in weekdays) print weekdays[i]}&#39;
+            ```
+            * 注意：var会遍历array的每个索引：
+            ```
+            netstat -tan|awk &#39;/^tcp/{state[$NF]++}END{for(i in state) print i,state[i]}&#39;
+            ```
+            ```
+            awk &#39;{ips[$1]++}END{for(i in ips){printf &quot;%-5d,%s\n&quot;,ips[i],i}}&#39; /var/log/httpd/access_log-20180916 |sort -k1 -nr
+            ```
+#### 1.7 函数
+* 内置函数
+    * 数值处理：
+        rand():返回0和1之间的一个随机数
+        ```
+        awk &#39;BEGIN{print rand()}&#39;
+        ```
+    * 字符串处理：
+        length([s]):返回制定字符串的长度
+        sub(r,s,[t])：以r表示的模式来查找t所表示的字符串中匹配到的内容，并将其第一次出现替换为s所表示的那日
+
+
+
+exercises:
+</pre></div>
+</div>
+<ul class="simple">
+<li>统计/etc/fstab文件中每个单词出现的次数，并按从大到小排序 awk
+‘{for(i=1;i&lt;=NF;i++){words[$i]++}}END{for(key in words)print
+key,words[key]}’ /etc/fstab|sort -k2 -nr</li>
+</ul>
+<p>awk ‘{ips[$1]++}END{for(i in ips) print i,ips[i]}’ access_nginx.log
+|column -t|sort -k2 -nr</p>
+<ul class="simple">
+<li>统计/etc/fstab每个文件系统类型出现的次数 awk
+‘!/<sup>#/&amp;&amp;!/</sup>$/{dev[$3]++}END{for(i in dev) print i,dev[i]}’
+/etc/fstab</li>
+<li>ping一个域名，输出ping此刻的时间 ping baidu.com|awk ‘{print $0”
+“strftime(”%Y-%m-%d %H:%M:%S”)}’</li>
+<li>利用netstat监控服务是否正常监听 netstat -lntup|awk ’NR&gt;2{if($4
+~/.*:22/) print $0“yes”;exit 0}’</li>
+<li>统计web服务器日志状态码 awk ‘$9~“[0-9]”{stat[$9]++}END{for(i in stat)
+print i,stat[i]}’ access_log</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 十、shell杂项</span>
+<span class="c1">## 一、输入输出</span>
+<span class="o">*</span> <span class="n">输入输出</span>
+<span class="n">文件描述符</span> <span class="o">|</span> <span class="n">描述</span> <span class="o">|</span> <span class="n">映射关系</span>
+<span class="o">---|---|---</span>
+<span class="mi">0</span> <span class="o">|</span> <span class="n">标准输入</span> <span class="o">|</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">stdin</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="bp">self</span><span class="o">/</span><span class="n">fd</span><span class="o">/</span><span class="mi">0</span>
+<span class="mi">1</span> <span class="o">|</span> <span class="n">标准输出</span> <span class="o">|</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">stdout</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="bp">self</span><span class="o">/</span><span class="n">fd</span><span class="o">/</span><span class="mi">1</span>
+<span class="mi">2</span> <span class="o">|</span> <span class="n">标准错误</span> <span class="o">|</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">stderr</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="bp">self</span><span class="o">/</span><span class="n">fd</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="o">*</span> <span class="n">重定向</span>
+</pre></div>
+</div>
+<blockquote>
+<div>：符号左边输出作为右边的输入 &gt;: 符号左边输出追加右边的输入 &lt; :
+符号右边输出作为左边输入（标准输入） &lt;&lt;: 符号右边输出追加左边输入 &amp; :
+重定向绑定符号</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>cat &gt; file.txt &lt;/dev/null 2&gt;&amp;1</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## 命令
+* tac:倒序打印文件
+* rev反向打印每一行
+* cut:字符切割，常用选项-d 分割，-f输出第几段
+* tr:替换或删除字符
+* seq:打印序列化数字
+* sort:排序
+    -t:制定分隔符
+    -k:制定field
+    -r:倒序排序
+    -u:去重行
+* uniq:去重 -c 打印出现次数、-u ：打印不重复的行
+* date:显示系统时间
+</pre></div>
+</div>
+<p>时间加减： 显示前 30 秒：date -d ‘-30 second’ +‘%F %T’
+显示前一分钟：date -d ‘-1 minute’ +‘%F %T’ 显示前一个时间：date -d ‘-1
+hour’ +‘%F %T’ 显示前一个天：date -d ‘-1 day’ +‘%F %T’ 显示上一周：date
+-d ‘-1 week’ +‘%F %T’ 显示上一个月日期：date -d ‘-1 month’ +%F
+显示上一年日期：date -d ‘-1 year’ +%F 或 显示前一天日期：date -d
+yesterday +%F 显示后一天日期：date -d tomorrow +%F</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">screen</span>
+    <span class="o">*</span> <span class="n">screen</span> <span class="o">-</span><span class="n">ls</span>
+    <span class="o">*</span> <span class="n">screen</span> <span class="o">-</span><span class="n">r</span>
+    <span class="o">*</span> <span class="n">screen</span> <span class="o">-</span><span class="n">wipe</span>
+
+<span class="n">脚本编写注意事项</span>
+</pre></div>
+</div>
+<p>1）开头加解释器：#!/bin/bash</p>
+<p>2）语法缩进，使用四个空格；多加注释说明。</p>
+<p>3）命名建议规则：变量名大写、局部变量小写，函数名小写，名字体现出实际作用。</p>
+<p>4）默认变量是全局的，在函数中变量 local
+指定为局部变量，避免污染其他作用域。</p>
+<p>5）有两个命令能帮助我调试脚本：set -e 遇到执行非 0 时退出脚本，set -x
+打印执行过程。</p>
+<p>6）写脚本一定先测试再到生产上。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">实战</span>
+<span class="o">*</span> <span class="n">文件扫描校验</span>
+</pre></div>
+</div>
+<p>#!/bin/bash #func:scan file #md5sum -c $SCAN_FILE</p>
+<p>SCAN_DIR=<code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$PATH</span> <span class="pre">|sed</span> <span class="pre">'s/:/</span> <span class="pre">/g'</span></code> SCAN_CMD=<code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">md5sum</span></code>
+SCAN_FILE_FALL=”/tmp/scan_<span class="math notranslate nohighlight">\((date +%F%H%m)_fall.txt&quot; SCAN_FILE_BIN=&quot;/tmp/scan_\)</span>(date
++%F%H%m)_bin.txt”</p>
+<p>scan_fall_disk() { echo “正在全盘扫描，请稍等！文件路径:$SCAN_FILE_FALL”
+find / -type f -exec $SCAN_CMD {} ;&gt;&gt; $SCAN_FILE_FALL 2&gt;/dev/null }</p>
+<p>scan_bin() { echo
+“正在扫描PATH可执行文件，请稍等，文件路径：$SCAN_FILE_BIN” for file in
+$SCAN_DIR do find $filae -type f -exec $SCAN_CMD {} ;&gt;&gt; $SCAN_FILE_BIN
+2&gt;/dev/null done }</p>
+<p>main() { [ $# -lt 1 ] &amp;&amp; echo
+“请使用参数，1表示全盘扫描，2表示二进制可执行文件扫描” read number case
+$number in 1) scan_fall_disk;; 2) scan_bin;; *) echo
+“参数错误，1，表示全盘扫描，2表示二进制文件扫描” esac }</p>
+<p>main</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">自定义垃圾回收</span>
+</pre></div>
+</div>
+<p>#!/bin/bash # function:自定义rm命令，每天晚上定时清理</p>
+<p>CMD_SCRIPTS=<span class="math notranslate nohighlight">\(HOME/.rm_scripts.sh TRASH_DIR=\)</span>HOME/.TRASH_DIR
+CRON_FILE=/var/spool/cron/root BASHRC=$HOME/.bashrc</p>
+<p>[ ! -d ${TRASH_DIR} ] &amp;&amp; mkdir -p ${TRASH_DIR} cat &gt;
+<span class="math notranslate nohighlight">\(CMD_SCRIPTS &lt;&lt;EOF PARA_CNT=\$# TRASH_DIR=\)</span>TRASH_DIR</p>
+<p>for i in $*; do DATE=$(date +%F%T) fileName=$(basename $i) mv $i
+$TRASH_DIR/$fileName.$DATE done EOF</p>
+<p>sed -i “s&#64;$(grep ‘alias rm=’ $BASHRC)&#64;alias rm=‘bash ${CMD_SCRIPTS}’&#64;g”
+$BASHRC source $HOME/.bashrc</p>
+<p>echo “0 0 * * * rm -rf $TRASH_DIR/<a href="#id41"><span class="problematic" id="id42">*</span></a>” &gt;&gt;
+<span class="math notranslate nohighlight">\(CRON_FILE echo &quot;删除目录:\)</span>TRASH_DIR” echo
+“删除脚本:$CMD_SCRIPTS” echo “请执行:source $BASHRC
+来加载文件或退出当前shell重新登录” ```</p>
+<table class="docutils footnote" frame="void" id="id43" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id38">[1]</a></td><td>Pp</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id44" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td>[:space:]</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id45" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td>[:space:]</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to MING’s BLOG’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright KaliArch
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
