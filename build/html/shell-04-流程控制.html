@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>四、流程控制 &mdash; KaliArch SHELL BLOG 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="五、函数" href="shell-05-函数.html" />
+    <link rel="prev" title="三、运算符" href="shell-03-运算符.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> KaliArch SHELL BLOG
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="shell-01-基础知识.html">一、基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-02-字符串与数组.html">二、字符串与数组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-03-运算符.html">三、运算符</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">四、流程控制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#if">一、if语句</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.1 单分支</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.2 双分支</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.3 多分支</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#for">二、for循环</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#while">三、while语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#break-continue">四、break 和 continue 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#case">五、case语句</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="shell-05-函数.html">五、函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-06-正则表达式.html">六、正则表达式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-07-三剑客-grep.html">七、三剑客之grep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-08-三剑客-sed.html">八、三剑客之sed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-09-三剑客-awk.html">九、三剑客之awk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-10-杂项.html">十、shell杂项</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">KaliArch SHELL BLOG</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>四、流程控制</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/shell-04-流程控制.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id5">四、流程控制</a><ul>
+<li><a class="reference internal" href="#if" id="id6">一、if语句</a><ul>
+<li><a class="reference internal" href="#id2" id="id7">1.1 单分支</a></li>
+<li><a class="reference internal" href="#id3" id="id8">1.2 双分支</a></li>
+<li><a class="reference internal" href="#id4" id="id9">1.3 多分支</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#for" id="id10">二、for循环</a></li>
+<li><a class="reference internal" href="#while" id="id11">三、while语句</a></li>
+<li><a class="reference internal" href="#break-continue" id="id12">四、break 和 continue 语句</a></li>
+<li><a class="reference internal" href="#case" id="id13">五、case语句</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id5">四、流程控制</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="if">
+<h2><a class="toc-backref" href="#id6">一、if语句</a><a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id7">1.1 单分支</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span>
+<span class="n">then</span>
+    <span class="n">command1</span>
+    <span class="n">command2</span>
+    <span class="o">...</span>
+    <span class="n">commandN</span>
+<span class="n">fi</span>
+</pre></div>
+</div>
+<p>eg:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if [ `ps -ef |grep /usr/sbin/sshd|grep -v grep|wc -l` -eq 1 ];then echo &quot;sshd server exist&quot;;fi
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id8">1.2 双分支</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span>
+<span class="n">then</span>
+    <span class="n">command1</span>
+    <span class="n">command2</span>
+    <span class="o">...</span>
+    <span class="n">commandN</span>
+<span class="k">else</span>
+    <span class="n">command</span>
+<span class="n">fi</span>
+</pre></div>
+</div>
+<p>eg:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if [ `ps -ef |grep /usr/sbin/sshd|grep -v grep|wc -l` -eq 0 ];then echo &quot;sshd server exist&quot;;else echo &quot;sshd server not exist&quot;;fi
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id9">1.3 多分支</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span>
+<span class="n">then</span>
+    <span class="n">command1</span>
+<span class="k">elif</span> <span class="n">condition2</span>
+<span class="n">then</span>
+    <span class="n">command2</span>
+<span class="k">else</span>
+    <span class="n">commandN</span>
+<span class="n">fi</span>
+</pre></div>
+</div>
+<p>eg:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#! /bin/bash
+
+cmd=`rpm -q centos-release|cut -d- -f3`
+
+if [ $cmd -eq 6 ];then
+    echo &quot;sysversion is $cmd&quot;
+elif [ $cmd -eq 7 ];then
+    echo &quot;sysversion is $cmd&quot;
+else
+    echo &quot;sysversion is `rpm -q centos-release`&quot;
+fi
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="for">
+<h2><a class="toc-backref" href="#id10">二、for循环</a><a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">item1</span> <span class="n">item2</span> <span class="o">...</span> <span class="n">itemN</span>
+<span class="n">do</span>
+    <span class="n">command1</span>
+    <span class="n">command2</span>
+    <span class="o">...</span>
+    <span class="n">commandN</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+<p>eg1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for i in /*;
+do
+    echo -e &quot;   \c&quot;;
+    find $i |wc -l|sort -nr;
+done
+</pre></div>
+</div>
+<p>eg2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+for i in {1..3};
+do
+    echo $i
+done
+</pre></div>
+</div>
+<p>eg3:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+for i in &quot;$@&quot;; {    # $@是将位置参数作为单个来处理
+echo $i
+}
+</pre></div>
+</div>
+<p>默认 for 循环的取值列表是以空白符分隔，也就是第一章讲系统变量里的$IFS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+OLD_IFS=$IFS
+IFS=&quot;:&quot;
+for i in $(head -1 /etc/passwd); do
+echo $i
+done
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+for ip in 192.168.1.{1..254}; do
+
+    if ping -c 1 $ip &gt;/dev/null; then
+
+        echo &quot;$ip OK.&quot;
+
+    else
+
+        echo &quot;$ip NO!&quot;
+
+    fi
+
+done
+</pre></div>
+</div>
+<p>读取文件,判断url可用性</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+#function:check url
+filename=urllist.txt
+for url in $(cat $filename)
+do
+status=`curl -I $url -s|awk &#39;/HTTP/{print $2}&#39;`
+if [ $status == &quot;200&quot; ];then
+    echo &quot;Url:$url is ok!status is $status&quot;
+else
+    echo &quot;Url:$url is error!status is $status&quot;
+fi
+done
+</pre></div>
+</div>
+</div>
+<div class="section" id="while">
+<h2><a class="toc-backref" href="#id11">三、while语句</a><a class="headerlink" href="#while" title="Permalink to this headline">¶</a></h2>
+<p>格式：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">条件表达式</span><span class="p">:</span><span class="n">do</span>
+    <span class="n">command</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+<p>eg1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+N=0
+while [ $N -lt 5 ]; do
+let N++
+echo $N
+done
+</pre></div>
+</div>
+<p>条件表达式为 true，将会产生死循环,利用此可以将脚本一直放在后台进行执行
+eg2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+IP=10.75.128.8
+dir=&quot;/DATA/oracle/netdir/&quot;
+if [ ! -d ${dir} ];then
+    mkdir -p ${dir}
+fi
+echo 1 &gt; ${dir}ping.lock
+while true
+do
+    Time=`date +%F`
+    TIME=&quot;${Time} 23:59&quot;
+    if [ &quot;${data}&quot; == &quot;${TIME}&quot; ];then
+        mkdir ${dir}${Time} &amp;&amp; mv ${dir}ping2.log ${dir}${Time}-ping2.log
+        mv ${dir}${Time}-ping2.log ${dir}${Time}
+    fi
+    find ${dir} -mtime +7 -name &quot;*-ping2.log&quot; -exec rm -rf {} \;
+    find ${dir} -mtime +7 -type d -exec rm -rf {} \;
+
+    data=`date +%F&#39; &#39;%H:%M`
+    data1=`date +%F&#39; &#39;%H:%M:%S`
+    echo &quot;------------${data1}---------------&quot;&gt;&gt;${dir}ping2.log
+    ping -c 10 ${IP} &gt;&gt;${dir}ping2.log
+    if [ $? -eq 1 ];then
+        STAT=`cat ${dir}ping.lock`
+        if [ ${STAT} -eq 1 ];then
+            /usr/bin/python /DATA/oracle/netdir/GFweixin.py xuel GLP-VPN &quot;GLP from PDC(172.16.6.1
+50) ping 金融云(10.75.128.8)中断，请检查深信服VPN！ \n TIME:${data1}&quot;            echo 0 &gt; ${dir}ping.lock
+        else
+            continue
+        fi
+    else
+        STAT=`cat ${dir}ping.lock`
+        if [ ${STAT} -eq 0 ];then
+            /usr/bin/python /DATA/oracle/netdir/GFweixin.py xuel GLP-VPN &quot;GLP from PDC(172.16.6.1
+50) ping 金融云(10.75.128.8)恢复！ \n TIME:${data1}&quot;          echo 1 &gt; ${dir}ping.lock
+        else
+            continue
+        fi
+    fi
+
+
+done
+</pre></div>
+</div>
+<p>文件处理</p>
+<p>eg3:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+#function:check url
+filename=urllist.txt
+cat $filename | while read url;do
+status=`curl -I $url -s|awk &#39;/HTTP/{print $2}&#39;`
+if [ $status == &quot;200&quot; ];then
+        echo &quot;Url:$url is ok!status is $status&quot;
+else
+        echo &quot;Url:$url is error!status is $status&quot;
+fi
+done
+</pre></div>
+</div>
+<p>或</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+#function:check url
+filename=urllist.txt
+while read url;
+do
+status=`curl -I $url -s|awk &#39;/HTTP/{print $2}&#39;`
+if [ $status == &quot;200&quot; ];then
+        echo &quot;Url:$url is ok!status is ${status}&quot;
+else
+        echo &quot;Url:$url is error!status is ${status}&quot;
+fi
+done &lt;$filename
+</pre></div>
+</div>
+</div>
+<div class="section" id="break-continue">
+<h2><a class="toc-backref" href="#id12">四、break 和 continue 语句</a><a class="headerlink" href="#break-continue" title="Permalink to this headline">¶</a></h2>
+<p>break跳出循环</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+N=0
+while true; do
+    let N++
+    if [ $N -eq 5 ]; then
+    break
+    fi
+    echo $N
+done
+</pre></div>
+</div>
+<p>continue</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+N=0
+while [ $N -lt 5 ]; do
+    let N++
+    if [ $N -eq 3 ]; then
+        continue
+    fi
+    echo $N
+done
+</pre></div>
+</div>
+</div>
+<div class="section" id="case">
+<h2><a class="toc-backref" href="#id13">五、case语句</a><a class="headerlink" href="#case" title="Permalink to this headline">¶</a></h2>
+<p>语句</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="n">模式名</span>    <span class="ow">in</span>
+    <span class="n">模式</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">命令</span>
+        <span class="p">;;</span>
+    <span class="n">模式</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">命令</span>
+        <span class="p">;;</span>
+    <span class="o">*</span><span class="p">)</span>
+        <span class="n">不符合以上模式执行的命令</span>
+<span class="n">esac</span>
+</pre></div>
+</div>
+<p>eg</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+case $1 in
+    start)
+        echo &quot;start.&quot;
+        ;;
+    stop)
+        echo &quot;stop.&quot;
+        ;;
+    restart)
+        echo &quot;restart.&quot;
+        ;;
+    *)
+        echo &quot;Usage: $0 {start|stop|restart}&quot;
+esac
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="shell-05-函数.html" class="btn btn-neutral float-right" title="五、函数" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="shell-03-运算符.html" class="btn btn-neutral" title="三、运算符" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright KaliArch
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

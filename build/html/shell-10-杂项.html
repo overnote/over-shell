@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>十、shell杂项 &mdash; KaliArch SHELL BLOG 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="九、三剑客之awk" href="shell-09-三剑客-awk.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> KaliArch SHELL BLOG
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="shell-01-基础知识.html">一、基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-02-字符串与数组.html">二、字符串与数组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-03-运算符.html">三、运算符</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-04-流程控制.html">四、流程控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-05-函数.html">五、函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-06-正则表达式.html">六、正则表达式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-07-三剑客-grep.html">七、三剑客之grep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-08-三剑客-sed.html">八、三剑客之sed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-09-三剑客-awk.html">九、三剑客之awk</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">十、shell杂项</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">一、输入输出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">二、命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">三、实战</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.1 文件扫描校验</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.2 自定义垃圾回收</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux">3.3 Linux系统检测</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">KaliArch SHELL BLOG</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>十、shell杂项</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/shell-10-杂项.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#shell" id="id8">十、shell杂项</a><ul>
+<li><a class="reference internal" href="#id1" id="id9">一、输入输出</a></li>
+<li><a class="reference internal" href="#id2" id="id10">二、命令</a></li>
+<li><a class="reference internal" href="#id3" id="id11">三、实战</a><ul>
+<li><a class="reference internal" href="#id4" id="id12">3.1 文件扫描校验</a></li>
+<li><a class="reference internal" href="#id5" id="id13">3.2 自定义垃圾回收</a></li>
+<li><a class="reference internal" href="#linux" id="id14">3.3 Linux系统检测</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="shell">
+<h1><a class="toc-backref" href="#id8">十、shell杂项</a><a class="headerlink" href="#shell" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id9">一、输入输出</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>输入输出 文件描述符 | 描述 | 映射关系 —<a href="#id6"><span class="problematic" id="id7">|—|</span></a>— 0 | 标准输入 |
+/dev/stdin -&gt; /proc/self/fd/0 1 | 标准输出 | /dev/stdout -&gt;
+/proc/self/fd/1 2 | 标准错误 | /dev/stderr -&gt; /proc/self/fd/2</li>
+<li>重定向</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; ：符号左边输出作为右边的输入
+&gt;&gt;: 符号左边输出追加右边的输入
+&lt; : 符号右边输出作为左边输入（标准输入）
+&lt;&lt;: 符号右边输出追加左边输入
+&amp; : 重定向绑定符号
+</pre></div>
+</div>
+<p>eg:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">&gt;</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span> <span class="o">&lt;&lt;</span><span class="n">EOF</span>
+<span class="n">context</span>
+<span class="n">EOF</span>
+
+<span class="n">ls</span> <span class="n">aa</span> <span class="o">&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id10">二、命令</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>tac:倒序打印文件</li>
+<li>rev反向打印每一行</li>
+<li>cut:字符切割，常用选项-d 分割，-f输出第几段</li>
+<li>tr:替换或删除字符</li>
+<li>seq:打印序列化数字</li>
+<li>sort:排序 -t:制定分隔符 -k:制定field -r:倒序排序 -u:去重行</li>
+<li>uniq:去重 -c 打印出现次数、-u ：打印不重复的行</li>
+<li>date:显示系统时间</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>时间加减：
+显示前 30 秒：date -d &#39;-30 second&#39; +&#39;%F %T&#39;
+显示前一分钟：date -d &#39;-1 minute&#39; +&#39;%F %T&#39;
+显示前一个时间：date -d &#39;-1 hour&#39; +&#39;%F %T&#39;
+显示前一个天：date -d &#39;-1 day&#39; +&#39;%F %T&#39;
+显示上一周：date -d &#39;-1 week&#39; +&#39;%F %T&#39;
+显示上一个月日期：date -d &#39;-1 month&#39; +%F
+显示上一年日期：date -d &#39;-1 year&#39; +%F
+或
+显示前一天日期：date -d yesterday +%F
+显示后一天日期：date -d tomorrow +%F
+</pre></div>
+</div>
+<ul class="simple">
+<li>screen<ul>
+<li>screen -ls</li>
+<li>screen -r</li>
+<li>screen -wipe</li>
+</ul>
+</li>
+</ul>
+<p>脚本编写注意事项</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1）开头加解释器：#!/bin/bash
+
+2）语法缩进，使用四个空格；多加注释说明。
+
+3）命名建议规则：变量名大写、局部变量小写，函数名小写，名字体现出实际作用。
+
+4）默认变量是全局的，在函数中变量 local 指定为局部变量，避免污染其他作用域。
+
+5）有两个命令能帮助我调试脚本：set -e 遇到执行非 0 时退出脚本，set -x 打印执行过程。
+
+6）写脚本一定先测试再到生产上。
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id11">三、实战</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>更多示例可参考：<a class="reference external" href="https://github.com/redhatxl/scripts">shell
+脚本示例</a></p>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id12">3.1 文件扫描校验</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+#func:scan file
+#md5sum -c $SCAN_FILE
+
+
+SCAN_DIR=`echo $PATH |sed &#39;s/:/ /g&#39;`
+SCAN_CMD=`which md5sum`
+SCAN_FILE_FALL=&quot;/tmp/scan_$(date +%F%H%m)_fall.txt&quot;
+SCAN_FILE_BIN=&quot;/tmp/scan_$(date +%F%H%m)_bin.txt&quot;
+
+scan_fall_disk() {
+        echo &quot;正在全盘扫描，请稍等！文件路径:$SCAN_FILE_FALL&quot;
+        find / -type f -exec $SCAN_CMD \{\} \;&gt;&gt; $SCAN_FILE_FALL 2&gt;/dev/null
+}
+
+scan_bin() {
+    echo &quot;正在扫描PATH可执行文件，请稍等，文件路径：$SCAN_FILE_BIN&quot;
+    for file in $SCAN_DIR
+    do
+        find $filae -type f -exec $SCAN_CMD \{\} \;&gt;&gt; $SCAN_FILE_BIN 2&gt;/dev/null
+    done
+}
+
+main() {
+    [ $# -lt 1 ] &amp;&amp; echo &quot;请使用参数，1表示全盘扫描，2表示二进制可执行文件扫描&quot;
+    read number
+    case $number in
+    1)
+        scan_fall_disk;;
+    2)
+        scan_bin;;
+    *)
+        echo &quot;参数错误，1，表示全盘扫描，2表示二进制文件扫描&quot;
+    esac
+}
+
+
+main
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id13">3.2 自定义垃圾回收</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+# function:自定义rm命令，每天晚上定时清理
+
+CMD_SCRIPTS=$HOME/.rm_scripts.sh
+TRASH_DIR=$HOME/.TRASH_DIR
+CRON_FILE=/var/spool/cron/root
+BASHRC=$HOME/.bashrc
+
+[ ! -d ${TRASH_DIR} ] &amp;&amp; mkdir -p ${TRASH_DIR}
+cat &gt; $CMD_SCRIPTS &lt;&lt;EOF
+PARA_CNT=\$#
+TRASH_DIR=$TRASH_DIR
+
+for i in \$*; do
+     DATE=\$(date +%F%T)
+     fileName=\$(basename \$i)
+     mv \$i \$TRASH_DIR/\$fileName.\$DATE
+done
+EOF
+
+sed -i &quot;s@$(grep &#39;alias rm=&#39; $BASHRC)@alias rm=&#39;bash ${CMD_SCRIPTS}&#39;@g&quot; $BASHRC
+source $HOME/.bashrc
+
+echo &quot;0 0 * * * rm -rf $TRASH_DIR/*&quot; &gt;&gt; $CRON_FILE
+echo &quot;删除目录:$TRASH_DIR&quot;
+echo &quot;删除脚本:$CMD_SCRIPTS&quot;
+echo &quot;请执行:source $BASHRC 来加载文件或退出当前shell重新登录&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="linux">
+<h3><a class="toc-backref" href="#id14">3.3 Linux系统检测</a><a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+# auth:kaliarch
+# func:sys info check
+# version:v1.0
+# sys:centos6.x/7.x
+
+[ $(id -u) -gt 0 ] &amp;&amp; echo &quot;请用root用户执行此脚本！&quot; &amp;&amp; exit 1
+sysversion=$(rpm -q centos-release|cut -d- -f3)
+line=&quot;-------------------------------------------------&quot;
+
+
+[ -d logs ] || mkdir logs
+
+sys_check_file=&quot;logs/$(ip a show dev eth0|grep -w inet|awk &#39;{print $2}&#39;|awk -F &#39;/&#39; &#39;{print $1}&#39;)-`date +%Y%m%d`.txt&quot;
+
+# 获取系统cpu信息
+function get_cpu_info() {
+    Physical_CPUs=$(grep &quot;physical id&quot; /proc/cpuinfo| sort | uniq | wc -l)
+    Virt_CPUs=$(grep &quot;processor&quot; /proc/cpuinfo | wc -l)
+    CPU_Kernels=$(grep &quot;cores&quot; /proc/cpuinfo|uniq| awk -F &#39;: &#39; &#39;{print $2}&#39;)
+    CPU_Type=$(grep &quot;model name&quot; /proc/cpuinfo | awk -F &#39;: &#39; &#39;{print $2}&#39; | sort | uniq)
+    CPU_Arch=$(uname -m)
+cat &lt;&lt;EOF | column -t
+CPU信息:
+
+物理CPU个数: $Physical_CPUs
+逻辑CPU个数: $Virt_CPUs
+每CPU核心数: $CPU_Kernels
+CPU型号: $CPU_Type
+CPU架构: $CPU_Arch
+EOF
+}
+
+# 获取系统内存信息
+function get_mem_info() {
+    check_mem=$(free -m)
+    MemTotal=$(grep MemTotal /proc/meminfo| awk &#39;{print $2}&#39;)  #KB
+    MemFree=$(grep MemFree /proc/meminfo| awk &#39;{print $2}&#39;)    #KB
+    let MemUsed=MemTotal-MemFree
+    MemPercent=$(awk &quot;BEGIN {if($MemTotal==0){printf 100}else{printf \&quot;%.2f\&quot;,$MemUsed*100/$MemTotal}}&quot;)
+    report_MemTotal=&quot;$((MemTotal/1024))&quot;&quot;MB&quot;        #内存总容量(MB)
+    report_MemFree=&quot;$((MemFree/1024))&quot;&quot;MB&quot;          #内存剩余(MB)
+    report_MemUsedPercent=&quot;$(awk &quot;BEGIN {if($MemTotal==0){printf 100}else{printf \&quot;%.2f\&quot;,$MemUsed*100/$MemTotal}}&quot;)&quot;&quot;%&quot;   #内存使用率%
+
+cat &lt;&lt;EOF
+内存信息：
+
+${check_mem}
+EOF
+}
+
+# 获取系统网络信息
+function get_net_info() {
+    pri_ipadd=$(ip a show dev eth0|grep -w inet|awk &#39;{print $2}&#39;|awk -F &#39;/&#39; &#39;{print $1}&#39;)
+    pub_ipadd=$(curl ifconfig.me -s)
+    gateway=$(ip route | grep default | awk &#39;{print $3}&#39;)
+    mac_info=$(ip link| egrep -v &quot;lo&quot;|grep link|awk &#39;{print $2}&#39;)
+    dns_config=$(egrep -v &quot;^$|^#&quot; /etc/resolv.conf)
+    route_info=$(route -n)
+cat &lt;&lt;EOF | column -t
+IP信息:
+
+系统公网地址: ${pub_ipadd}
+系统私网地址: ${pri_ipadd}
+网关地址: ${gateway}
+MAC地址: ${mac_info}
+
+路由信息:
+${route_info}
+
+DNS 信息:
+${dns_config}
+EOF
+}
+
+# 获取系统磁盘信息
+function get_disk_info() {
+    disk_info=$(fdisk -l|grep &quot;Disk /dev&quot;|cut -d, -f1)
+    disk_use=$(df -hTP|awk &#39;$2!=&quot;tmpfs&quot;{print}&#39;)
+    disk_inode=$(df -hiP|awk &#39;$1!=&quot;tmpfs&quot;{print}&#39;)
+
+cat &lt;&lt;EOF
+磁盘信息:
+
+${disk_info}
+磁盘使用:
+
+${disk_use}
+inode信息:
+
+${disk_inode}
+EOF
+
+
+}
+
+# 获取系统信息
+function get_systatus_info() {
+    sys_os=$(uname -o)
+    sys_release=$(cat /etc/redhat-release)
+    sys_kernel=$(uname -r)
+    sys_hostname=$(hostname)
+    sys_selinux=$(getenforce)
+    sys_lang=$(echo $LANG)
+    sys_lastreboot=$(who -b | awk &#39;{print $3,$4}&#39;)
+    sys_runtime=$(uptime |awk &#39;{print  $3,$4}&#39;|cut -d, -f1)
+    sys_time=$(date)
+    sys_load=$(uptime |cut -d: -f5)
+
+cat &lt;&lt;EOF | column -t
+系统信息:
+
+系统: ${sys_os}
+发行版本:   ${sys_release}
+系统内核:   ${sys_kernel}
+主机名:    ${sys_hostname}
+selinux状态:  ${sys_selinux}
+系统语言:   ${sys_lang}
+系统当前时间: ${sys_time}
+系统最后重启时间:   ${sys_lastreboot}
+系统运行时间: ${sys_runtime}
+系统负载:   ${sys_load}
+EOF
+}
+
+# 获取服务信息
+function get_service_info() {
+    port_listen=$(netstat -lntup|grep -v &quot;Active Internet&quot;)
+    kernel_config=$(sysctl -p 2&gt;/dev/null)
+    if [ ${sysversion} -gt 6 ];then
+        service_config=$(systemctl list-unit-files --type=service --state=enabled|grep &quot;enabled&quot;)
+        run_service=$(systemctl list-units --type=service --state=running |grep &quot;.service&quot;)
+    else
+        service_config=$(/sbin/chkconfig | grep -E &quot;:on|:启用&quot; |column -t)
+        run_service=$(/sbin/service --status-all|grep -E &quot;running&quot;)
+    fi
+cat &lt;&lt;EOF
+服务启动配置:
+
+${service_config}
+${line}
+运行的服务:
+
+${run_service}
+${line}
+监听端口:
+
+${port_listen}
+${line}
+内核参考配置:
+
+${kernel_config}
+EOF
+}
+
+
+function get_sys_user() {
+    login_user=$(awk -F: &#39;{if ($NF==&quot;/bin/bash&quot;) print $0}&#39; /etc/passwd)
+    ssh_config=$(egrep -v &quot;^#|^$&quot; /etc/ssh/sshd_config)
+    sudo_config=$(egrep -v &quot;^#|^$&quot; /etc/sudoers |grep -v &quot;^Defaults&quot;)
+    host_config=$(egrep -v &quot;^#|^$&quot; /etc/hosts)
+    crond_config=$(for cronuser in /var/spool/cron/* ;do ls ${cronuser} 2&gt;/dev/null|cut -d/ -f5;egrep -v &quot;^$|^#&quot; ${cronuser} 2&gt;/dev/null;echo &quot;&quot;;done)
+cat &lt;&lt;EOF
+系统登录用户:
+
+${login_user}
+${line}
+ssh 配置信息:
+
+${ssh_config}
+${line}
+sudo 配置用户:
+
+${sudo_config}
+${line}
+定时任务配置:
+
+${crond_config}
+${line}
+hosts 信息:
+
+${host_config}
+EOF
+}
+
+
+function process_top_info() {
+
+    top_title=$(top -b n1|head -7|tail -1)
+    cpu_top10=$(top b -n1 | head -17 | tail -10)
+    mem_top10=$(top -b n1|head -17|tail -10|sort -k10 -r)
+
+cat &lt;&lt;EOF
+CPU占用top10:
+
+${top_title}
+${cpu_top10}
+
+内存占用top10:
+
+${top_title}
+${mem_top10}
+EOF
+}
+
+
+function sys_check() {
+    get_cpu_info
+    echo ${line}
+    get_mem_info
+    echo ${line}
+    get_net_info
+    echo ${line}
+    get_disk_info
+    echo ${line}
+    get_systatus_info
+    echo ${line}
+    get_service_info
+    echo ${line}
+    get_sys_user
+    echo ${line}
+    process_top_info
+}
+
+
+sys_check &gt; ${sys_check_file}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="shell-09-三剑客-awk.html" class="btn btn-neutral" title="九、三剑客之awk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright KaliArch
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

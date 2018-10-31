@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>八、三剑客之sed &mdash; KaliArch SHELL BLOG 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="九、三剑客之awk" href="shell-09-三剑客-awk.html" />
+    <link rel="prev" title="七、三剑客之grep" href="shell-07-三剑客-grep.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> KaliArch SHELL BLOG
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="shell-01-基础知识.html">一、基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-02-字符串与数组.html">二、字符串与数组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-03-运算符.html">三、运算符</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-04-流程控制.html">四、流程控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-05-函数.html">五、函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-06-正则表达式.html">六、正则表达式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-07-三剑客-grep.html">七、三剑客之grep</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">八、三剑客之sed</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">一、概念：</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">三、语法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="shell-09-三剑客-awk.html">九、三剑客之awk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-10-杂项.html">十、shell杂项</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">KaliArch SHELL BLOG</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>八、三剑客之sed</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/shell-08-三剑客-sed.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#sed" id="id3">八、三剑客之sed</a><ul>
+<li><a class="reference internal" href="#id1" id="id4">一、概念：</a></li>
+<li><a class="reference internal" href="#id2" id="id5">三、语法</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="sed">
+<h1><a class="toc-backref" href="#id3">八、三剑客之sed</a><a class="headerlink" href="#sed" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id4">一、概念：</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>sed是一种流编辑的文本处理工具， *
+工作模式：将当前处理的行存储在临时缓冲区（模式空间），对缓冲区中的内容利用制定的动作进行处理，完成后输出到屏幕，接着反复重复执行此操作完成整改文件的处理。
+* ## 二、适用场景</p>
+<ul class="simple">
+<li>大文件</li>
+<li>有规律的文本</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id5">三、语法</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>sed [option] ‘Addresscommand’ [file …]</p>
+<ul>
+<li><p class="first">选项</p>
+<ul>
+<li><p class="first">-n:安静模式，仅显示script处理后的结果，不再默认显示模式空间中的内容</p>
+</li>
+<li><p class="first">-e:</p>
+<script><p>或–expression=</p>
+<script><p>以选项中指定的script来处理输入的文本文件，可以同时执行多个脚本</p>
+</li>
+<li><p class="first">-f:对制定的文件直接进行sed的command操作</p>
+</li>
+<li><p class="first">-i:直接修改原文件</p>
+</li>
+<li><p class="first">-r:支持扩展正则表达式</p>
+</li>
+</ul>
+</li>
+<li><p class="first">地址定界</p>
+<ul class="simple">
+<li>startline，endline</li>
+<li>/regexp/</li>
+<li>/pattern1/,/pattern2/:第一次被pattern1匹配到的行开始，直到被pattern2匹配到的行结束</li>
+<li>linenuber：制定行号</li>
+<li>startline，+n，从startline开始，向后n行结束</li>
+<li>startline~step:步长，每隔step步</li>
+</ul>
+</li>
+<li><p class="first">命令操作</p>
+<ul class="simple">
+<li>d: 删除符合条件的行；</li>
+<li>p: 显示符合条件的行；</li>
+<li>a :
+在制定或匹配到的行后面追加新行，内容为string</li>
+<li>：可以用于换行</li>
+<li>i :
+在制定或匹配到的行前面添加新行，内容为string</li>
+<li>s:s/pattern/string/修饰符:
+查找并替换，默认只替换每行中第一次被模式匹配到的字符串 加修饰符</li>
+<li>g: 全局替换</li>
+<li>i: 忽略字符大小写</li>
+</ul>
+</li>
+<li><p class="first">匹配元字符：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>^ 匹配行开始，如：/^sed/匹配所有以sed开头的行。
+$ 匹配行结束，如：/sed$/匹配所有以sed结尾的行。
+. 匹配一个非换行符的任意字符，如：/s.d/匹配s后接一个任意字符，最后是d。
+* 匹配0个或多个字符，如：/*sed/匹配所有模板是一个或多个空格后紧跟sed的行。
+[] 匹配一个指定范围内的字符，如/[ss]ed/匹配sed和Sed。
+[^] 匹配一个不在指定范围内的字符，如：/[^A-RT-Z]ed/匹配不包含A-R和T-Z的一个字母开头，紧跟ed的行。
+\(..\) 匹配子串，保存匹配的字符，如s/\(love\)able/\1rs，loveable被替换成lovers。
+&amp; 保存搜索字符用来替换其他字符，如s/love/**&amp;**/，love这成**love**。
+\&lt; 匹配单词的开始，如:/\&lt;love/匹配包含以love开头的单词的行。
+\&gt; 匹配单词的结束，如/love\&gt;/匹配包含以love结尾的单词的行。
+x\{m\} 重复字符x，m次，如：/0\{5\}/匹配包含5个0的行。
+x\{m,\} 重复字符x，至少m次，如：/0\{5,\}/匹配至少有5个0的行。
+x\{m,n\} 重复字符x，至少m次，不多于n次，如：/0\{5,10\}/匹配5~10个0的行。
+</pre></div>
+</div>
+</li>
+</ul>
+<p>eg:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1、删除/etc/grub.conf文件中行首的空白符；
+sed -r &#39;s/^[[:space:]]+//g&#39; /etc/grub.conf
+2、替换/etc/inittab文件中&quot;id:3:initdefault:&quot;一行中的数字为5；
+&#39;s/id:[0-9]/id:5/g&#39; /etc/inittab
+3、删除/etc/inittab文件中注释行：
+sed &#39;/^#/d&#39; /etc/inittab
+4、取消/etc/inittab文件中开头的#号;
+sed &#39;s/^#//g&#39; /etc/inittab
+5、打印文件/etc/services匹配blp5开头的行
+sed -n &#39;/^blp5/p&#39; /etc/services
+6、打印2-5行
+sed -n &#39;2,5p&#39; /etc/services
+7、打印奇数行
+seq 10 |sed -n &#39;1~2p&#39;
+8、打印最后一行
+sed &#39;$p&#39; /etc/services
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="shell-09-三剑客-awk.html" class="btn btn-neutral float-right" title="九、三剑客之awk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="shell-07-三剑客-grep.html" class="btn btn-neutral" title="七、三剑客之grep" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright KaliArch
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

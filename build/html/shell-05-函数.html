@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>五、函数 &mdash; KaliArch SHELL BLOG 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="六、正则表达式" href="shell-06-正则表达式.html" />
+    <link rel="prev" title="四、流程控制" href="shell-04-流程控制.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> KaliArch SHELL BLOG
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="shell-01-基础知识.html">一、基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-02-字符串与数组.html">二、字符串与数组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-03-运算符.html">三、运算符</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-04-流程控制.html">四、流程控制</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">五、函数</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">一、概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">二、格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">三、函数参数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="shell-06-正则表达式.html">六、正则表达式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-07-三剑客-grep.html">七、三剑客之grep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-08-三剑客-sed.html">八、三剑客之sed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-09-三剑客-awk.html">九、三剑客之awk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-10-杂项.html">十、shell杂项</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">KaliArch SHELL BLOG</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>五、函数</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/shell-05-函数.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id7">五、函数</a><ul>
+<li><a class="reference internal" href="#id2" id="id8">一、概念</a></li>
+<li><a class="reference internal" href="#id3" id="id9">二、格式</a></li>
+<li><a class="reference internal" href="#id4" id="id10">三、函数参数</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id7">五、函数</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id8">一、概念</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>linux shell
+可以用户定义函数，然后在shell脚本中可以随便调用,以此来重复调用公共函数，减少代码量。</p>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id9">二、格式</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="n">function</span> <span class="p">]</span> <span class="n">funname</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">action</span><span class="p">;</span>
+    <span class="p">[</span><span class="k">return</span> <span class="nb">int</span><span class="p">;]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>说明：</p>
+<ul class="simple">
+<li>function 关键字可写，也可不写。</li>
+<li>参数返回，可以显示加：return返回，如果不加，将以最后一条命令运行结果，作为返回值。
+return后跟数值n(0-255）,hell
+函数返回值只能是整形数值，一般是用来表示函数执行成功与否的，0表示成功，其他值表示失败。因而用函数返回值来返回函数执行结果是不合适的。如果要硬生生地return某个计算结果，比如一个字符串，往往会得到错误提示：“numeric
+argument required”。
+如果一定要让函数返回一个或多个值，可以定义全局变量，函数将计算结果赋给全局变量，然后脚本中其他地方通过访问全局变量，就可以获得那个函数“返回”的一个或多个执行结果了。</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+function output_data() {
+    DATA=$((1+1))
+    return $DATA
+}
+output_data
+echo $?
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+# function:add number
+function add_num() {
+    echo &quot;请输入第一个数：&quot;
+    read number01
+    echo &quot;请输入第二个数字&quot;
+    read number02
+    if [[ &quot;$number01&quot; =~ ^[0-9]+$ ]] &amp;&amp; [[ &quot;$number02&quot; =~ ^[0-9]+$ ]];then
+        sum=$(($number01+$number02))
+        echo &quot;$number01 + $number02 = $sum&quot;
+    else
+        echo &quot;input must be number&quot;
+    fi
+}
+add_num
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id10">三、函数参数</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>将函数写成无状态的，将数据当做参数进行传入</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+funWithParam(){
+    echo &quot;第一个参数为 $1 !&quot;
+    echo &quot;第二个参数为 $2 !&quot;
+    echo &quot;第十个参数为 $10 !&quot;
+    echo &quot;第十个参数为 ${10} !&quot;
+    echo &quot;第十一个参数为 ${11} !&quot;
+    echo &quot;参数总数有 $# 个!&quot;
+    echo &quot;作为一个字符串输出所有参数 $* !&quot;
+    echo &quot;作为一个字符串输出所有参数 $@ !&quot;
+
+}
+funWithParam `seq 1 20`
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${1..n} 指定第n个输入的变量名称
+$0      脚本自身名字
+
+$?      返回上一条命令是否执行成功，0 为执行成功，非 0 则为执行失败
+
+$#      位置参数总数
+
+$*      所有的位置参数被看做一个字符串
+
+$@      每个位置参数被看做独立的字符串
+
+$$      当前进程 PID
+
+$!      上一条运行后台进程的 PID
+</pre></div>
+</div>
+<p>eg:函数炸弹</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:(){</span> <span class="p">:</span><span class="o">|</span><span class="p">:</span><span class="o">&amp;</span> <span class="p">};:</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name"><a href="#id5"><span class="problematic" id="id6">|</span></a>:</th><td class="field-body">表示每次调用函数“:”的时候就会生成两份拷贝。</td>
+</tr>
+</tbody>
+</table>
+<p>&amp; 放到后台</p>
+<p>递归调用自身，直至系统崩溃</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="shell-06-正则表达式.html" class="btn btn-neutral float-right" title="六、正则表达式" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="shell-04-流程控制.html" class="btn btn-neutral" title="四、流程控制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright KaliArch
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
