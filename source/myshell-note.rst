@@ -1414,7 +1414,6 @@ sed [option] ‘Addresscommand’ [file …]
 
    -  -n:安静模式，仅显示script处理后的结果，不再默认显示模式空间中的内容
    -  -e:
-
       .. raw:: html
 
          <script>
