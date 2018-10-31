@@ -3,11 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to MING's BLOG's documentation!
+Welcome to KaliArch documentation!
+http://blog.51cto.com/kaliarch
 =======================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Contents:
    
    myshell-note
