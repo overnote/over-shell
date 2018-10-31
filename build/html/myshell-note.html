@@ -85,21 +85,26 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">一、基础知识</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#shell">一、Shell简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">三、第一个Shell</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">4.2 ./执行</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#source">4.3 source执行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">二、Shell分类</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#shell-gui-shell">2.1 图形界面 Shell（GUI Shell）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shell-cli-shell">2.2 命令行界面 Shell（CLI Shell）</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">三、第一个Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">四、执行Shell的三种方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bash">4.1 直接bash执行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">4.2 ./执行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#source">4.3 source执行</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">五、Shell变量</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">5.1 变量命名规则：</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">5.2 系统内置变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">5.3 用户自定义变量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">5.4 变量引用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">五、Shell变量</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">5.1 变量命名规则：</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">5.2 系统内置变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">5.3 用户自定义变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">5.4 变量引用</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">六、引号</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">六、引号</a></li>
 </ul>
 </li>
 </ul>
@@ -166,17 +171,55 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1>一、基础知识<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id38">一、基础知识</a><ul>
+<li><a class="reference internal" href="#shell" id="id39">一、Shell简介</a></li>
+<li><a class="reference internal" href="#id2" id="id40">二、Shell分类</a><ul>
+<li><a class="reference internal" href="#shell-gui-shell" id="id41">2.1 图形界面 Shell（GUI Shell）</a></li>
+<li><a class="reference internal" href="#shell-cli-shell" id="id42">2.2 命令行界面 Shell（CLI Shell）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3" id="id43">三、第一个Shell</a></li>
+<li><a class="reference internal" href="#id4" id="id44">四、执行Shell的三种方法</a><ul>
+<li><a class="reference internal" href="#bash" id="id45">4.1 直接bash执行</a></li>
+<li><a class="reference internal" href="#id5" id="id46">4.2 ./执行</a></li>
+<li><a class="reference internal" href="#source" id="id47">4.3 source执行</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6" id="id48">五、Shell变量</a><ul>
+<li><a class="reference internal" href="#id7" id="id49">5.1 变量命名规则：</a></li>
+<li><a class="reference internal" href="#id8" id="id50">5.2 系统内置变量</a></li>
+<li><a class="reference internal" href="#id9" id="id51">5.3 用户自定义变量</a></li>
+<li><a class="reference internal" href="#id10" id="id52">5.4 变量引用</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11" id="id53">六、引号</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id38">一、基础知识</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="shell">
-<h2>一、Shell简介<a class="headerlink" href="#shell" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id39">一、Shell简介</a><a class="headerlink" href="#shell" title="Permalink to this headline">¶</a></h2>
 <p>Shell 是一个 C 语言编写的脚本语言，它是用户与 Linux
 的桥梁，用户输入命令交给 Shell 处理， Shell
 将相应的操作传递给内核（Kernel），内核把处理的结果输出给用户。</p>
-<p>程序=指令+数据 ## 二、Shell分类 #### 2.1 图形界面 Shell（GUI Shell） GUI
-为 Unix 或者类 Unix
+<p>程序=指令+数据</p>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id40">二、Shell分类</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="shell-gui-shell">
+<h3><a class="toc-backref" href="#id41">2.1 图形界面 Shell（GUI Shell）</a><a class="headerlink" href="#shell-gui-shell" title="Permalink to this headline">¶</a></h3>
+<p>GUI 为 Unix 或者类 Unix
 操作系统构造一个功能完善、操作简单以及界面友好的桌面环境。主流桌面环境有
-KDE，Gnome 等。 #### 2.2 命令行界面 Shell（CLI Shell） CLI
+KDE，Gnome 等。</p>
+</div>
+<div class="section" id="shell-cli-shell">
+<h3><a class="toc-backref" href="#id42">2.2 命令行界面 Shell（CLI Shell）</a><a class="headerlink" href="#shell-cli-shell" title="Permalink to this headline">¶</a></h3>
+<p>CLI
 是在用户提示符下键入可执行指令的界面，用户通过键盘输入指令，完成一系列操作。</p>
 <p>在 Linux 系统上主流的 CLI 实现是 Bash，是许多 Linux 发行版默认的
 Shell。还有许多 Unix 上Shell。</p>
@@ -189,21 +232,31 @@ Shell。还有许多 Unix 上Shell。</p>
 <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
 </pre></div>
 </div>
-<p><strong>Shell的分类:</strong> * Bourne Shell（/usr/bin/sh或/bin/sh） * Bourne Again
-Shell（/bin/bash） * C Shell（/usr/bin/csh） * K Shell（/usr/bin/ksh）
-* Shell for Root（/sbin/sh）</p>
+<p><strong>Shell的分类:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* Bourne Shell（/usr/bin/sh或/bin/sh）
+* Bourne Again Shell（/bin/bash）
+* C Shell（/usr/bin/csh）
+* K Shell（/usr/bin/ksh）
+* Shell for Root（/sbin/sh）
+</pre></div>
+</div>
 <p><strong>脚本命名:</strong></p>
 <p>注意：见名知意，后缀规范为<code class="docutils literal notranslate"><span class="pre">.sh</span></code></p>
 </div>
-<div class="section" id="id2">
-<h2>三、第一个Shell<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id43">三、第一个Shell</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="n">echo</span> <span class="s2">&quot;this is my first shell script&quot;</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">#!</span></code> 告诉系统其后路径所指定的程序即是解释此脚本文件的 Shell 程序
-<code class="docutils literal notranslate"><span class="pre">/bin/bash</span></code> 指定使用的是那种shell <code class="docutils literal notranslate"><span class="pre">echo</span></code>在终端打印出内容 ##
-四、执行Shell的三种方法 #### 4.1 直接bash执行</p>
+<code class="docutils literal notranslate"><span class="pre">/bin/bash</span></code> 指定使用的是那种shell <code class="docutils literal notranslate"><span class="pre">echo</span></code>在终端打印出内容</p>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id44">四、执行Shell的三种方法</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bash">
+<h3><a class="toc-backref" href="#id45">4.1 直接bash执行</a><a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># ll</span>
 <span class="n">total</span> <span class="mi">4</span>
 <span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">44</span> <span class="n">Sep</span>  <span class="mi">3</span> <span class="mi">14</span><span class="p">:</span><span class="mi">16</span> <span class="mi">01</span><span class="o">-</span><span class="n">scripts</span><span class="o">.</span><span class="n">sh</span>
@@ -215,8 +268,9 @@ Shell（/bin/bash） * C Shell（/usr/bin/csh） * K Shell（/usr/bin/ksh）
 <span class="n">this</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">first</span> <span class="n">script</span>
 </pre></div>
 </div>
-<div class="section" id="id3">
-<h3>4.2 ./执行<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id46">4.2 ./执行</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># ./01-scripts.sh</span>
 <span class="o">-</span><span class="n">bash</span><span class="p">:</span> <span class="o">./</span><span class="mi">01</span><span class="o">-</span><span class="n">scripts</span><span class="o">.</span><span class="n">sh</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
 <span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># chmod +x 01-scripts.sh</span>
@@ -229,37 +283,36 @@ Shell（/bin/bash） * C Shell（/usr/bin/csh） * K Shell（/usr/bin/ksh）
 </div>
 <p>这种方式默认根据脚本第一行指定的解释器处理，如果没写以当前默认 Shell
 解释器执行。</p>
+</div>
 <div class="section" id="source">
-<h4>4.3 source执行<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h4>
+<h3><a class="toc-backref" href="#id47">4.3 source执行</a><a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># source 01-scripts.sh</span>
 <span class="n">this</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">first</span> <span class="n">script</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id4">
-<h2>五、Shell变量<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id48">五、Shell变量</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>变量名+内存空间</p>
 <p>变量赋值：<code class="docutils literal notranslate"><span class="pre">name=value</span></code></p>
 <p>弱类型变量，所有变量类型视为字符串类型，对于数值相加自动转换为数组类型，无需实现声明</p>
-<div class="section" id="id5">
-<h3>5.1 变量命名规则：<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id49">5.1 变量命名规则：</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>命名只能使用英文字母，数字和下划线，首个字符不能以数字开头。</li>
 <li>中间不能有空格，可以使用下划线（_）。</li>
 <li>不能使用标点符号。</li>
 <li>不能使用bash里的关键字（可用help命令查看保留关键字）</li>
 <li>做到见名知意</li>
-<li>。</li>
 </ul>
 <p>环境变量作用范围：当前shell进程及其子进程</p>
 <p>本地变量作用范围：当前shell</p>
 <p>局部变量作用范围：代码片段</p>
 <p>利用export将本地变量导入到环境，扩大作用范围</p>
 </div>
-<div class="section" id="id6">
-<h3>5.2 系统内置变量<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id50">5.2 系统内置变量</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>在命令行提示符直接执行<code class="docutils literal notranslate"><span class="pre">env、set</span></code>查看系统或环境变量。<code class="docutils literal notranslate"><span class="pre">env</span></code>
 显示用户环境变量，<code class="docutils literal notranslate"><span class="pre">set</span></code> 显示 Shell
 预先定义好的变量以及用户变量。可以通过 <code class="docutils literal notranslate"><span class="pre">export</span></code> 导出成用户变量。</p>
@@ -315,8 +368,8 @@ $!      上一条运行后台进程的 PID
 <p>非交互式登录shell： 加载顺序：~/.bashrc -&gt; /etc/bashrc -&gt;
 /etc/profile.d/*</p>
 </div>
-<div class="section" id="id7">
-<h3>5.3 用户自定义变量<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id51">5.3 用户自定义变量</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>普通变量</li>
 </ul>
@@ -346,8 +399,8 @@ $!      上一条运行后台进程的 PID
 <p><code class="docutils literal notranslate"><span class="pre">unset</span> <span class="pre">variable_name</span></code></p>
 <p>变量被删除后不能再次使用。unset 命令不能删除只读变量。</p>
 </div>
-<div class="section" id="id8">
-<h3>5.4 变量引用<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id52">5.4 变量引用</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>= 变量赋值</li>
 <li>+= 变量相加</li>
@@ -361,8 +414,8 @@ $!      上一条运行后台进程的 PID
 <p>为避免特殊字符及变量与字符连接使用，建议引用变量添加大括号</p>
 </div>
 </div>
-<div class="section" id="id9">
-<h2>六、引号<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h2><a class="toc-backref" href="#id53">六、引号</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <p>单引号是告诉 Shell
 忽略特殊字符，而双引号则解释特殊符号原有的意义，比如<span class="math notranslate nohighlight">\(、！。 \)</span> [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> www]# var1=”aaa” [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> www]# echo ‘<cite>var1’
 :math:`var1 [root&#64;xuel-tmp-shell www]# echo “</cite>var1” aaa</p>
@@ -373,20 +426,25 @@ $!      上一条运行后台进程的 PID
 [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> www]# var4=“bb $var2” [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> www]#
 echo $var4 bb aa</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## 七、注释
+
 * 单行注释使用`#`
 * 多行注释固定函数格式
 </pre></div>
 </div>
 <p>:&lt;&lt;EOF 内容… 内容… EOF</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 二、字符串与数组
+
 ## 一、字符串常用操作
+
 #### 1.1 获取字符串长度
+
 利用`${#var}`来获取字符串长度
 </pre></div>
 </div>
 <p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# var=‘abcstring’ [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo
 ${#var} 9</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.2 字符串切片
+
 格式：
 
 ${parameter:offset}
@@ -401,12 +459,14 @@ ${var:0} hello shell [root&#64;xuel-tmp-shell ~]# echo ${var:0:5} hello
 echo ${var:(-1)} l [root&#64;xuel-tmp-shell ~]# echo ${var:(-2)} ll
 [root&#64;xuel-tmp-shell ~]# echo ${var:(-5):2} sh</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.3 字符串替换
+
 格式：${parameter/pattern/string}
 </pre></div>
 </div>
 <p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# var=“hello shell” [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo
 ${var/shell/world} hello world</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.4 字符串截取
+
 格式：
 
 
@@ -432,6 +492,7 @@ ${parameter%%word}
 <p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo ${url%/<em>} https://www.baidu.com
 [root&#64;xuel-tmp-shell ~]# echo ${url%%/</em>} https:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.5 变量状态赋值
+
 ${VAR:-string}  如果 VAR 变量为空则返回 string
 
 ${VAR:+string}  如果 VAR 变量不为空则返回 string
@@ -449,11 +510,14 @@ ${url:+“string”} string [root&#64;xuel-tmp-shell ~]# unset url
 <p>[<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo ${url:-“string”} string
 [<a class="reference external" href="mailto:root&#37;&#52;&#48;xuel-tmp-shell">root<span>&#64;</span>xuel-tmp-shell</a> ~]# echo ${url:+“string”}</p>
 <p>找出/etc/group下的所有组名称 for i in <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/group</span></code>;do echo
-${i%%:<a href="#id10"><span class="problematic" id="id11">*</span></a>};done</p>
+${i%%:<a href="#id12"><span class="problematic" id="id13">*</span></a>};done</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## 二、数组
+
 bash支持一维数组（不支持多维数组），并且没有限定数组的大小。数组是相同类型的元素按一定顺序排列的集合。
 类似与 C 语言，数组元素的下标由 0 开始编号。获取数组中的元素要利用下标，下标可以是整数或算术表达式，其值应大于或等于 0。
+
 #### 2.1 数组定义
+
 在 Shell 中，用括号来表示数组，数组元素用&quot;空格&quot;符号分割开
 </pre></div>
 </div>
@@ -473,7 +537,7 @@ echo $args1 aa</p>
 echo ${filelist[*]} check_url_for.sh check_url_while01.sh
 check_url_while02.sh func01.sh func02.sh func03.sh urllist.txt</p>
 <p>获取数组元素的下标 [<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> workspace]# echo
-<span class="math notranslate nohighlight">\({!filelist[&#64;]} 0 1 2 3 4 5 6 \)</span> 遍历文件 <a href="#id12"><span class="problematic" id="id13">``</span></a>` filelist=(<cite>(ls));for
+<span class="math notranslate nohighlight">\({!filelist[&#64;]} 0 1 2 3 4 5 6 \)</span> 遍历文件 <a href="#id14"><span class="problematic" id="id15">``</span></a>` filelist=(<cite>(ls));for
 i in ${!filelist[&#64;]};do echo :math:`{filelist[</cite>i]};done</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## 三、字符显示颜色
 
@@ -505,7 +569,9 @@ i in ${!filelist[&#64;]};do echo :math:`{filelist[</cite>i]};done</p>
 </div>
 <p>for i in {40..47};do echo -e “\033[47;${i}m hello world! \033[0m”;done</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 三、运算符
+
 ## 一、Shell表达式
+
 #### 1.1 整数比较符
 
 比较符                  |       描述      |                     示例
@@ -527,6 +593,7 @@ i in ${!filelist[&#64;]};do echo :math:`{filelist[</cite>i]};done</p>
 [<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> ~]# [ 2 -lt 1 ] &amp;&amp; echo true || echo false false
 [<a class="reference external" href="mailto:root&#37;&#52;&#48;monitor">root<span>&#64;</span>monitor</a> ~]# [ 2 -le 1 ] &amp;&amp; echo true || echo false false</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.2 算术运算符
+
 假定变量 a 为 10，变量 b 为 20：
 注意：运算符两边有空格
 
@@ -563,6 +630,7 @@ C=<code class="docutils literal notranslate"><span class="pre">expr</span> <span
 ---|---|---
 &amp;&amp;  | 逻辑的 AND | [[ $a -lt 100 &amp;&amp; $b -gt 100 ]] 返回 false
 \|\|  | 逻辑的 OR   |  [[ $a -lt 100 \|\| $b -gt 100 ]] 返回 true
+
 #### 1.5 文件测试运算符
 
 操作符 | 说明 |  举例
@@ -584,6 +652,7 @@ C=<code class="docutils literal notranslate"><span class="pre">expr</span> <span
 
 
 #### 1.6 字符串测试
+
 假定变量 a 为 &quot;abc&quot;，变量 b 为 &quot;efg&quot;：
 
 运算符 |   说明 |    举例
@@ -597,7 +666,9 @@ str | 检测字符串是否为空，不为空返回 true。|    [ $a ] 返回 tr
 
 
 # 四、流程控制
+
 ## 一、if语句
+
 #### 1.1 单分支
 </pre></div>
 </div>
@@ -636,7 +707,7 @@ fi</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg1</span><span class="p">:</span>
 </pre></div>
 </div>
-<p>for i in /<a href="#id14"><span class="problematic" id="id15">*</span></a>; do echo -e ” <a href="#id16"><span class="problematic" id="id17">:raw-latex:`\c&quot;`</span></a>; find $i |wc -l|sort -nr;
+<p>for i in /<a href="#id16"><span class="problematic" id="id17">*</span></a>; do echo -e ” ; find $i |wc -l|sort -nr;
 done</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg2</span><span class="p">:</span>
 </pre></div>
@@ -674,6 +745,7 @@ $status == “200” ];then echo “Url:$url is ok!status is
 <span class="math notranslate nohighlight">\(status&quot; else  echo &quot;Url:\)</span>url is error!status is $status” fi
 done</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## 三、while语句
+
 格式：
 </pre></div>
 </div>
@@ -706,11 +778,10 @@ if [ $? -eq 1 ];then
 </div>
 <ol class="arabic simple" start="50">
 <li>ping 金融云(10.75.128.8)中断，请检查深信服VPN！
-<a href="#id24"><span class="problematic" id="id25">:raw-latex:`\n `TIME:${data1}&quot; echo 0 &gt; ${dir}ping.lock else
-continue fi else STAT=\ ``cat ${dir}ping.lock``</span></a> if [ ${STAT} -eq 0
+ if [ ${STAT} -eq 0
 ];then /usr/bin/python /DATA/oracle/netdir/GFweixin.py xuel GLP-VPN
 “GLP from PDC(172.16.6.1</li>
-<li>ping 金融云(10.75.128.8)恢复！ :raw-latex:<a href="#id26"><span class="problematic" id="id27">`</span></a>n <a href="#id28"><span class="problematic" id="id29">`</span></a>TIME:${data1}” echo 1
+<li>ping 金融云(10.75.128.8)恢复！ :raw-latex:<a href="#id24"><span class="problematic" id="id25">`</span></a>n <a href="#id26"><span class="problematic" id="id27">`</span></a>TIME:${data1}” echo 1
 &gt; ${dir}ping.lock else continue fi fi</li>
 </ol>
 <p>done</p>
@@ -732,6 +803,7 @@ status=<code class="docutils literal notranslate"><span class="pre">curl</span> 
 <span class="math notranslate nohighlight">\({status}&quot; else  echo &quot;Url:\)</span>url is error!status is
 <span class="math notranslate nohighlight">\({status}&quot; fi done &lt;\)</span>filename</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## 四、break 和 continue 语句</span>
+
 <span class="n">break跳出循环</span>
 </pre></div>
 </div>
@@ -743,6 +815,7 @@ status=<code class="docutils literal notranslate"><span class="pre">curl</span> 
 <p>#!/bin/bash N=0 while [ $N -lt 5 ]; do let N++ if [ $N -eq 3 ]; then
 continue fi echo $N done</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## 五、case语句</span>
+
 <span class="n">语句</span>
 </pre></div>
 </div>
@@ -757,7 +830,9 @@ continue fi echo $N done</p>
 $0 {start|stop|restart}” esac</div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 五、函数
+
 ## 一、概念
+
 linux shell 可以用户定义函数，然后在shell脚本中可以随便调用,以此来重复调用公共函数，减少代码量。
 
 ## 二、格式
@@ -783,6 +858,7 @@ if [[ “<span class="math notranslate nohighlight">\(number01&quot; =~ ^[0-9]+\
 sum=<span class="math notranslate nohighlight">\(((\)</span>number01+<span class="math notranslate nohighlight">\(number02))  echo &quot;\)</span>number01 +
 $number02 = $sum” else echo “input must be number” fi } add_num</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## 三、函数参数
+
 将函数写成无状态的，将数据当做参数进行传入
 </pre></div>
 </div>
@@ -804,7 +880,7 @@ $2 !” echo “第十个参数为 $10 !” echo “第十个参数为 ${10} !�
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eg</span><span class="p">:</span><span class="n">函数炸弹</span>
 </pre></div>
 </div>
-<p>:(){ :<a href="#id30"><span class="problematic" id="id31">|</span></a>:&amp; };:</p>
+<p>:(){ :<a href="#id28"><span class="problematic" id="id29">|</span></a>:&amp; };:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:|: 表示每次调用函数&quot;:&quot;的时候就会生成两份拷贝。
 
 &amp; 放到后台
@@ -813,8 +889,11 @@ $2 !” echo “第十个参数为 $10 !” echo “第十个参数为 ${10} !�
 
 
 # 六、正则表达式
+
 ## 一、基本正则表达式
+
 #### 1.1 字符匹配
+
 * .:匹配任意单个字符
 * []:匹配指定范围内的任意单个字符
 * \[^]:匹配指定范围外的任意单个字符
@@ -826,11 +905,10 @@ $2 !” echo “第十个参数为 $10 !” echo “第十个参数为 ${10} !�
 [:graph:] 任何可视字符（无空格） [:lower:] 小写 [a-z] [:print:]
 非控制字符 [:punct:] 标点字符 [:space:] 空格 [:upper:] 大写 [A-Z]
 [:xdigit:] 十六进制数字 [0-9 a-f A-F]</p>
-<p>特殊字符 <a href="#id32"><span class="problematic" id="id33">:raw-latex:`\w `匹配任意数字和字母，等效[a-zA-Z0-9_]
-:raw-latex:`</span></a>W <cite>和:raw-latex:</cite>w相反`，等效[^a-<a href="#id46"><span class="problematic" id="id47">zA-Z0-9_</span></a>]
-<a href="#id34"><span class="problematic" id="id35">:raw-latex:`\b `匹配字符串开始或结束，等效&lt;和&gt;
-:raw-latex:`</span></a>s <cite>匹配任意的空白字符 :raw-latex:</cite>S <a href="#id36"><span class="problematic" id="id37">`</span></a>匹配非空白字符</p>
+<p>特殊字符 W <cite>和:raw-latex:</cite>w相反`，等效[^a-<a href="#id54"><span class="problematic" id="id55">zA-Z0-9_</span></a>]
+s <cite>匹配任意的空白字符 :raw-latex:</cite>S <a href="#id30"><span class="problematic" id="id31">`</span></a>匹配非空白字符</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.2 次数匹配
+
 用在制定的字符后面，表示制定前面的字符出现多少次
 * \*:匹配前面的字符任意次（0次获无数次）
 * \?:匹配前面的字符0次或1次
@@ -842,6 +920,7 @@ eg:
 </div>
 <p>.*:匹配任意字符任意次数</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.3 位置锚定
+
 * ^:行首锚定，用于模式最左边
 * $:行尾锚定,用于模式最右边
 * \\&lt;或\b:锚定词首，用于单词模式左侧
@@ -854,6 +933,7 @@ eg:
 </div>
 <p>^$:锚定空行</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.4 分组引用
+
 分组
 * \(\):将一个或多个字符当成一个整体来进行后续处理
 
@@ -865,7 +945,7 @@ exercises:
 </pre></div>
 </div>
 <p>1.显示/etc/init.d/functions文件中以大小s开头的行(使用两种方式) grep
-‘ <a class="footnote-reference" href="#id43" id="id38">[1]</a>’ /etc/init.d/functions grep -i “^p” /etc/init.d/functions</p>
+‘ <a class="footnote-reference" href="#id35" id="id32">[1]</a>’ /etc/init.d/functions grep -i “^p” /etc/init.d/functions</p>
 <p>2.显示/etc/passwd文件中不以/bin/bash结尾的行 grep -v “/bin/bash$”
 /etc/passwd</p>
 <p>3.显示/etc/passwd文件中ID号最大用户的用户名 sort -t: -k3 -n /etc/passwd
@@ -891,13 +971,17 @@ netstat -tan|grep ’LISTEN[[:space:]]*$’</p>
 !/^<span class="math notranslate nohighlight">\(/{print}' /etc/ssh/sshd_config grep -v -E '^#|^\)</span>’
 /etc/ssh/sshd_config</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 七、三剑客之grep
+
 ## 一、概念
-#### 1.1
+
 grep (global search regular expression(RE) and print out the line,全面搜索正则表达式并把行打印出来)是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。egrep是grep的扩展，支持更多的re元字符， fgrep就是fixed grep或fast grep，它们把所有的字母都看作单词，也就是说，正则表达式中的元字符表示回其自身的字面意义，不再特殊。linux使用GNU版本的grep。它功能更强，可以通过-G、-E、-F命令行选项来使用egrep和fgrep的功能。
+
 ## 二、语法格式
+
 grep [OPTION]... PATTERN [FILE]
 
 #### 2.1 选项
+
 * -i：忽略大小写
 * -c:统计匹配到字符串的次数
 * -n:顺便输出行号
@@ -906,7 +990,9 @@ grep [OPTION]... PATTERN [FILE]
 * -A:显示匹配到的字符后面的n行
 * -B:显示匹配到的字符前面的n行
 * -C:显示前后各n行
+*
 #### 2.2 模式
+
 * 基本正则表达式元字符：
 </pre></div>
 </div>
@@ -920,7 +1006,7 @@ grep [OPTION]... PATTERN [FILE]
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* 锚定符：
 </pre></div>
 </div>
-<p>r..t ：root chroot * 单词锚定： &lt;:锚定词首：&lt;r..t, <a href="#id39"><span class="problematic" id="id40">:raw-latex:`\b`</span></a>
+<p>r..t ：root chroot * 单词锚定： &lt;:锚定词首：&lt;r..t, 
 &gt;:锚定词尾：root&gt; * 行首行末锚定： ^: ^root, 行首 <span class="math notranslate nohighlight">\(: root\)</span> 行尾
 .*: 任意长度的任意字符</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* 分组：
@@ -945,13 +1031,19 @@ grep [OPTION]... PATTERN [FILE]
 <p>$(mysql -uroot -p’passwd’ -e “show databases;”|egrep -v
 ‘Database|^test|mysql|performance_schema|information_schema’)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 八、三剑客之sed
+
 ## 一、概念：
+
 sed是一种流编辑的文本处理工具，
 * 工作模式：将当前处理的行存储在临时缓冲区（模式空间），对缓冲区中的内容利用制定的动作进行处理，完成后输出到屏幕，接着反复重复执行此操作完成整改文件的处理。
+*
 ## 二、适用场景
+
 * 大文件
 * 有规律的文本
+
 ## 三、语法
+
 sed [option] &#39;Addresscommand&#39; [file ...]
 
 * 选项
@@ -1007,7 +1099,9 @@ eg:
 /etc/services 6、打印2-5行 sed -n ‘2,5p’ /etc/services 7、打印奇数行 seq
 10 |sed -n ‘1~2p’ 8、打印最后一行 sed ‘$p’ /etc/services</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 九、三剑客之awk
+
 ## 一、概念
+
 AWK：报告生成器，格式化文本输出工具
 </pre></div>
 </div>
@@ -1041,6 +1135,7 @@ file1,file2</p>
     ```
 
 #### 1.1 awk输出
+
 &gt;1. print 使用格式
 </pre></div>
 </div>
@@ -1085,6 +1180,7 @@ format格式的指示符都以%开头，后跟一个字符:
 <p>awk -F: ‘{printf “Username:%-15s ,Uid:%d:raw-latex:<cite>n</cite>”,$1,$3}’
 /etc/passwd</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### 1.2 awk变量
+
 * awk内置变量之记录变量：
     + FS:field separator，输入字段分隔符（默认空白）
     + OFS:output field separator，输出字段分隔符
@@ -1122,6 +1218,7 @@ format格式的指示符都以%开头，后跟一个字符:
     ```
 
 #### 1.3 操作符
+
 * 算术运算
 
     * +,-,*,/,^,%
@@ -1160,6 +1257,7 @@ format格式的指示符都以%开头，后跟一个字符:
     awk -F: &#39;{$3&gt;=100?usertype=&quot;common user&quot;:usertype=&quot;sysadmin&quot;;printf &quot;%15s:%s\n&quot;,$1,usertype}&#39; /etc/passwd
     ```
 #### 1.4 Pattern
+
 * empty:空模式，匹配每一行
 * /regular expression/:仅处理能被此处模式匹配到的行
 * relational expression：关系表达式，结果为“真”有“假”，结果为“真”才会被处理,注意：使用模式需要使用双斜线括起来
@@ -1191,6 +1289,7 @@ nd&quot;}&#39; /etc/passwd
 
 
 #### 1.5 常用action
+
 * Expression
 * Control statements
     * if/while
@@ -1246,6 +1345,7 @@ nd&quot;}&#39; /etc/passwd
 
 
 ##### 1.6 array
+
 * 关联数组：
     * array[index-expression]
         * index-pression:
@@ -1266,8 +1366,11 @@ nd&quot;}&#39; /etc/passwd
             ```
             ```
             awk &#39;{ips[$1]++}END{for(i in ips){printf &quot;%-5d,%s\n&quot;,ips[i],i}}&#39; /var/log/httpd/access_log-20180916 |sort -k1 -nr
+
             ```
+
 #### 1.7 函数
+
 * 内置函数
     * 数值处理：
         rand():返回0和1之间的一个随机数
@@ -1302,7 +1405,9 @@ key,words[key]}’ /etc/fstab|sort -k2 -nr</li>
 print i,stat[i]}’ access_log</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 十、shell杂项</span>
+
 <span class="c1">## 一、输入输出</span>
+
 <span class="o">*</span> <span class="n">输入输出</span>
 <span class="n">文件描述符</span> <span class="o">|</span> <span class="n">描述</span> <span class="o">|</span> <span class="n">映射关系</span>
 <span class="o">---|---|---</span>
@@ -1389,23 +1494,23 @@ CRON_FILE=/var/spool/cron/root BASHRC=$HOME/.bashrc</p>
 $TRASH_DIR/$fileName.$DATE done EOF</p>
 <p>sed -i “s&#64;$(grep ‘alias rm=’ $BASHRC)&#64;alias rm=‘bash ${CMD_SCRIPTS}’&#64;g”
 $BASHRC source $HOME/.bashrc</p>
-<p>echo “0 0 * * * rm -rf $TRASH_DIR/<a href="#id41"><span class="problematic" id="id42">*</span></a>” &gt;&gt;
+<p>echo “0 0 * * * rm -rf $TRASH_DIR/<a href="#id33"><span class="problematic" id="id34">*</span></a>” &gt;&gt;
 <span class="math notranslate nohighlight">\(CRON_FILE echo &quot;删除目录:\)</span>TRASH_DIR” echo
 “删除脚本:$CMD_SCRIPTS” echo “请执行:source $BASHRC
 来加载文件或退出当前shell重新登录” ```</p>
-<table class="docutils footnote" frame="void" id="id43" rules="none">
+<table class="docutils footnote" frame="void" id="id35" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id38">[1]</a></td><td>Pp</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id32">[1]</a></td><td>Pp</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id44" rules="none">
+<table class="docutils footnote" frame="void" id="id36" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[2]</td><td>[:space:]</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id45" rules="none">
+<table class="docutils footnote" frame="void" id="id37" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[3]</td><td>[:space:]</td></tr>

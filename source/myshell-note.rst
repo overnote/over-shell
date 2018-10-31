@@ -1,3 +1,7 @@
+.. role:: raw-latex(raw)
+   :format: latex
+..
+
 .. contents::
    :depth: 3
 ..
@@ -12,23 +16,22 @@ Shell 是一个 C 语言编写的脚本语言，它是用户与 Linux
 的桥梁，用户输入命令交给 Shell 处理， Shell
 将相应的操作传递给内核（Kernel），内核把处理的结果输出给用户。
 
-程序=指令+数据 
+程序=指令+数据
 
-二、Shell分类 
+二、Shell分类
 -------------
 
-2.1 图形界面
-^^^^^^^^^^
+2.1 图形界面 Shell（GUI Shell）
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Shell（GUI Shell） GUI
-为 Unix 或者类 Unix
+GUI 为 Unix 或者类 Unix
 操作系统构造一个功能完善、操作简单以及界面友好的桌面环境。主流桌面环境有
-KDE，Gnome 等。 
+KDE，Gnome 等。
 
-2.2 命令行界面
-^^^^^^^^^^
+2.2 命令行界面 Shell（CLI Shell）
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Shell（CLI Shell） CLI
+CLI
 是在用户提示符下键入可执行指令的界面，用户通过键盘输入指令，完成一系列操作。
 
 在 Linux 系统上主流的 CLI 实现是 Bash，是许多 Linux 发行版默认的
@@ -44,9 +47,15 @@ Shell。还有许多 Unix 上Shell。
    /usr/bin/bash
    /usr/sbin/nologin
 
-**Shell的分类:** \* Bourne Shell（/usr/bin/sh或/bin/sh） \* Bourne Again
-Shell（/bin/bash） \* C Shell（/usr/bin/csh） \* K Shell（/usr/bin/ksh）
-\* Shell for Root（/sbin/sh）
+**Shell的分类:**
+
+::
+
+   * Bourne Shell（/usr/bin/sh或/bin/sh）
+   * Bourne Again Shell（/bin/bash）
+   * C Shell（/usr/bin/csh）
+   * K Shell（/usr/bin/ksh）
+   * Shell for Root（/sbin/sh）
 
 **脚本命名:**
 
@@ -61,13 +70,13 @@ Shell（/bin/bash） \* C Shell（/usr/bin/csh） \* K Shell（/usr/bin/ksh）
    echo "this is my first shell script"
 
 ``#!`` 告诉系统其后路径所指定的程序即是解释此脚本文件的 Shell 程序
-``/bin/bash`` 指定使用的是那种shell ``echo``\ 在终端打印出内容 
+``/bin/bash`` 指定使用的是那种shell ``echo``\ 在终端打印出内容
 
-四、执行Shell的三种方法 
----------------
+四、执行Shell的三种方法
+-----------------------
 
 4.1 直接bash执行
-^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 ::
 
@@ -82,7 +91,7 @@ Shell（/bin/bash） \* C Shell（/usr/bin/csh） \* K Shell（/usr/bin/ksh）
    this is my first script
 
 4.2 ./执行
-^^^^^^^^^^
+~~~~~~~~~~
 
 ::
 
@@ -99,7 +108,7 @@ Shell（/bin/bash） \* C Shell（/usr/bin/csh） \* K Shell（/usr/bin/ksh）
 解释器执行。
 
 4.3 source执行
-^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 ::
 
@@ -116,14 +125,13 @@ Shell（/bin/bash） \* C Shell（/usr/bin/csh） \* K Shell（/usr/bin/ksh）
 弱类型变量，所有变量类型视为字符串类型，对于数值相加自动转换为数组类型，无需实现声明
 
 5.1 变量命名规则：
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 -  命名只能使用英文字母，数字和下划线，首个字符不能以数字开头。
 -  中间不能有空格，可以使用下划线（_）。
 -  不能使用标点符号。
 -  不能使用bash里的关键字（可用help命令查看保留关键字）
 -  做到见名知意
--  。
 
 环境变量作用范围：当前shell进程及其子进程
 
@@ -134,7 +142,7 @@ Shell（/bin/bash） \* C Shell（/usr/bin/csh） \* K Shell（/usr/bin/ksh）
 利用export将本地变量导入到环境，扩大作用范围
 
 5.2 系统内置变量
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 在命令行提示符直接执行\ ``env、set``\ 查看系统或环境变量。\ ``env``
 显示用户环境变量，\ ``set`` 显示 Shell
@@ -202,7 +210,7 @@ bashrc 类型： \* 定义本地变量 \* 定义命令别名
 /etc/profile.d/\*
 
 5.3 用户自定义变量
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 -  普通变量
 
@@ -234,7 +242,7 @@ bashrc 类型： \* 定义本地变量 \* 定义命令别名
 变量被删除后不能再次使用。unset 命令不能删除只读变量。
 
 5.4 变量引用
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 -  = 变量赋值
 -  += 变量相加
@@ -267,6 +275,7 @@ echo $var4 bb aa
 
 
    ## 七、注释
+
    * 单行注释使用`#`
    * 多行注释固定函数格式
 
@@ -276,8 +285,11 @@ echo $var4 bb aa
 
 
    # 二、字符串与数组
+
    ## 一、字符串常用操作
+
    #### 1.1 获取字符串长度
+
    利用`${#var}`来获取字符串长度
 
 [root@xuel-tmp-shell ~]# var=‘abcstring’ [root@xuel-tmp-shell ~]# echo
@@ -287,6 +299,7 @@ ${#var} 9
 
 
    #### 1.2 字符串切片
+
    格式：
 
    ${parameter:offset}
@@ -304,6 +317,7 @@ echo ${var:(-1)} l [root@xuel-tmp-shell ~]# echo ${var:(-2)} ll
 
 
    #### 1.3 字符串替换
+
    格式：${parameter/pattern/string}
 
 [root@xuel-tmp-shell ~]# var=“hello shell” [root@xuel-tmp-shell ~]# echo
@@ -314,6 +328,7 @@ ${var/shell/world} hello world
 
 
    #### 1.4 字符串截取
+
    格式：
 
 
@@ -343,6 +358,7 @@ ${var/shell/world} hello world
 
 
    #### 1.5 变量状态赋值
+
    ${VAR:-string}  如果 VAR 变量为空则返回 string
 
    ${VAR:+string}  如果 VAR 变量不为空则返回 string
@@ -366,9 +382,12 @@ ${i%%:*};done
 ::
 
    ## 二、数组
+
    bash支持一维数组（不支持多维数组），并且没有限定数组的大小。数组是相同类型的元素按一定顺序排列的集合。
    类似与 C 语言，数组元素的下标由 0 开始编号。获取数组中的元素要利用下标，下标可以是整数或算术表达式，其值应大于或等于 0。
+
    #### 2.1 数组定义
+
    在 Shell 中，用括号来表示数组，数组元素用"空格"符号分割开
 
 [root@xuel-tmp-shell ~]# args1=(aa bb cc 1123) [root@xuel-tmp-shell ~]#
@@ -377,6 +396,7 @@ echo $args1 aa
 [root@xuel-tmp-shell ~]# echo ${args1[@]} aa bb cc 1123
 
 ::
+
 
    #### 2.2 数组元素读取
 
@@ -435,7 +455,9 @@ for i in {40..47};do echo -e “\\033[47;${i}m hello world! \\033[0m”;done
 
 
    # 三、运算符
+
    ## 一、Shell表达式
+
    #### 1.1 整数比较符
 
    比较符                  |       描述      |                     示例
@@ -461,6 +483,7 @@ for i in {40..47};do echo -e “\\033[47;${i}m hello world! \\033[0m”;done
 
 
    #### 1.2 算术运算符
+
    假定变量 a 为 10，变量 b 为 20：
    注意：运算符两边有空格
 
@@ -501,6 +524,7 @@ C=\ ``expr $A + $B``
    ---|---|---
    &&  | 逻辑的 AND | [[ $a -lt 100 && $b -gt 100 ]] 返回 false
    \|\|  | 逻辑的 OR   |  [[ $a -lt 100 \|\| $b -gt 100 ]] 返回 true
+
    #### 1.5 文件测试运算符
 
    操作符 | 说明 |  举例
@@ -522,6 +546,7 @@ C=\ ``expr $A + $B``
 
 
    #### 1.6 字符串测试
+
    假定变量 a 为 "abc"，变量 b 为 "efg"：
 
    运算符 |   说明 |    举例
@@ -535,7 +560,9 @@ C=\ ``expr $A + $B``
 
 
    # 四、流程控制
+
    ## 一、if语句
+
    #### 1.1 单分支
 
 if condition then command1 command2 … commandN fi
@@ -563,6 +590,7 @@ echo “sshd server exist”;else echo “sshd server not exist”;fi
 
 ::
 
+
    #### 1.3 多分支
 
 if condition1 then command1 elif condition2 then command2 else commandN
@@ -581,6 +609,7 @@ if [ $cmd -eq 6 ];then echo “sysversion is $cmd” elif [ $cmd -eq 7
 ``rpm -q centos-release``” fi
 
 ::
+
 
    ## 二、for循环
 
@@ -644,6 +673,7 @@ done
 
 
    ## 三、while语句
+
    格式：
 
 while 条件表达式:do command done
@@ -714,7 +744,9 @@ status=\ ``curl -I $url -s|awk '/HTTP/{print $2}'`` if [ $status ==
 
 ::
 
+
    ## 四、break 和 continue 语句
+
    break跳出循环
 
 #!/bin/bash
@@ -731,7 +763,9 @@ continue fi echo $N done
 
 ::
 
+
    ## 五、case语句
+
    语句
 
 case 模式名 in 模式 1) 命令 ;; 模式 2) 命令 ;; \*)
@@ -750,7 +784,9 @@ case 模式名 in 模式 1) 命令 ;; 模式 2) 命令 ;; \*)
 
 
    # 五、函数
+
    ## 一、概念
+
    linux shell 可以用户定义函数，然后在shell脚本中可以随便调用,以此来重复调用公共函数，减少代码量。
 
    ## 二、格式
@@ -782,6 +818,7 @@ $number02 = $sum" else echo “input must be number” fi } add_num
 
 
    ## 三、函数参数
+
    将函数写成无状态的，将数据当做参数进行传入
 
 #!/bin/bash funWithParam(){ echo “第一个参数为 $1 !” echo “第二个参数为
@@ -825,8 +862,11 @@ $! 上一条运行后台进程的 PID
 
 
    # 六、正则表达式
+
    ## 一、基本正则表达式
+
    #### 1.1 字符匹配
+
    * .:匹配任意单个字符
    * []:匹配指定范围内的任意单个字符
    * \[^]:匹配指定范围外的任意单个字符
@@ -850,6 +890,7 @@ posix字符 [:alnum:] 字母数字[a-z A-Z 0-9] [:alpha:]字母[a-z A-Z]
 
 
    #### 1.2 次数匹配
+
    用在制定的字符后面，表示制定前面的字符出现多少次
    * \*:匹配前面的字符任意次（0次获无数次）
    * \?:匹配前面的字符0次或1次
@@ -864,6 +905,7 @@ posix字符 [:alnum:] 字母数字[a-z A-Z 0-9] [:alpha:]字母[a-z A-Z]
 
 
    #### 1.3 位置锚定
+
    * ^:行首锚定，用于模式最左边
    * $:行尾锚定,用于模式最右边
    * \\<或\b:锚定词首，用于单词模式左侧
@@ -879,6 +921,7 @@ posix字符 [:alnum:] 字母数字[a-z A-Z 0-9] [:alpha:]字母[a-z A-Z]
 
 
    #### 1.4 分组引用
+
    分组
    * \(\):将一个或多个字符当成一个整体来进行后续处理
 
@@ -931,13 +974,17 @@ netstat -tan|grep ’LISTEN[[:space:]]*$’
 
 
    # 七、三剑客之grep
+
    ## 一、概念
-   #### 1.1 
+
    grep (global search regular expression(RE) and print out the line,全面搜索正则表达式并把行打印出来)是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。egrep是grep的扩展，支持更多的re元字符， fgrep就是fixed grep或fast grep，它们把所有的字母都看作单词，也就是说，正则表达式中的元字符表示回其自身的字面意义，不再特殊。linux使用GNU版本的grep。它功能更强，可以通过-G、-E、-F命令行选项来使用egrep和fgrep的功能。
+
    ## 二、语法格式
+
    grep [OPTION]... PATTERN [FILE]
 
    #### 2.1 选项
+
    * -i：忽略大小写
    * -c:统计匹配到字符串的次数
    * -n:顺便输出行号
@@ -946,7 +993,9 @@ netstat -tan|grep ’LISTEN[[:space:]]*$’
    * -A:显示匹配到的字符后面的n行
    * -B:显示匹配到的字符前面的n行
    * -C:显示前后各n行
+   * 
    #### 2.2 模式
+
    * 基本正则表达式元字符：
 
 . :匹配任意单个字符 [] :匹配指定范围内的字符
@@ -1003,13 +1052,19 @@ $(mysql -uroot -p’passwd’ -e “show databases;”\|egrep -v
 
 
    # 八、三剑客之sed
+
    ## 一、概念：
+
    sed是一种流编辑的文本处理工具，
    * 工作模式：将当前处理的行存储在临时缓冲区（模式空间），对缓冲区中的内容利用制定的动作进行处理，完成后输出到屏幕，接着反复重复执行此操作完成整改文件的处理。
+   * 
    ## 二、适用场景
+
    * 大文件
    * 有规律的文本
+
    ## 三、语法
+
    sed [option] 'Addresscommand' [file ...]
 
    * 选项
@@ -1068,7 +1123,9 @@ $(mysql -uroot -p’passwd’ -e “show databases;”\|egrep -v
 
 
    # 九、三剑客之awk
+
    ## 一、概念
+
    AWK：报告生成器，格式化文本输出工具
 
 awk [options] ‘script’ file1,file2… awk [options] ‘PATTERN {action}’
@@ -1104,6 +1161,7 @@ file1,file2
        ```
 
    #### 1.1 awk输出
+
    >1. print 使用格式
 
 print item1,item2…
@@ -1168,6 +1226,7 @@ awk -F: ‘{printf “Username:%-15s ,Uid:%d:raw-latex:`\n`”,$1,$3}’
 
 
    #### 1.2 awk变量
+
    * awk内置变量之记录变量：
        + FS:field separator，输入字段分隔符（默认空白）
        + OFS:output field separator，输出字段分隔符
@@ -1205,6 +1264,7 @@ awk -F: ‘{printf “Username:%-15s ,Uid:%d:raw-latex:`\n`”,$1,$3}’
        ```
        
    #### 1.3 操作符
+
    * 算术运算
 
        * +,-,*,/,^,%
@@ -1243,6 +1303,7 @@ awk -F: ‘{printf “Username:%-15s ,Uid:%d:raw-latex:`\n`”,$1,$3}’
        awk -F: '{$3>=100?usertype="common user":usertype="sysadmin";printf "%15s:%s\n",$1,usertype}' /etc/passwd
        ```
    #### 1.4 Pattern
+
    * empty:空模式，匹配每一行
    * /regular expression/:仅处理能被此处模式匹配到的行
    * relational expression：关系表达式，结果为“真”有“假”，结果为“真”才会被处理,注意：使用模式需要使用双斜线括起来
@@ -1274,6 +1335,7 @@ awk -F: ‘{printf “Username:%-15s ,Uid:%d:raw-latex:`\n`”,$1,$3}’
        
        
    #### 1.5 常用action
+
    * Expression
    * Control statements
        * if/while
@@ -1329,6 +1391,7 @@ awk -F: ‘{printf “Username:%-15s ,Uid:%d:raw-latex:`\n`”,$1,$3}’
 
 
    ##### 1.6 array
+
    * 关联数组：
        * array[index-expression]
            * index-pression:
@@ -1349,8 +1412,11 @@ awk -F: ‘{printf “Username:%-15s ,Uid:%d:raw-latex:`\n`”,$1,$3}’
                ```
                ```
                awk '{ips[$1]++}END{for(i in ips){printf "%-5d,%s\n",ips[i],i}}' /var/log/httpd/access_log-20180916 |sort -k1 -nr
+               
                ```
+               
    #### 1.7 函数
+
    * 内置函数
        * 数值处理：
            rand():返回0和1之间的一个随机数
@@ -1389,7 +1455,9 @@ awk ‘{ips[$1]++}END{for(i in ips) print i,ips[i]}’ access_nginx.log
 
 
    # 十、shell杂项
+
    ## 一、输入输出
+
    * 输入输出
    文件描述符 | 描述 | 映射关系
    ---|---|---
