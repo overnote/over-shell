@@ -29,6 +29,7 @@ CLI 是在用户提示符下键入可执行指令的界面，用户通过键盘�
 ```
 
 **Shell的分类:**
+
 ```
 * Bourne Shell（/usr/bin/sh或/bin/sh）
 * Bourne Again Shell（/bin/bash）
@@ -188,6 +189,7 @@ bashrc 类型：
 #### 5.3 用户自定义变量
 
 * 普通变量
+
 ```
 [root@shell workspace]# var=normal
 [root@shell workspace]# echo $var
@@ -207,7 +209,6 @@ test
 [root@shell ~]# readonly var
 [root@shell ~]# var='bbb'
 -bash: var: readonly variable
-
 ```
 
 * 删除变量 
@@ -220,17 +221,20 @@ test
 
 * = 变量赋值
 * += 变量相加
+
 ```
 [root@shell data]# var=123
 [root@shell data]# var+=234
 [root@shell data]# echo $var
 123234
 ```
+
 为避免特殊字符及变量与字符连接使用，建议引用变量添加大括号
 
 ## 六、引号
 
 单引号是告诉 Shell 忽略特殊字符，而双引号则解释特殊符号原有的意义，比如$、！。
+
 ```
 [root@xuel-tmp-shell www]# var1="aaa"
 [root@xuel-tmp-shell www]# echo '$var1'
@@ -238,6 +242,7 @@ $var1
 [root@xuel-tmp-shell www]# echo "$var1"
 aaa
 ```
+
 ```
 [root@xuel-tmp-shell www]# var2="aa"
 [root@xuel-tmp-shell www]# var3='bb $var2'
@@ -268,6 +273,7 @@ EOF
 #### 1.1 获取字符串长度
 
 利用`${#var}`来获取字符串长度
+
 ```
 [root@xuel-tmp-shell ~]# var='abcstring'
 [root@xuel-tmp-shell ~]# echo ${#var}
@@ -282,6 +288,7 @@ ${parameter:offset}
 ${parameter:offset:length}
 
 截取从 offset 个字符开始，向后 length 个字符。
+
 ```
 [root@xuel-tmp-shell ~]# var="hello shell"
 [root@xuel-tmp-shell ~]# echo ${var:0}
@@ -302,17 +309,16 @@ sh
 #### 1.3 字符串替换
 
 格式：${parameter/pattern/string}
+
 ```
 [root@xuel-tmp-shell ~]# var="hello shell"
 [root@xuel-tmp-shell ~]# echo ${var/shell/world}
 hello world
 ```
 
-
 #### 1.4 字符串截取
 
 格式：
-
 
 ${parameter#word}
 \# 删除匹配前缀
@@ -328,6 +334,7 @@ ${parameter%%word}
 \# 去掉左边，最短匹配模式，##最长匹配模式。
 
 % 去掉右边，最短匹配模式，%%最长匹配模式。
+
 ```
 [root@xuel-tmp-shell ~]# url="https://www.baidu.com/index.html"
 [root@xuel-tmp-shell ~]# echo ${url#*/}
@@ -339,7 +346,6 @@ index.html
 https://www.baidu.com
 [root@xuel-tmp-shell ~]# echo ${url%%/*}
 https:
-
 ```
 
 #### 1.5 变量状态赋值
@@ -370,6 +376,7 @@ string
 for i in `cat /etc/group`;do echo ${i%%:*};done
 
 ```
+
 ## 二、数组
 
 bash支持一维数组（不支持多维数组），并且没有限定数组的大小。数组是相同类型的元素按一定顺序排列的集合。
@@ -407,7 +414,9 @@ check_url_for.sh check_url_while01.sh check_url_while02.sh func01.sh func02.sh f
 [root@monitor workspace]# echo ${!filelist[@]}
 0 1 2 3 4 5 6
 ```
+
 遍历文件
+
 ```
 filelist=($(ls));for i in ${!filelist[@]};do echo ${filelist[$i]};done
 ```
@@ -580,7 +589,9 @@ then
     commandN 
 fi
 ```
+
 eg:
+
 ```
 if [ `ps -ef |grep /usr/sbin/sshd|grep -v grep|wc -l` -eq 1 ];then echo "sshd server exist";fi
 ```
@@ -598,7 +609,9 @@ else
     command
 fi
 ```
+
 eg:
+
 ```
 if [ `ps -ef |grep /usr/sbin/sshd|grep -v grep|wc -l` -eq 0 ];then echo "sshd server exist";else echo "sshd server not exist";fi
 ```
@@ -616,7 +629,9 @@ else
     commandN
 fi
 ```
+
 eg:
+
 ```
 #! /bin/bash
 
@@ -642,7 +657,9 @@ do
     commandN
 done
 ```
+
 eg1:
+
 ```
 for i in /*; 
 do
@@ -650,7 +667,9 @@ do
     find $i |wc -l|sort -nr;
 done
 ```
+
 eg2:
+
 ```
 #!/bin/bash
 for i in {1..3};
@@ -658,7 +677,9 @@ do
     echo $i
 done
 ```
+
 eg3:
+
 ```
 #!/bin/bash
 for i in "$@"; {	# $@是将位置参数作为单个来处理
@@ -696,6 +717,7 @@ done
 ```
 
 读取文件,判断url可用性
+
 ```
 #!/bin/bash
 #function:check url
@@ -715,6 +737,7 @@ done
 ## 三、while语句
 
 格式：
+
 ```
 while 条件表达式:do
     command
@@ -722,6 +745,7 @@ done
 ```
 
 eg1:
+
 ```
 #!/bin/bash
 N=0
@@ -733,6 +757,7 @@ done
 
 条件表达式为 true，将会产生死循环,利用此可以将脚本一直放在后台进行执行
 eg2:
+
 ```
 #!/bin/bash
 IP=10.75.128.8
@@ -778,8 +803,11 @@ do
 done
 
 ```
+
 文件处理
+
 eg3: 
+
 ```
 #!/bin/bash
 #function:check url
@@ -793,7 +821,9 @@ else
 fi
 done
 ```
+
 或
+
 ```
 #!/bin/bash
 #function:check url
@@ -812,6 +842,7 @@ done <$filename
 ## 四、break 和 continue 语句
 
 break跳出循环
+
 ```
 #!/bin/bash
 
@@ -826,6 +857,7 @@ done
 ```
 
 continue
+
 ```
 #!/bin/bash
 N=0
@@ -841,6 +873,7 @@ done
 ## 五、case语句
 
 语句
+
 ```
 case 模式名	in
     模式 1)
@@ -855,6 +888,7 @@ esac
 ```
 
 eg
+
 ```
 #!/bin/bash
 case $1 in
@@ -887,12 +921,14 @@ linux shell 可以用户定义函数，然后在shell脚本中可以随便调用
     [return int;]
 }
 ```
+
 说明：
 
 * function 关键字可写，也可不写。
 * 参数返回，可以显示加：return返回，如果不加，将以最后一条命令运行结果，作为返回值。 return后跟数值n(0-255）,hell 函数返回值只能是整形数值，一般是用来表示函数执行成功与否的，0表示成功，其他值表示失败。因而用函数返回值来返回函数执行结果是不合适的。如果要硬生生地return某个计算结果，比如一个字符串，往往会得到错误提示：“numeric
  argument required”。
 如果一定要让函数返回一个或多个值，可以定义全局变量，函数将计算结果赋给全局变量，然后脚本中其他地方通过访问全局变量，就可以获得那个函数“返回”的一个或多个执行结果了。
+
 ```
 #!/bin/bash
 function output_data() {
@@ -924,6 +960,7 @@ add_num
 ## 三、函数参数
 
 将函数写成无状态的，将数据当做参数进行传入
+
 ```
 #!/bin/bash
 funWithParam(){
@@ -959,9 +996,11 @@ $!	    上一条运行后台进程的 PID
 ```
 
 eg:函数炸弹
+
 ```
 :(){ :|:& };:
 ```
+
 :|: 表示每次调用函数":"的时候就会生成两份拷贝。
 
 & 放到后台
@@ -979,6 +1018,7 @@ eg:函数炸弹
 * []:匹配指定范围内的任意单个字符
 * \[^]:匹配指定范围外的任意单个字符
 * [:digit:]匹配元字符
+
 ```
 posix字符
 [:alnum:] 字母数字[a-z A-Z 0-9]
@@ -1013,6 +1053,7 @@ posix字符
 * {m\,}:匹配前面的字符至少m次（默认工作在贪婪模式下，?取消贪婪模式）
 * {m,n}:匹配前面的字符至少m次，至多n次
 eg:
+
 ```
 .*:匹配任意字符任意次数
 ```
@@ -1027,6 +1068,7 @@ eg:
 
 
 eg:
+
 ```
 ^$:锚定空行
 ```
@@ -1041,6 +1083,7 @@ eg:
 
 
 exercises:
+
 ```
 1.显示/etc/init.d/functions文件中以大小s开头的行(使用两种方式)
 grep '^[Pp]' /etc/init.d/functions
@@ -1111,12 +1154,15 @@ grep [OPTION]... PATTERN [FILE]
 #### 2.2 模式
 
 * 基本正则表达式元字符：
+
 ```
 . :匹配任意单个字符
 [] :匹配指定范围内的字符
 [^]:匹配指定范围外的任意字符
 ```
+
 * 次数匹配（贪婪模式）
+
 ```
 *：匹配其前的字符0，1或者多次
 ？：匹配其前的字符0或1次
@@ -1125,7 +1171,9 @@ grep [OPTION]... PATTERN [FILE]
     \{0,n\}:至多n次
     \{m\}:m次
 ```
+
 * 锚定符：
+
 ```
 r..t  ：root  chroot
 * 单词锚定：
@@ -1136,27 +1184,32 @@ r..t  ：root  chroot
 $:    root$ 行尾
 .*:  任意长度的任意字符
 ```
+
 * 分组：
 \(\)
 \(abc\)
 * 引用：
+
 ```
 \1 :后向引用，引用前面的第一个左括号与与之对应的右括号中的模式所匹配到的内容
 
 ```
 
 eg:
+
 ```
 dmesg |grep -n eth0
 grep -E '/.{2,3}' /etc/passwd
 ```
 
 取掉空行
+
 ```
 grep -E -v "^$|^#" /etc/httpd/conf/httpd.conf
 ```
 
 查看mysql中的库
+
 ```
 $(mysql -uroot -p'passwd' -e "show databases;"|egrep -v 'Database|^test|mysql|performance_schema|information_schema')
 ```
@@ -1202,6 +1255,7 @@ sed [option] 'Addresscommand' [file ...]
     * i: 忽略字符大小写 
 
 * 匹配元字符：
+
     ```
     ^ 匹配行开始，如：/^sed/匹配所有以sed开头的行。
     $ 匹配行结束，如：/sed$/匹配所有以sed结尾的行。
@@ -1219,14 +1273,15 @@ sed [option] 'Addresscommand' [file ...]
     ```
     
 eg:
+
 ```
-1、删除/etc/grub.conf文件中行首的空白符； 
+1、删除/etc/grub.conf文件中行首的空白符；
 sed -r 's/^[[:space:]]+//g' /etc/grub.conf
-2、替换/etc/inittab文件中"id:3:initdefault:"一行中的数字为5； 
+2、替换/etc/inittab文件中"id:3:initdefault:"一行中的数字为5；
 's/id:[0-9]/id:5/g' /etc/inittab
 3、删除/etc/inittab文件中注释行：
 sed '/^#/d' /etc/inittab
-4、取消/etc/inittab文件中开头的#号; 
+4、取消/etc/inittab文件中开头的#号;
 sed 's/^#//g' /etc/inittab 
 5、打印文件/etc/services匹配blp5开头的行
 sed -n '/^blp5/p' /etc/services
@@ -1243,6 +1298,7 @@ sed '$p' /etc/services
 ## 一、概念
 
 AWK：报告生成器，格式化文本输出工具
+
 ```
 awk [options] 'script' file1,file2...
 awk [options] 'PATTERN {action}' file1,file2
@@ -1255,6 +1311,7 @@ awk [options] 'PATTERN {action}' file1,file2
     * 重复（Repeate）：一直重复上述两个过程直到文件结束。
 * 程序结构：
     * 开始块（BEGIN BLOCK）：
+    
     ```
     语法：
     BEGIN{awk-commands}
@@ -1276,10 +1333,12 @@ awk [options] 'PATTERN {action}' file1,file2
 
 #### 1.1 awk输出
 
->1. print 使用格式
+> 1. print 使用格式
+
 ```
 print item1,item2...
 ```
+
 **要点:**
 * 1.各字段之间逗号隔开，输出时以空白字符分割；
 
@@ -1288,6 +1347,7 @@ print item1,item2...
 * 3.print命令后面的item可以省略，此时其功能相当于print $0,如果想输出空白，可以使用`print ""`
 
 eg:
+
 ```
 awk -F: '{print $1,$NF}' /etc/passwd|column -t
 ```
@@ -1299,9 +1359,11 @@ tail -1 /etc/passwd|awk -F: 'BEGIN{OFS="#"}{print “hello”$1,$2}'
 > 2.printf
 
 printf命令的使用格式:
+
 ```
 printf <format> item1,item2...
 ```
+
 **要点：**
 * 1.其与print命令最大区别,printf 需要指定format,format必须给出
 
@@ -1311,6 +1373,7 @@ printf <format> item1,item2...
 
 
 format格式的指示符都以%开头，后跟一个字符:
+
 ```
 %c:显示ascall码
 %d:%i:十进制整数
@@ -1330,6 +1393,7 @@ format格式的指示符都以%开头，后跟一个字符:
 ```
 
 eg：
+
 ```
 awk -F: '{printf "Username:%-15s   ,Uid:%d\n",$1,$3}' /etc/passwd
 ```
@@ -1346,6 +1410,7 @@ awk -F: '{printf "Username:%-15s   ,Uid:%d\n",$1,$3}' /etc/passwd
 * awk内置变量之数据变量
     + NR:the number of input records,awk命令所处理的文件的行数，如果有多个文件，这个数目会将处理的多个文件计数
     + NF:number of field,当前记录的field个数
+    
     ```
     {print NF},{print $NF}
     ```
@@ -1365,6 +1430,7 @@ awk -F: '{printf "Username:%-15s   ,Uid:%d\n",$1,$3}' /etc/passwd
     -v var=value
 
     变量名区分大小写
+    
     ```
      awk -v test="abc" 'BEGIN{print test}'
     ```
@@ -1381,42 +1447,53 @@ awk -F: '{printf "Username:%-15s   ,Uid:%d\n",$1,$3}' /etc/passwd
     `awk 'BEGIN{a=5;b=3;print "a + b =",a+b}'`
 * 字符串操作
     * 无符号操作符，表示字符串连接
+    
     ```
     awk 'BEGIN { str1="Hello,"; str2="World"; str3 = str1 str2; print str3 }'
     ```
+    
 * 赋值操作符：
     * =，+=，-=，*=，/=，%=，^=
+    
     ```
     awk 'BEGIN{a=5;b=6;if(a == b) print "a == b";else print "$a!=b"}'
     
     awk -F: '{sum+=$3}END{print sum}' /etc/passwd
     ```
+    
 * 比较操作符：
     * \>,>=,<,<=,!=,==
 * 模式匹配符：
     * ~:是否匹配
     * !~:是否不匹配
+    
     ```
     awk -F: '$1~"root"{print $0}' /etc/passwd
     ```
+    
 * 逻辑操作符：
     * && 、 || 、 ！
+    
     ```
     awk 'BEGIN{a=6;if(a > 0 && a <= 6) print "true";else print "false"}'
     ```
+    
 * 函数调用：
     * function_name(argu1,augu2)
 * 条件表达式(三元运算):
     * selection？if-true-expresssion：if-false-expression
+    
     ```
     awk -F: '{$3>=100?usertype="common user":usertype="sysadmin";printf "%15s:%s\n",$1,usertype}' /etc/passwd
     ```
+    
 #### 1.4 Pattern
 
 * empty:空模式，匹配每一行
 * /regular expression/:仅处理能被此处模式匹配到的行
 * relational expression：关系表达式，结果为“真”有“假”，结果为“真”才会被处理,注意：使用模式需要使用双斜线括起来
     * 真：结果为非0值，非空字符串
+    
     ```
     awk -F: '$3>100{print $1,$3}' /etc/passwd
     ```
@@ -1429,14 +1506,18 @@ awk -F: '{printf "Username:%-15s   ,Uid:%d\n",$1,$3}' /etc/passwd
     ```
     df -Th|awk '/^\/dev/{print}'
     ```
+    
 * line ranges：行范围，制定startline，endline
+
     ```
     awk -F: '/10/,/20/{print $1}' /etc/passwd
     awk -F: '(NR>2&&NR<=10){print $1}' /etc/passwd
     ```
+    
 * BEGIN/END模式
     * BEGIN{}：仅在开始处理喂奶姐中的文本之前执行一次
     * END{}:仅在文本处理完成之后执行一次
+    
     ```
     awk -F: 'BEGIN{print "username     uid\n--------------------"}{printf "%-15s:%d\n",$1,$3}END{print "-----------------\ne
 nd"}' /etc/passwd
@@ -1455,6 +1536,7 @@ nd"}' /etc/passwd
 #### 1.6 控制语句
 * if(condition) {statements}
 * if(condition) {statments} [else {statments}]
+
     ```
     awk -F: '{if($3>100) print $1,$3}' /etc/passwd
     ```
@@ -1473,6 +1555,7 @@ nd"}' /etc/passwd
 * while(conditon) {statments}
     * 条件为“真”，进入循环，条件为“假”，退出循环
     * 使用场景：对一行内的多个字段逐一类似处理时使用，对数组内的各元素逐一进行处理时使用
+    
     ```
     awk '/^[[:space:]]*if/{i=1;while(i<=NF) {print $i,length($i);i++}}' /etc/init.d/functions
     ```
@@ -1485,12 +1568,14 @@ nd"}' /etc/passwd
 * for(expr1;expr2;expr3) {statements}
     * 语法：for(variable assignment;condition;iteration process) {for-body}
     * 特殊用法：能够遍历数组中的元素，`for (var in array) {for-body}`
+    
     ```
     awk '/^[[:space:]]*if/{for(i=1;i<NF;i++) {print $i,length($i)}}' /etc/init.d/functions 
     ```
     ```
     awk '/^[[:space:]]*if/{for(i=1;i<NF;i++) {if(length($i)>7) print $i,length($i)}}' /etc/init.d/functions
     ```
+    
 * break
 * continue
 * delete array[index]
@@ -1506,12 +1591,14 @@ nd"}' /etc/passwd
         * index-pression:
             * 任意字符串
             * 如果某数组元素事先不存在，引用时候，awk自动创建此元素，并将其值初始化为空串，若要判断数组中是否存在某元素，需要使用`index in array`格式进行
-            * 
+            
             ```
             awk 'BEGIN{weekdays["mon"]="Monday";weekdays["tue"]="Tuesday";print weekdays["tue"]}'
             ```
+            
         * 遍历数组使用for循环
             * `for(var in array) {do-body}`
+        
             ```
             awk 'BEGIN{weekdays["mon"]="Monday";weekdays["tue"]="Tuesday";for(i in weekdays) print weekdays[i]}'
             ```
@@ -1529,9 +1616,11 @@ nd"}' /etc/passwd
 * 内置函数
     * 数值处理：
         rand():返回0和1之间的一个随机数
+
         ```
         awk 'BEGIN{print rand()}'
         ```
+        
     * 字符串处理：
         length([s]):返回制定字符串的长度
         sub(r,s,[t])：以r表示的模式来查找t所表示的字符串中匹配到的内容，并将其第一次出现替换为s所表示的那日
@@ -1539,6 +1628,7 @@ nd"}' /etc/passwd
 
     
 exercises:
+
 ```
 * 统计/etc/fstab文件中每个单词出现的次数，并按从大到小排序
 awk '{for(i=1;i<=NF;i++){words[$i]++}}END{for(key in words)print key,words[key]}' /etc/fstab|sort -k2 -nr
@@ -1570,6 +1660,7 @@ awk '$9~"[0-9]"{stat[$9]++}END{for(i in stat) print i,stat[i]}' access_log
 2 | 标准错误 | /dev/stderr -> /proc/self/fd/2
 
 * 重定向
+
 ```
 > ：符号左边输出作为右边的输入
 >>: 符号左边输出追加右边的输入
@@ -1577,7 +1668,9 @@ awk '$9~"[0-9]"{stat[$9]++}END{for(i in stat) print i,stat[i]}' access_log
 <<:	符号右边输出追加左边输入
 & :	重定向绑定符号
 ```
+
 eg:
+
 ```
 cat > file.txt <<EOF
 context
@@ -1599,6 +1692,7 @@ ls aa >/dev/null 2>&1
     -u:去重行
 * uniq:去重 -c 打印出现次数、-u ：打印不重复的行
 * date:显示系统时间
+
 ```
 时间加减：
 显示前 30 秒：date -d '-30 second' +'%F %T'
@@ -1612,12 +1706,14 @@ ls aa >/dev/null 2>&1
 显示前一天日期：date -d yesterday +%F
 显示后一天日期：date -d tomorrow +%F
 ```
+
 * screen
     * screen -ls
     * screen -r 
     * screen -wipe
 
 脚本编写注意事项
+
 ```
 1）开头加解释器：#!/bin/bash
 
@@ -1635,6 +1731,7 @@ ls aa >/dev/null 2>&1
 
 * 实战
 * 文件扫描校验
+
 ```
 #!/bin/bash
 #func:scan file
@@ -1678,6 +1775,7 @@ main
 ```
 
 自定义垃圾回收
+
 ```
 #!/bin/bash
 # function:自定义rm命令，每天晚上定时清理
