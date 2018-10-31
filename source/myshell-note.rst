@@ -12,10 +12,23 @@ Shell 是一个 C 语言编写的脚本语言，它是用户与 Linux
 的桥梁，用户输入命令交给 Shell 处理， Shell
 将相应的操作传递给内核（Kernel），内核把处理的结果输出给用户。
 
-程序=指令+数据 ## 二、Shell分类 #### 2.1 图形界面 Shell（GUI Shell） GUI
+程序=指令+数据 
+
+二、Shell分类 
+-------------
+
+2.1 图形界面
+^^^^^^^^^^
+
+Shell（GUI Shell） GUI
 为 Unix 或者类 Unix
 操作系统构造一个功能完善、操作简单以及界面友好的桌面环境。主流桌面环境有
-KDE，Gnome 等。 #### 2.2 命令行界面 Shell（CLI Shell） CLI
+KDE，Gnome 等。 
+
+2.2 命令行界面
+^^^^^^^^^^
+
+Shell（CLI Shell） CLI
 是在用户提示符下键入可执行指令的界面，用户通过键盘输入指令，完成一系列操作。
 
 在 Linux 系统上主流的 CLI 实现是 Bash，是许多 Linux 发行版默认的
@@ -48,8 +61,13 @@ Shell（/bin/bash） \* C Shell（/usr/bin/csh） \* K Shell（/usr/bin/ksh）
    echo "this is my first shell script"
 
 ``#!`` 告诉系统其后路径所指定的程序即是解释此脚本文件的 Shell 程序
-``/bin/bash`` 指定使用的是那种shell ``echo``\ 在终端打印出内容 ##
-四、执行Shell的三种方法 #### 4.1 直接bash执行
+``/bin/bash`` 指定使用的是那种shell ``echo``\ 在终端打印出内容 
+
+四、执行Shell的三种方法 
+---------------
+
+4.1 直接bash执行
+^^^^^^^^^^
 
 ::
 
@@ -81,7 +99,7 @@ Shell（/bin/bash） \* C Shell（/usr/bin/csh） \* K Shell（/usr/bin/ksh）
 解释器执行。
 
 4.3 source执行
-~~~~~~~~~~~~~~
+^^^^^^^^^^
 
 ::
 
