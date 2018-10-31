@@ -197,7 +197,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#id65">十、shell杂项</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id66">一、输入输出</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id67">命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id67">二、命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id68">三、实战</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id69">3.1 文件扫描校验</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id70">3.2 自定义垃圾回收</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux">3.3 Linux系统检测</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -267,141 +273,147 @@
   <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id1" id="id70">一、基础知识</a><ul>
-<li><a class="reference internal" href="#shell" id="id71">一、Shell简介</a></li>
-<li><a class="reference internal" href="#id2" id="id72">二、Shell分类</a><ul>
-<li><a class="reference internal" href="#shell-gui-shell" id="id73">2.1 图形界面 Shell（GUI Shell）</a></li>
-<li><a class="reference internal" href="#shell-cli-shell" id="id74">2.2 命令行界面 Shell（CLI Shell）</a></li>
+<li><a class="reference internal" href="#id1" id="id73">一、基础知识</a><ul>
+<li><a class="reference internal" href="#shell" id="id74">一、Shell简介</a></li>
+<li><a class="reference internal" href="#id2" id="id75">二、Shell分类</a><ul>
+<li><a class="reference internal" href="#shell-gui-shell" id="id76">2.1 图形界面 Shell（GUI Shell）</a></li>
+<li><a class="reference internal" href="#shell-cli-shell" id="id77">2.2 命令行界面 Shell（CLI Shell）</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id3" id="id75">三、第一个Shell</a></li>
-<li><a class="reference internal" href="#id4" id="id76">四、执行Shell的三种方法</a><ul>
-<li><a class="reference internal" href="#bash" id="id77">4.1 直接bash执行</a></li>
-<li><a class="reference internal" href="#id5" id="id78">4.2 ./执行</a></li>
-<li><a class="reference internal" href="#source" id="id79">4.3 source执行</a></li>
+<li><a class="reference internal" href="#id3" id="id78">三、第一个Shell</a></li>
+<li><a class="reference internal" href="#id4" id="id79">四、执行Shell的三种方法</a><ul>
+<li><a class="reference internal" href="#bash" id="id80">4.1 直接bash执行</a></li>
+<li><a class="reference internal" href="#id5" id="id81">4.2 ./执行</a></li>
+<li><a class="reference internal" href="#source" id="id82">4.3 source执行</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6" id="id80">五、Shell变量</a><ul>
-<li><a class="reference internal" href="#id7" id="id81">5.1 变量命名规则：</a></li>
-<li><a class="reference internal" href="#id8" id="id82">5.2 系统内置变量</a></li>
-<li><a class="reference internal" href="#id9" id="id83">5.3 用户自定义变量</a></li>
-<li><a class="reference internal" href="#id10" id="id84">5.4 变量引用</a></li>
+<li><a class="reference internal" href="#id6" id="id83">五、Shell变量</a><ul>
+<li><a class="reference internal" href="#id7" id="id84">5.1 变量命名规则：</a></li>
+<li><a class="reference internal" href="#id8" id="id85">5.2 系统内置变量</a></li>
+<li><a class="reference internal" href="#id9" id="id86">5.3 用户自定义变量</a></li>
+<li><a class="reference internal" href="#id10" id="id87">5.4 变量引用</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id11" id="id85">六、引号</a></li>
-<li><a class="reference internal" href="#id12" id="id86">七、注释</a></li>
+<li><a class="reference internal" href="#id11" id="id88">六、引号</a></li>
+<li><a class="reference internal" href="#id12" id="id89">七、注释</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id13" id="id87">二、字符串与数组</a><ul>
-<li><a class="reference internal" href="#id14" id="id88">一、字符串常用操作</a><ul>
-<li><a class="reference internal" href="#id15" id="id89">1.1 获取字符串长度</a></li>
-<li><a class="reference internal" href="#id16" id="id90">1.2 字符串切片</a></li>
-<li><a class="reference internal" href="#id17" id="id91">1.3 字符串替换</a></li>
-<li><a class="reference internal" href="#id18" id="id92">1.4 字符串截取</a></li>
-<li><a class="reference internal" href="#id19" id="id93">1.5 变量状态赋值</a></li>
+<li><a class="reference internal" href="#id13" id="id90">二、字符串与数组</a><ul>
+<li><a class="reference internal" href="#id14" id="id91">一、字符串常用操作</a><ul>
+<li><a class="reference internal" href="#id15" id="id92">1.1 获取字符串长度</a></li>
+<li><a class="reference internal" href="#id16" id="id93">1.2 字符串切片</a></li>
+<li><a class="reference internal" href="#id17" id="id94">1.3 字符串替换</a></li>
+<li><a class="reference internal" href="#id18" id="id95">1.4 字符串截取</a></li>
+<li><a class="reference internal" href="#id19" id="id96">1.5 变量状态赋值</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id20" id="id94">二、数组</a><ul>
-<li><a class="reference internal" href="#id21" id="id95">2.1 数组定义</a></li>
-<li><a class="reference internal" href="#id22" id="id96">2.2 数组元素读取</a></li>
+<li><a class="reference internal" href="#id20" id="id97">二、数组</a><ul>
+<li><a class="reference internal" href="#id21" id="id98">2.1 数组定义</a></li>
+<li><a class="reference internal" href="#id22" id="id99">2.2 数组元素读取</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id23" id="id97">三、字符显示颜色</a></li>
+<li><a class="reference internal" href="#id23" id="id100">三、字符显示颜色</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id24" id="id98">三、运算符</a><ul>
-<li><a class="reference internal" href="#id25" id="id99">一、Shell表达式</a><ul>
-<li><a class="reference internal" href="#id26" id="id100">1.1 整数比较符</a></li>
-<li><a class="reference internal" href="#id27" id="id101">1.2 算术运算符</a></li>
-<li><a class="reference internal" href="#id28" id="id102">1.3 布尔运算符</a></li>
-<li><a class="reference internal" href="#id29" id="id103">1.4 逻辑运算符</a></li>
-<li><a class="reference internal" href="#id30" id="id104">1.5 文件测试运算符</a></li>
-<li><a class="reference internal" href="#id31" id="id105">1.6 字符串测试</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id32" id="id106">四、流程控制</a><ul>
-<li><a class="reference internal" href="#if" id="id107">一、if语句</a><ul>
-<li><a class="reference internal" href="#id33" id="id108">1.1 单分支</a></li>
-<li><a class="reference internal" href="#id34" id="id109">1.2 双分支</a></li>
-<li><a class="reference internal" href="#id35" id="id110">1.3 多分支</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#for" id="id111">二、for循环</a></li>
-<li><a class="reference internal" href="#while" id="id112">三、while语句</a></li>
-<li><a class="reference internal" href="#break-continue" id="id113">四、break 和 continue 语句</a></li>
-<li><a class="reference internal" href="#case" id="id114">五、case语句</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id36" id="id115">五、函数</a><ul>
-<li><a class="reference internal" href="#id37" id="id116">一、概念</a></li>
-<li><a class="reference internal" href="#id38" id="id117">二、格式</a></li>
-<li><a class="reference internal" href="#id39" id="id118">三、函数参数</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id42" id="id119">六、正则表达式</a><ul>
-<li><a class="reference internal" href="#id43" id="id120">一、基本正则表达式</a><ul>
-<li><a class="reference internal" href="#id44" id="id121">1.1 字符匹配</a></li>
-<li><a class="reference internal" href="#id45" id="id122">1.2 次数匹配</a></li>
-<li><a class="reference internal" href="#id46" id="id123">1.3 位置锚定</a></li>
-<li><a class="reference internal" href="#id47" id="id124">1.4 分组引用</a></li>
+<li><a class="reference internal" href="#id24" id="id101">三、运算符</a><ul>
+<li><a class="reference internal" href="#id25" id="id102">一、Shell表达式</a><ul>
+<li><a class="reference internal" href="#id26" id="id103">1.1 整数比较符</a></li>
+<li><a class="reference internal" href="#id27" id="id104">1.2 算术运算符</a></li>
+<li><a class="reference internal" href="#id28" id="id105">1.3 布尔运算符</a></li>
+<li><a class="reference internal" href="#id29" id="id106">1.4 逻辑运算符</a></li>
+<li><a class="reference internal" href="#id30" id="id107">1.5 文件测试运算符</a></li>
+<li><a class="reference internal" href="#id31" id="id108">1.6 字符串测试</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#grep" id="id125">七、三剑客之grep</a><ul>
-<li><a class="reference internal" href="#id48" id="id126">一、概念</a></li>
-<li><a class="reference internal" href="#id50" id="id127">二、语法格式</a><ul>
-<li><a class="reference internal" href="#id51" id="id128">2.1 选项</a></li>
+<li><a class="reference internal" href="#id32" id="id109">四、流程控制</a><ul>
+<li><a class="reference internal" href="#if" id="id110">一、if语句</a><ul>
+<li><a class="reference internal" href="#id33" id="id111">1.1 单分支</a></li>
+<li><a class="reference internal" href="#id34" id="id112">1.2 双分支</a></li>
+<li><a class="reference internal" href="#id35" id="id113">1.3 多分支</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#for" id="id114">二、for循环</a></li>
+<li><a class="reference internal" href="#while" id="id115">三、while语句</a></li>
+<li><a class="reference internal" href="#break-continue" id="id116">四、break 和 continue 语句</a></li>
+<li><a class="reference internal" href="#case" id="id117">五、case语句</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id36" id="id118">五、函数</a><ul>
+<li><a class="reference internal" href="#id37" id="id119">一、概念</a></li>
+<li><a class="reference internal" href="#id38" id="id120">二、格式</a></li>
+<li><a class="reference internal" href="#id39" id="id121">三、函数参数</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id42" id="id122">六、正则表达式</a><ul>
+<li><a class="reference internal" href="#id43" id="id123">一、基本正则表达式</a><ul>
+<li><a class="reference internal" href="#id44" id="id124">1.1 字符匹配</a></li>
+<li><a class="reference internal" href="#id45" id="id125">1.2 次数匹配</a></li>
+<li><a class="reference internal" href="#id46" id="id126">1.3 位置锚定</a></li>
+<li><a class="reference internal" href="#id47" id="id127">1.4 分组引用</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#sed" id="id129">八、三剑客之sed</a><ul>
-<li><a class="reference internal" href="#id53" id="id130">一、概念：</a></li>
-<li><a class="reference internal" href="#id55" id="id131">三、语法</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#awk" id="id132">九、三剑客之awk</a><ul>
-<li><a class="reference internal" href="#id56" id="id133">一、概念</a><ul>
-<li><a class="reference internal" href="#id58" id="id134">1.1 awk输出</a></li>
-<li><a class="reference internal" href="#id59" id="id135">1.2 awk变量</a></li>
-<li><a class="reference internal" href="#id60" id="id136">1.3 操作符</a></li>
-<li><a class="reference internal" href="#pattern" id="id137">1.4 Pattern</a></li>
-<li><a class="reference internal" href="#action" id="id138">1.5 常用action</a></li>
-<li><a class="reference internal" href="#id63" id="id139">1.6 控制语句</a></li>
-<li><a class="reference internal" href="#id64" id="id140">1.7 函数</a></li>
+<li><a class="reference internal" href="#grep" id="id128">七、三剑客之grep</a><ul>
+<li><a class="reference internal" href="#id48" id="id129">一、概念</a></li>
+<li><a class="reference internal" href="#id50" id="id130">二、语法格式</a><ul>
+<li><a class="reference internal" href="#id51" id="id131">2.1 选项</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id65" id="id141">十、shell杂项</a><ul>
-<li><a class="reference internal" href="#id66" id="id142">一、输入输出</a></li>
-<li><a class="reference internal" href="#id67" id="id143">命令</a></li>
+<li><a class="reference internal" href="#sed" id="id132">八、三剑客之sed</a><ul>
+<li><a class="reference internal" href="#id53" id="id133">一、概念：</a></li>
+<li><a class="reference internal" href="#id55" id="id134">三、语法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#awk" id="id135">九、三剑客之awk</a><ul>
+<li><a class="reference internal" href="#id56" id="id136">一、概念</a><ul>
+<li><a class="reference internal" href="#id58" id="id137">1.1 awk输出</a></li>
+<li><a class="reference internal" href="#id59" id="id138">1.2 awk变量</a></li>
+<li><a class="reference internal" href="#id60" id="id139">1.3 操作符</a></li>
+<li><a class="reference internal" href="#pattern" id="id140">1.4 Pattern</a></li>
+<li><a class="reference internal" href="#action" id="id141">1.5 常用action</a></li>
+<li><a class="reference internal" href="#id63" id="id142">1.6 控制语句</a></li>
+<li><a class="reference internal" href="#id64" id="id143">1.7 函数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id65" id="id144">十、shell杂项</a><ul>
+<li><a class="reference internal" href="#id66" id="id145">一、输入输出</a></li>
+<li><a class="reference internal" href="#id67" id="id146">二、命令</a></li>
+<li><a class="reference internal" href="#id68" id="id147">三、实战</a><ul>
+<li><a class="reference internal" href="#id69" id="id148">3.1 文件扫描校验</a></li>
+<li><a class="reference internal" href="#id70" id="id149">3.2 自定义垃圾回收</a></li>
+<li><a class="reference internal" href="#linux" id="id150">3.3 Linux系统检测</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h1><a class="toc-backref" href="#id70">一、基础知识</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id73">一、基础知识</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="shell">
-<h2><a class="toc-backref" href="#id71">一、Shell简介</a><a class="headerlink" href="#shell" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id74">一、Shell简介</a><a class="headerlink" href="#shell" title="Permalink to this headline">¶</a></h2>
 <p>Shell 是一个 C 语言编写的脚本语言，它是用户与 Linux
 的桥梁，用户输入命令交给 Shell 处理， Shell
 将相应的操作传递给内核（Kernel），内核把处理的结果输出给用户。</p>
 <p>程序=指令+数据</p>
 </div>
 <div class="section" id="id2">
-<h2><a class="toc-backref" href="#id72">二、Shell分类</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id75">二、Shell分类</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="shell-gui-shell">
-<h3><a class="toc-backref" href="#id73">2.1 图形界面 Shell（GUI Shell）</a><a class="headerlink" href="#shell-gui-shell" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id76">2.1 图形界面 Shell（GUI Shell）</a><a class="headerlink" href="#shell-gui-shell" title="Permalink to this headline">¶</a></h3>
 <p>GUI 为 Unix 或者类 Unix
 操作系统构造一个功能完善、操作简单以及界面友好的桌面环境。主流桌面环境有
 KDE，Gnome 等。</p>
 </div>
 <div class="section" id="shell-cli-shell">
-<h3><a class="toc-backref" href="#id74">2.2 命令行界面 Shell（CLI Shell）</a><a class="headerlink" href="#shell-cli-shell" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id77">2.2 命令行界面 Shell（CLI Shell）</a><a class="headerlink" href="#shell-cli-shell" title="Permalink to this headline">¶</a></h3>
 <p>CLI
 是在用户提示符下键入可执行指令的界面，用户通过键盘输入指令，完成一系列操作。</p>
 <p>在 Linux 系统上主流的 CLI 实现是 Bash，是许多 Linux 发行版默认的
@@ -428,7 +440,7 @@ Shell。还有许多 Unix 上Shell。</p>
 </div>
 </div>
 <div class="section" id="id3">
-<h2><a class="toc-backref" href="#id75">三、第一个Shell</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id78">三、第一个Shell</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="n">echo</span> <span class="s2">&quot;this is my first shell script&quot;</span>
 </pre></div>
@@ -437,9 +449,9 @@ Shell。还有许多 Unix 上Shell。</p>
 <code class="docutils literal notranslate"><span class="pre">/bin/bash</span></code> 指定使用的是那种shell <code class="docutils literal notranslate"><span class="pre">echo</span></code>在终端打印出内容</p>
 </div>
 <div class="section" id="id4">
-<h2><a class="toc-backref" href="#id76">四、执行Shell的三种方法</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id79">四、执行Shell的三种方法</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="bash">
-<h3><a class="toc-backref" href="#id77">4.1 直接bash执行</a><a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id80">4.1 直接bash执行</a><a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># ll</span>
 <span class="n">total</span> <span class="mi">4</span>
 <span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">44</span> <span class="n">Sep</span>  <span class="mi">3</span> <span class="mi">14</span><span class="p">:</span><span class="mi">16</span> <span class="mi">01</span><span class="o">-</span><span class="n">scripts</span><span class="o">.</span><span class="n">sh</span>
@@ -453,7 +465,7 @@ Shell。还有许多 Unix 上Shell。</p>
 </div>
 </div>
 <div class="section" id="id5">
-<h3><a class="toc-backref" href="#id78">4.2 ./执行</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id81">4.2 ./执行</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># ./01-scripts.sh</span>
 <span class="o">-</span><span class="n">bash</span><span class="p">:</span> <span class="o">./</span><span class="mi">01</span><span class="o">-</span><span class="n">scripts</span><span class="o">.</span><span class="n">sh</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
 <span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># chmod +x 01-scripts.sh</span>
@@ -468,7 +480,7 @@ Shell。还有许多 Unix 上Shell。</p>
 解释器执行。</p>
 </div>
 <div class="section" id="source">
-<h3><a class="toc-backref" href="#id79">4.3 source执行</a><a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id82">4.3 source执行</a><a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@shell</span> <span class="n">workspace</span><span class="p">]</span><span class="c1"># source 01-scripts.sh</span>
 <span class="n">this</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">first</span> <span class="n">script</span>
 </pre></div>
@@ -476,12 +488,12 @@ Shell。还有许多 Unix 上Shell。</p>
 </div>
 </div>
 <div class="section" id="id6">
-<h2><a class="toc-backref" href="#id80">五、Shell变量</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id83">五、Shell变量</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>变量名+内存空间</p>
 <p>变量赋值：<code class="docutils literal notranslate"><span class="pre">name=value</span></code></p>
 <p>弱类型变量，所有变量类型视为字符串类型，对于数值相加自动转换为数组类型，无需实现声明</p>
 <div class="section" id="id7">
-<h3><a class="toc-backref" href="#id81">5.1 变量命名规则：</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id84">5.1 变量命名规则：</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>命名只能使用英文字母，数字和下划线，首个字符不能以数字开头。</li>
 <li>中间不能有空格，可以使用下划线（_）。</li>
@@ -495,7 +507,7 @@ Shell。还有许多 Unix 上Shell。</p>
 <p>利用export将本地变量导入到环境，扩大作用范围</p>
 </div>
 <div class="section" id="id8">
-<h3><a class="toc-backref" href="#id82">5.2 系统内置变量</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id85">5.2 系统内置变量</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>在命令行提示符直接执行<code class="docutils literal notranslate"><span class="pre">env、set</span></code>查看系统或环境变量。<code class="docutils literal notranslate"><span class="pre">env</span></code>
 显示用户环境变量，<code class="docutils literal notranslate"><span class="pre">set</span></code> 显示 Shell
 预先定义好的变量以及用户变量。可以通过 <code class="docutils literal notranslate"><span class="pre">export</span></code> 导出成用户变量。</p>
@@ -552,7 +564,7 @@ $!      上一条运行后台进程的 PID
 /etc/profile.d/*</p>
 </div>
 <div class="section" id="id9">
-<h3><a class="toc-backref" href="#id83">5.3 用户自定义变量</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id86">5.3 用户自定义变量</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>普通变量</li>
 </ul>
@@ -583,7 +595,7 @@ $!      上一条运行后台进程的 PID
 <p>变量被删除后不能再次使用。unset 命令不能删除只读变量。</p>
 </div>
 <div class="section" id="id10">
-<h3><a class="toc-backref" href="#id84">5.4 变量引用</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id87">5.4 变量引用</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>= 变量赋值</li>
 <li>+= 变量相加</li>
@@ -598,7 +610,7 @@ $!      上一条运行后台进程的 PID
 </div>
 </div>
 <div class="section" id="id11">
-<h2><a class="toc-backref" href="#id85">六、引号</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id88">六、引号</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <p>单引号是告诉 Shell
 忽略特殊字符，而双引号则解释特殊符号原有的意义，比如$、！。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[root@xuel-tmp-shell www]# var1=&quot;aaa&quot;
@@ -619,7 +631,7 @@ bb aa
 </div>
 </div>
 <div class="section" id="id12">
-<h2><a class="toc-backref" href="#id86">七、注释</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id89">七、注释</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>单行注释使用<code class="docutils literal notranslate"><span class="pre">#</span></code></li>
 <li>多行注释固定函数格式</li>
@@ -633,11 +645,11 @@ bb aa
 </div>
 </div>
 <div class="section" id="id13">
-<h1><a class="toc-backref" href="#id87">二、字符串与数组</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id90">二、字符串与数组</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id14">
-<h2><a class="toc-backref" href="#id88">一、字符串常用操作</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id91">一、字符串常用操作</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id15">
-<h3><a class="toc-backref" href="#id89">1.1 获取字符串长度</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id92">1.1 获取字符串长度</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <p>利用<code class="docutils literal notranslate"><span class="pre">${#var}</span></code>来获取字符串长度</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@xuel</span><span class="o">-</span><span class="n">tmp</span><span class="o">-</span><span class="n">shell</span> <span class="o">~</span><span class="p">]</span><span class="c1"># var=&#39;abcstring&#39;</span>
 <span class="p">[</span><span class="n">root</span><span class="nd">@xuel</span><span class="o">-</span><span class="n">tmp</span><span class="o">-</span><span class="n">shell</span> <span class="o">~</span><span class="p">]</span><span class="c1"># echo ${#var}</span>
@@ -646,7 +658,7 @@ bb aa
 </div>
 </div>
 <div class="section" id="id16">
-<h3><a class="toc-backref" href="#id90">1.2 字符串切片</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id93">1.2 字符串切片</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <p>格式：</p>
 <p>${parameter:offset} ${parameter:offset:length}</p>
 <p>截取从 offset 个字符开始，向后 length 个字符。</p>
@@ -667,7 +679,7 @@ bb aa
 </div>
 </div>
 <div class="section" id="id17">
-<h3><a class="toc-backref" href="#id91">1.3 字符串替换</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id94">1.3 字符串替换</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <p>格式：${parameter/pattern/string}</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@xuel</span><span class="o">-</span><span class="n">tmp</span><span class="o">-</span><span class="n">shell</span> <span class="o">~</span><span class="p">]</span><span class="c1"># var=&quot;hello shell&quot;</span>
 <span class="p">[</span><span class="n">root</span><span class="nd">@xuel</span><span class="o">-</span><span class="n">tmp</span><span class="o">-</span><span class="n">shell</span> <span class="o">~</span><span class="p">]</span><span class="c1"># echo ${var/shell/world}</span>
@@ -676,7 +688,7 @@ bb aa
 </div>
 </div>
 <div class="section" id="id18">
-<h3><a class="toc-backref" href="#id92">1.4 字符串截取</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id95">1.4 字符串截取</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <p>格式：</p>
 <p>${parameter#word} # 删除匹配前缀</p>
 <p>${parameter##word}</p>
@@ -698,7 +710,7 @@ bb aa
 </div>
 </div>
 <div class="section" id="id19">
-<h3><a class="toc-backref" href="#id93">1.5 变量状态赋值</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id96">1.5 变量状态赋值</a><a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <p>${VAR:-string} 如果 VAR 变量为空则返回 string</p>
 <p>${VAR:+string} 如果 VAR 变量不为空则返回 string</p>
 <p>${VAR:=string} 如果 VAR 变量为空则重新赋值 VAR 变量值为 string</p>
@@ -723,13 +735,13 @@ for i in `cat /etc/group`;do echo ${i%%:*};done
 </div>
 </div>
 <div class="section" id="id20">
-<h2><a class="toc-backref" href="#id94">二、数组</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id97">二、数组</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
 <p>bash支持一维数组（不支持多维数组），并且没有限定数组的大小。数组是相同类型的元素按一定顺序排列的集合。
 类似与 C 语言，数组元素的下标由 0
 开始编号。获取数组中的元素要利用下标，下标可以是整数或算术表达式，其值应大于或等于
 0。</p>
 <div class="section" id="id21">
-<h3><a class="toc-backref" href="#id95">2.1 数组定义</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id98">2.1 数组定义</a><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <p>在 Shell 中，用括号来表示数组，数组元素用“空格”符号分割开</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@xuel</span><span class="o">-</span><span class="n">tmp</span><span class="o">-</span><span class="n">shell</span> <span class="o">~</span><span class="p">]</span><span class="c1"># args1=(aa bb cc 1123)</span>
 <span class="p">[</span><span class="n">root</span><span class="nd">@xuel</span><span class="o">-</span><span class="n">tmp</span><span class="o">-</span><span class="n">shell</span> <span class="o">~</span><span class="p">]</span><span class="c1"># echo $args1</span>
@@ -741,7 +753,7 @@ for i in `cat /etc/group`;do echo ${i%%:*};done
 </div>
 </div>
 <div class="section" id="id22">
-<h3><a class="toc-backref" href="#id96">2.2 数组元素读取</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id99">2.2 数组元素读取</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@xuel</span><span class="o">-</span><span class="n">tmp</span><span class="o">-</span><span class="n">shell</span> <span class="o">~</span><span class="p">]</span><span class="c1"># args1=(aa bb cc 1123)</span>
 <span class="p">[</span><span class="n">root</span><span class="nd">@xuel</span><span class="o">-</span><span class="n">tmp</span><span class="o">-</span><span class="n">shell</span> <span class="o">~</span><span class="p">]</span><span class="c1"># echo ${#args1[@]}     #获取数组元素个数</span>
 <span class="mi">4</span>
@@ -766,7 +778,7 @@ for i in `cat /etc/group`;do echo ${i%%:*};done
 </div>
 </div>
 <div class="section" id="id23">
-<h2><a class="toc-backref" href="#id97">三、字符显示颜色</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id100">三、字符显示颜色</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -850,11 +862,11 @@ for i in `cat /etc/group`;do echo ${i%%:*};done
 </div>
 </div>
 <div class="section" id="id24">
-<h1><a class="toc-backref" href="#id98">三、运算符</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id101">三、运算符</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id25">
-<h2><a class="toc-backref" href="#id99">一、Shell表达式</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id102">一、Shell表达式</a><a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id26">
-<h3><a class="toc-backref" href="#id100">1.1 整数比较符</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id103">1.1 整数比较符</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="41%" />
@@ -914,7 +926,7 @@ for i in `cat /etc/group`;do echo ${i%%:*};done
 </div>
 </div>
 <div class="section" id="id27">
-<h3><a class="toc-backref" href="#id101">1.2 算术运算符</a><a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id104">1.2 算术运算符</a><a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
 <p>假定变量 a 为 10，变量 b 为 20： 注意：运算符两边有空格</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>A=3
 B=6
@@ -930,10 +942,10 @@ C=`expr $A + $B`
 </div>
 </div>
 <div class="section" id="id28">
-<h3><a class="toc-backref" href="#id102">1.3 布尔运算符</a><a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id105">1.3 布尔运算符</a><a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id29">
-<h3><a class="toc-backref" href="#id103">1.4 逻辑运算符</a><a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id106">1.4 逻辑运算符</a><a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -959,20 +971,20 @@ C=`expr $A + $B`
 </table>
 </div>
 <div class="section" id="id30">
-<h3><a class="toc-backref" href="#id104">1.5 文件测试运算符</a><a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id107">1.5 文件测试运算符</a><a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id31">
-<h3><a class="toc-backref" href="#id105">1.6 字符串测试</a><a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id108">1.6 字符串测试</a><a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
 <p>假定变量 a 为 “abc”，变量 b 为 “efg”：</p>
 </div>
 </div>
 </div>
 <div class="section" id="id32">
-<h1><a class="toc-backref" href="#id106">四、流程控制</a><a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id109">四、流程控制</a><a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="if">
-<h2><a class="toc-backref" href="#id107">一、if语句</a><a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id110">一、if语句</a><a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id33">
-<h3><a class="toc-backref" href="#id108">1.1 单分支</a><a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id111">1.1 单分支</a><a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span>
 <span class="n">then</span>
     <span class="n">command1</span>
@@ -988,7 +1000,7 @@ C=`expr $A + $B`
 </div>
 </div>
 <div class="section" id="id34">
-<h3><a class="toc-backref" href="#id109">1.2 双分支</a><a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id112">1.2 双分支</a><a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span>
 <span class="n">then</span>
     <span class="n">command1</span>
@@ -1006,7 +1018,7 @@ C=`expr $A + $B`
 </div>
 </div>
 <div class="section" id="id35">
-<h3><a class="toc-backref" href="#id110">1.3 多分支</a><a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id113">1.3 多分支</a><a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span>
 <span class="n">then</span>
     <span class="n">command1</span>
@@ -1035,7 +1047,7 @@ fi
 </div>
 </div>
 <div class="section" id="for">
-<h2><a class="toc-backref" href="#id111">二、for循环</a><a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id114">二、for循环</a><a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">item1</span> <span class="n">item2</span> <span class="o">...</span> <span class="n">itemN</span>
 <span class="n">do</span>
     <span class="n">command1</span>
@@ -1111,7 +1123,7 @@ done
 </div>
 </div>
 <div class="section" id="while">
-<h2><a class="toc-backref" href="#id112">三、while语句</a><a class="headerlink" href="#while" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id115">三、while语句</a><a class="headerlink" href="#while" title="Permalink to this headline">¶</a></h2>
 <p>格式：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">条件表达式</span><span class="p">:</span><span class="n">do</span>
     <span class="n">command</span>
@@ -1205,7 +1217,7 @@ done &lt;$filename
 </div>
 </div>
 <div class="section" id="break-continue">
-<h2><a class="toc-backref" href="#id113">四、break 和 continue 语句</a><a class="headerlink" href="#break-continue" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id116">四、break 和 continue 语句</a><a class="headerlink" href="#break-continue" title="Permalink to this headline">¶</a></h2>
 <p>break跳出循环</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 
@@ -1233,7 +1245,7 @@ done
 </div>
 </div>
 <div class="section" id="case">
-<h2><a class="toc-backref" href="#id114">五、case语句</a><a class="headerlink" href="#case" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id117">五、case语句</a><a class="headerlink" href="#case" title="Permalink to this headline">¶</a></h2>
 <p>语句</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">case</span> <span class="n">模式名</span>    <span class="ow">in</span>
     <span class="n">模式</span> <span class="mi">1</span><span class="p">)</span>
@@ -1267,14 +1279,14 @@ esac
 </div>
 </div>
 <div class="section" id="id36">
-<h1><a class="toc-backref" href="#id115">五、函数</a><a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id118">五、函数</a><a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id37">
-<h2><a class="toc-backref" href="#id116">一、概念</a><a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id119">一、概念</a><a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h2>
 <p>linux shell
 可以用户定义函数，然后在shell脚本中可以随便调用,以此来重复调用公共函数，减少代码量。</p>
 </div>
 <div class="section" id="id38">
-<h2><a class="toc-backref" href="#id117">二、格式</a><a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id120">二、格式</a><a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="n">function</span> <span class="p">]</span> <span class="n">funname</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">action</span><span class="p">;</span>
@@ -1319,7 +1331,7 @@ add_num
 </div>
 </div>
 <div class="section" id="id39">
-<h2><a class="toc-backref" href="#id118">三、函数参数</a><a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id121">三、函数参数</a><a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h2>
 <p>将函数写成无状态的，将数据当做参数进行传入</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 funWithParam(){
@@ -1369,11 +1381,11 @@ $!      上一条运行后台进程的 PID
 </div>
 </div>
 <div class="section" id="id42">
-<h1><a class="toc-backref" href="#id119">六、正则表达式</a><a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id122">六、正则表达式</a><a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id43">
-<h2><a class="toc-backref" href="#id120">一、基本正则表达式</a><a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id123">一、基本正则表达式</a><a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id44">
-<h3><a class="toc-backref" href="#id121">1.1 字符匹配</a><a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id124">1.1 字符匹配</a><a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>.:匹配任意单个字符</li>
 <li></li>
@@ -1405,7 +1417,7 @@ $!      上一条运行后台进程的 PID
 </div>
 </div>
 <div class="section" id="id45">
-<h3><a class="toc-backref" href="#id122">1.2 次数匹配</a><a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id125">1.2 次数匹配</a><a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
 <p>用在制定的字符后面，表示制定前面的字符出现多少次 *
 *:匹配前面的字符任意次（0次获无数次） * ?:匹配前面的字符0次或1次 *
 +:匹配前面的字符至少1次 *
@@ -1416,7 +1428,7 @@ $!      上一条运行后台进程的 PID
 </div>
 </div>
 <div class="section" id="id46">
-<h3><a class="toc-backref" href="#id123">1.3 位置锚定</a><a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id126">1.3 位置锚定</a><a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>^:行首锚定，用于模式最左边</li>
 <li>$:行尾锚定,用于模式最右边</li>
@@ -1429,7 +1441,7 @@ $!      上一条运行后台进程的 PID
 </div>
 </div>
 <div class="section" id="id47">
-<h3><a class="toc-backref" href="#id124">1.4 分组引用</a><a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id127">1.4 分组引用</a><a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
 <p>分组 * ():将一个或多个字符当成一个整体来进行后续处理</p>
 <p>引用 *
 1：从左侧起，引用第一个左括号以及与之匹配右括号之间的模式所匹配到的字符，后向引用</p>
@@ -1480,19 +1492,19 @@ grep -v -E &#39;^#|^$&#39; /etc/ssh/sshd_config
 </div>
 </div>
 <div class="section" id="grep">
-<h1><a class="toc-backref" href="#id125">七、三剑客之grep</a><a class="headerlink" href="#grep" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id128">七、三剑客之grep</a><a class="headerlink" href="#grep" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id48">
-<span id="id49"></span><h2><a class="toc-backref" href="#id126">一、概念</a><a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h2>
+<span id="id49"></span><h2><a class="toc-backref" href="#id129">一、概念</a><a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h2>
 <p>grep (global search regular expression(RE) and print out the
 line,全面搜索正则表达式并把行打印出来)是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。egrep是grep的扩展，支持更多的re元字符，
 fgrep就是fixed grep或fast
 grep，它们把所有的字母都看作单词，也就是说，正则表达式中的元字符表示回其自身的字面意义，不再特殊。linux使用GNU版本的grep。它功能更强，可以通过-G、-E、-F命令行选项来使用egrep和fgrep的功能。</p>
 </div>
 <div class="section" id="id50">
-<h2><a class="toc-backref" href="#id127">二、语法格式</a><a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id130">二、语法格式</a><a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h2>
 <p>grep [OPTION]… PATTERN [FILE]</p>
 <div class="section" id="id51">
-<h3><a class="toc-backref" href="#id128">2.1 选项</a><a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id131">2.1 选项</a><a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">-i：忽略大小写</p>
 </li>
@@ -1568,9 +1580,9 @@ $:    root$ 行尾
 </div>
 </div>
 <div class="section" id="sed">
-<h1><a class="toc-backref" href="#id129">八、三剑客之sed</a><a class="headerlink" href="#sed" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id132">八、三剑客之sed</a><a class="headerlink" href="#sed" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id53">
-<span id="id54"></span><h2><a class="toc-backref" href="#id130">一、概念：</a><a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h2>
+<span id="id54"></span><h2><a class="toc-backref" href="#id133">一、概念：</a><a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h2>
 <p>sed是一种流编辑的文本处理工具， *
 工作模式：将当前处理的行存储在临时缓冲区（模式空间），对缓冲区中的内容利用制定的动作进行处理，完成后输出到屏幕，接着反复重复执行此操作完成整改文件的处理。
 * ## 二、适用场景</p>
@@ -1580,7 +1592,7 @@ $:    root$ 行尾
 </ul>
 </div>
 <div class="section" id="id55">
-<h2><a class="toc-backref" href="#id131">三、语法</a><a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id134">三、语法</a><a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h2>
 <p>sed [option] ‘Addresscommand’ [file …]</p>
 <ul>
 <li><p class="first">选项</p>
@@ -1664,9 +1676,9 @@ sed &#39;$p&#39; /etc/services
 </div>
 </div>
 <div class="section" id="awk">
-<h1><a class="toc-backref" href="#id132">九、三剑客之awk</a><a class="headerlink" href="#awk" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id135">九、三剑客之awk</a><a class="headerlink" href="#awk" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id56">
-<span id="id57"></span><h2><a class="toc-backref" href="#id133">一、概念</a><a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h2>
+<span id="id57"></span><h2><a class="toc-backref" href="#id136">一、概念</a><a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h2>
 <p>AWK：报告生成器，格式化文本输出工具</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="s1">&#39;script&#39;</span> <span class="n">file1</span><span class="p">,</span><span class="n">file2</span><span class="o">...</span>
 <span class="n">awk</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="s1">&#39;PATTERN </span><span class="si">{action}</span><span class="s1">&#39;</span> <span class="n">file1</span><span class="p">,</span><span class="n">file2</span>
@@ -1713,7 +1725,7 @@ END{awk-commands}
 </li>
 </ul>
 <div class="section" id="id58">
-<h3><a class="toc-backref" href="#id134">1.1 awk输出</a><a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id137">1.1 awk输出</a><a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ol class="arabic simple">
 <li>print 使用格式</li>
@@ -1771,7 +1783,7 @@ $0,如果想输出空白，可以使用<code class="docutils literal notranslate
 </div>
 </div>
 <div class="section" id="id59">
-<h3><a class="toc-backref" href="#id135">1.2 awk变量</a><a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id138">1.2 awk变量</a><a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">awk内置变量之记录变量：</p>
 <ul class="simple">
@@ -1812,7 +1824,7 @@ records,awk命令所处理的文件的行数，如果有多个文件，这个数
 </ul>
 </div>
 <div class="section" id="id60">
-<h3><a class="toc-backref" href="#id136">1.3 操作符</a><a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id139">1.3 操作符</a><a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">算术运算</p>
 <ul class="simple">
@@ -1876,7 +1888,7 @@ records,awk命令所处理的文件的行数，如果有多个文件，这个数
 </ul>
 </div>
 <div class="section" id="pattern">
-<h3><a class="toc-backref" href="#id137">1.4 Pattern</a><a class="headerlink" href="#pattern" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id140">1.4 Pattern</a><a class="headerlink" href="#pattern" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">empty:空模式，匹配每一行</p>
 </li>
@@ -1919,7 +1931,7 @@ expression：关系表达式，结果为“真”有“假”，结果为“真�
 </ul>
 </div>
 <div class="section" id="action">
-<h3><a class="toc-backref" href="#id138">1.5 常用action</a><a class="headerlink" href="#action" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id141">1.5 常用action</a><a class="headerlink" href="#action" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Expression</li>
 <li>Control statements<ul>
@@ -1932,7 +1944,7 @@ expression：关系表达式，结果为“真”有“假”，结果为“真�
 </ul>
 </div>
 <div class="section" id="id63">
-<h3><a class="toc-backref" href="#id139">1.6 控制语句</a><a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id142">1.6 控制语句</a><a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">if(condition) {statements}</p>
 </li>
@@ -2034,7 +2046,7 @@ VALUE2 VALUE2 or /EXGEXP2/: statement;…;default: statement}</li>
 </div>
 </div>
 <div class="section" id="id64">
-<h3><a class="toc-backref" href="#id140">1.7 函数</a><a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id143">1.7 函数</a><a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">内置函数</p>
 <ul>
@@ -2072,11 +2084,11 @@ awk &#39;$9~&quot;[0-9]&quot;{stat[$9]++}END{for(i in stat) print i,stat[i]}&#39
 </div>
 </div>
 <div class="section" id="id65">
-<h1><a class="toc-backref" href="#id141">十、shell杂项</a><a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id144">十、shell杂项</a><a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id66">
-<h2><a class="toc-backref" href="#id142">一、输入输出</a><a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id145">一、输入输出</a><a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>输入输出 文件描述符 | 描述 | 映射关系 —<a href="#id68"><span class="problematic" id="id69">|—|</span></a>— 0 | 标准输入 |
+<li>输入输出 文件描述符 | 描述 | 映射关系 —<a href="#id71"><span class="problematic" id="id72">|—|</span></a>— 0 | 标准输入 |
 /dev/stdin -&gt; /proc/self/fd/0 1 | 标准输出 | /dev/stdout -&gt;
 /proc/self/fd/1 2 | 标准错误 | /dev/stderr -&gt; /proc/self/fd/2</li>
 <li>重定向</li>
@@ -2098,7 +2110,7 @@ awk &#39;$9~&quot;[0-9]&quot;{stat[$9]++}END{for(i in stat) print i,stat[i]}&#39
 </div>
 </div>
 <div class="section" id="id67">
-<h2><a class="toc-backref" href="#id143">命令</a><a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id146">二、命令</a><a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>tac:倒序打印文件</li>
 <li>rev反向打印每一行</li>
@@ -2144,10 +2156,13 @@ awk &#39;$9~&quot;[0-9]&quot;{stat[$9]++}END{for(i in stat) print i,stat[i]}&#39
 6）写脚本一定先测试再到生产上。
 </pre></div>
 </div>
-<ul class="simple">
-<li>实战</li>
-<li>文件扫描校验</li>
-</ul>
+</div>
+<div class="section" id="id68">
+<h2><a class="toc-backref" href="#id147">三、实战</a><a class="headerlink" href="#id68" title="Permalink to this headline">¶</a></h2>
+<p>更多示例可参考：<a class="reference external" href="https://github.com/redhatxl/scripts">shell
+脚本示例</a></p>
+<div class="section" id="id69">
+<h3><a class="toc-backref" href="#id148">3.1 文件扫描校验</a><a class="headerlink" href="#id69" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 #func:scan file
 #md5sum -c $SCAN_FILE
@@ -2188,7 +2203,9 @@ main() {
 main
 </pre></div>
 </div>
-<p>自定义垃圾回收</p>
+</div>
+<div class="section" id="id70">
+<h3><a class="toc-backref" href="#id149">3.2 自定义垃圾回收</a><a class="headerlink" href="#id70" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 # function:自定义rm命令，每天晚上定时清理
 
@@ -2217,6 +2234,238 @@ echo &quot;删除目录:$TRASH_DIR&quot;
 echo &quot;删除脚本:$CMD_SCRIPTS&quot;
 echo &quot;请执行:source $BASHRC 来加载文件或退出当前shell重新登录&quot;
 </pre></div>
+</div>
+</div>
+<div class="section" id="linux">
+<h3><a class="toc-backref" href="#id150">3.3 Linux系统检测</a><a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+# auth:kaliarch
+# func:sys info check
+# version:v1.0
+# sys:centos6.x/7.x
+
+[ $(id -u) -gt 0 ] &amp;&amp; echo &quot;请用root用户执行此脚本！&quot; &amp;&amp; exit 1
+sysversion=$(rpm -q centos-release|cut -d- -f3)
+line=&quot;-------------------------------------------------&quot;
+
+
+[ -d logs ] || mkdir logs
+
+sys_check_file=&quot;logs/$(ip a show dev eth0|grep -w inet|awk &#39;{print $2}&#39;|awk -F &#39;/&#39; &#39;{print $1}&#39;)-`date +%Y%m%d`.txt&quot;
+
+# 获取系统cpu信息
+function get_cpu_info() {
+    Physical_CPUs=$(grep &quot;physical id&quot; /proc/cpuinfo| sort | uniq | wc -l)
+    Virt_CPUs=$(grep &quot;processor&quot; /proc/cpuinfo | wc -l)
+    CPU_Kernels=$(grep &quot;cores&quot; /proc/cpuinfo|uniq| awk -F &#39;: &#39; &#39;{print $2}&#39;)
+    CPU_Type=$(grep &quot;model name&quot; /proc/cpuinfo | awk -F &#39;: &#39; &#39;{print $2}&#39; | sort | uniq)
+    CPU_Arch=$(uname -m)
+cat &lt;&lt;EOF | column -t
+CPU信息:
+
+物理CPU个数: $Physical_CPUs
+逻辑CPU个数: $Virt_CPUs
+每CPU核心数: $CPU_Kernels
+CPU型号: $CPU_Type
+CPU架构: $CPU_Arch
+EOF
+}
+
+# 获取系统内存信息
+function get_mem_info() {
+    check_mem=$(free -m)
+    MemTotal=$(grep MemTotal /proc/meminfo| awk &#39;{print $2}&#39;)  #KB
+    MemFree=$(grep MemFree /proc/meminfo| awk &#39;{print $2}&#39;)    #KB
+    let MemUsed=MemTotal-MemFree
+    MemPercent=$(awk &quot;BEGIN {if($MemTotal==0){printf 100}else{printf \&quot;%.2f\&quot;,$MemUsed*100/$MemTotal}}&quot;)
+    report_MemTotal=&quot;$((MemTotal/1024))&quot;&quot;MB&quot;        #内存总容量(MB)
+    report_MemFree=&quot;$((MemFree/1024))&quot;&quot;MB&quot;          #内存剩余(MB)
+    report_MemUsedPercent=&quot;$(awk &quot;BEGIN {if($MemTotal==0){printf 100}else{printf \&quot;%.2f\&quot;,$MemUsed*100/$MemTotal}}&quot;)&quot;&quot;%&quot;   #内存使用率%
+
+cat &lt;&lt;EOF
+内存信息：
+
+${check_mem}
+EOF
+}
+
+# 获取系统网络信息
+function get_net_info() {
+    pri_ipadd=$(ip a show dev eth0|grep -w inet|awk &#39;{print $2}&#39;|awk -F &#39;/&#39; &#39;{print $1}&#39;)
+    pub_ipadd=$(curl ifconfig.me -s)
+    gateway=$(ip route | grep default | awk &#39;{print $3}&#39;)
+    mac_info=$(ip link| egrep -v &quot;lo&quot;|grep link|awk &#39;{print $2}&#39;)
+    dns_config=$(egrep -v &quot;^$|^#&quot; /etc/resolv.conf)
+    route_info=$(route -n)
+cat &lt;&lt;EOF | column -t
+IP信息:
+
+系统公网地址: ${pub_ipadd}
+系统私网地址: ${pri_ipadd}
+网关地址: ${gateway}
+MAC地址: ${mac_info}
+
+路由信息:
+${route_info}
+
+DNS 信息:
+${dns_config}
+EOF
+}
+
+# 获取系统磁盘信息
+function get_disk_info() {
+    disk_info=$(fdisk -l|grep &quot;Disk /dev&quot;|cut -d, -f1)
+    disk_use=$(df -hTP|awk &#39;$2!=&quot;tmpfs&quot;{print}&#39;)
+    disk_inode=$(df -hiP|awk &#39;$1!=&quot;tmpfs&quot;{print}&#39;)
+
+cat &lt;&lt;EOF
+磁盘信息:
+
+${disk_info}
+磁盘使用:
+
+${disk_use}
+inode信息:
+
+${disk_inode}
+EOF
+
+
+}
+
+# 获取系统信息
+function get_systatus_info() {
+    sys_os=$(uname -o)
+    sys_release=$(cat /etc/redhat-release)
+    sys_kernel=$(uname -r)
+    sys_hostname=$(hostname)
+    sys_selinux=$(getenforce)
+    sys_lang=$(echo $LANG)
+    sys_lastreboot=$(who -b | awk &#39;{print $3,$4}&#39;)
+    sys_runtime=$(uptime |awk &#39;{print  $3,$4}&#39;|cut -d, -f1)
+    sys_time=$(date)
+    sys_load=$(uptime |cut -d: -f5)
+
+cat &lt;&lt;EOF | column -t
+系统信息:
+
+系统: ${sys_os}
+发行版本:   ${sys_release}
+系统内核:   ${sys_kernel}
+主机名:    ${sys_hostname}
+selinux状态:  ${sys_selinux}
+系统语言:   ${sys_lang}
+系统当前时间: ${sys_time}
+系统最后重启时间:   ${sys_lastreboot}
+系统运行时间: ${sys_runtime}
+系统负载:   ${sys_load}
+EOF
+}
+
+# 获取服务信息
+function get_service_info() {
+    port_listen=$(netstat -lntup|grep -v &quot;Active Internet&quot;)
+    kernel_config=$(sysctl -p 2&gt;/dev/null)
+    if [ ${sysversion} -gt 6 ];then
+        service_config=$(systemctl list-unit-files --type=service --state=enabled|grep &quot;enabled&quot;)
+        run_service=$(systemctl list-units --type=service --state=running |grep &quot;.service&quot;)
+    else
+        service_config=$(/sbin/chkconfig | grep -E &quot;:on|:启用&quot; |column -t)
+        run_service=$(/sbin/service --status-all|grep -E &quot;running&quot;)
+    fi
+cat &lt;&lt;EOF
+服务启动配置:
+
+${service_config}
+${line}
+运行的服务:
+
+${run_service}
+${line}
+监听端口:
+
+${port_listen}
+${line}
+内核参考配置:
+
+${kernel_config}
+EOF
+}
+
+
+function get_sys_user() {
+    login_user=$(awk -F: &#39;{if ($NF==&quot;/bin/bash&quot;) print $0}&#39; /etc/passwd)
+    ssh_config=$(egrep -v &quot;^#|^$&quot; /etc/ssh/sshd_config)
+    sudo_config=$(egrep -v &quot;^#|^$&quot; /etc/sudoers |grep -v &quot;^Defaults&quot;)
+    host_config=$(egrep -v &quot;^#|^$&quot; /etc/hosts)
+    crond_config=$(for cronuser in /var/spool/cron/* ;do ls ${cronuser} 2&gt;/dev/null|cut -d/ -f5;egrep -v &quot;^$|^#&quot; ${cronuser} 2&gt;/dev/null;echo &quot;&quot;;done)
+cat &lt;&lt;EOF
+系统登录用户:
+
+${login_user}
+${line}
+ssh 配置信息:
+
+${ssh_config}
+${line}
+sudo 配置用户:
+
+${sudo_config}
+${line}
+定时任务配置:
+
+${crond_config}
+${line}
+hosts 信息:
+
+${host_config}
+EOF
+}
+
+
+function process_top_info() {
+
+    top_title=$(top -b n1|head -7|tail -1)
+    cpu_top10=$(top b -n1 | head -17 | tail -10)
+    mem_top10=$(top -b n1|head -17|tail -10|sort -k10 -r)
+
+cat &lt;&lt;EOF
+CPU占用top10:
+
+${top_title}
+${cpu_top10}
+
+内存占用top10:
+
+${top_title}
+${mem_top10}
+EOF
+}
+
+
+function sys_check() {
+    get_cpu_info
+    echo ${line}
+    get_mem_info
+    echo ${line}
+    get_net_info
+    echo ${line}
+    get_disk_info
+    echo ${line}
+    get_systatus_info
+    echo ${line}
+    get_service_info
+    echo ${line}
+    get_sys_user
+    echo ${line}
+    process_top_info
+}
+
+
+sys_check &gt; ${sys_check_file}
+</pre></div>
+</div>
 </div>
 </div>
 </div>
