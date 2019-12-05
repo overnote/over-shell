@@ -11,7 +11,7 @@
 
 > over-shell：[在线阅读](https://myshell-note.readthedocs.io/en/latest/)
 
-很多章节仍然在完善中，如Go在微服务中的实践、框架的具体分析、Go的源码分析等等，后续会完善剩余章节，并分享实践经验，敬请期待。  
+ 
 
 ## demo
 
