@@ -11,6 +11,7 @@
 
 > over-shell：[在线阅读](https://myshell-note.readthedocs.io/en/latest/)
 
+> 新整理-Shell教程：[Wiki](http://www.imooc.com/wiki/shelllesson) 
  
 
 ## demo
